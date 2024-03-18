@@ -22,6 +22,8 @@ urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     # path('rosetta/', include('rosetta.urls')),
     path('roseta/', include('rosetta.urls')),
+    path('i18n/', include('django.conf.urls.i18n')),
+
     path('', include('taelimodel.urls')),
 )
 

@@ -1,4 +1,5 @@
 from django.urls import path
+from django.conf.urls.i18n import i18n_patterns
 from . import views
 urlpatterns=[
     path('',views.home,name="home"),
@@ -18,3 +19,7 @@ urlpatterns=[
     path('vpdf/<int:bookno>/<str:booklang>',views.pdfviws,name='vpdf'),
 
 ]
+# urlpatterns = [
+#     *i18n_patterns(*urlpatterns,prefix_default_language=False),
+#     pa
+# ]
