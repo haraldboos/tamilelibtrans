@@ -1,0 +1,40 @@
+{% extends 'elibt/fk/layout/mai.html' %}
+{% block content %}
+<!-- <div class="row"> -->
+{% include 'elibt/fk/inc/abanner.html' %}
+<!-- <div class=" bg-primary  mx-5 text-right rounded"> 
+    
+    <h3 class=" text-center ">தமிழ் பொது நூலகம் <br><div class="ml-5">அறிவுக்கான வாயில்</div></h3>
+
+</div> -->
+<form method="post" action="{% url 'bsearch' %}" class="my-4">
+    {% csrf_token %}
+    <input type="text"name="searchc" class="container d-inline form-control mx-4"  placeholder="Search...books here">
+    <button type="submit" class="d-inline btn btn-primary">clickhere</button>
+</form>
+<!-- </div> -->
+<!-- <div> -->
+    <section class="bg-light py-3 my-5">
+    <div class="container">
+    
+    <div class="row  row-cols-lg-4 row-cols-md-3 row-cols-sm-2 justify-content-center">
+        <!-- <div class="col-12"> -->
+        
+        <!-- <div class="col btn bg-primary p-1 m-1 col-sm-6 col-md-4 col-lg-2"> -->
+        {% for fk in list%}
+        <a href="{% url 'cprodect' fk %}">
+            <div class="cols rounded mt-2 p-1 mx-2" >
+                <button type="button" class="btn  bg-primary btn-block btn-lg">{{ fk.catagoryname }}</button>
+            </div>
+        </a>
+        {% endfor %}
+ 
+        </div>
+    </div>
+        <!-- </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    </section>
+<!-- </div> -->
+{% endblock content %}
+    

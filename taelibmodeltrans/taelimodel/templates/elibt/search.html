@@ -1,0 +1,93 @@
+{% extends 'elibt/fk/layout/mai.html' %}
+{% block content %}
+<!-- <div class="row"> -->
+
+<!-- <div class=" bg-primary  mx-5 text-right rounded"> 
+    
+    <h3 class=" text-center ">தமிழ் பொது நூலகம் <br><div class="ml-5">அறிவுக்கான வாயில்</div></h3>
+
+</div> -->
+<div class="container">
+<form method="post" action="{% url 'bsearch' %}">
+    {% csrf_token %}
+    <input type="text" class="container form-control p-2" placeholder="Search...books here">
+<button type="submit">clickhere<button>
+</form>
+
+<!-- </div> -->
+<!-- <div> -->
+    {% if list %}
+        <section class="bg-light py-3 my-5">
+        <div class="container">
+            <form method="post" action="{% url 'bsearch' %}">
+                {% csrf_token %}
+                <input type="text"name="searchc" class="container d-inline form-control mx-4"  placeholder="Search...books here">
+                <button type="submit" class="d-inline btn btn-primary">clickhere</button>
+            </form>
+        
+        <div class="row  row-cols-lg-4 row-cols-md-3 row-cols-sm-2 justify-content-center">
+            <!-- <div class="col-12"> -->
+            
+            <!-- <div class="col btn bg-primary p-1 m-1 col-sm-6 col-md-4 col-lg-2"> -->
+            {% for fk in list%}
+            <a href="{% url 'cprodect' fk%}">
+                <div class="cols rounded mt-2 p-1 mx-2" >
+                    <button type="button" class="btn  bg-primary btn-block btn-lg">{{ fk.catagoryname }}</button>
+                </div>
+            </a>
+            {% endfor %}
+    
+            </div>
+        </div>
+            <!-- </div> -->
+        <!-- </div> -->
+        <!-- </div> -->
+        </section>
+    {% endif %}
+    {% if book %}
+<!-- <section class="bg-light py-3 my-5"> -->
+    <!-- <input type="text" class="container form-control p-2" placeholder="Search...books here"> -->
+    <form method="post" action="{% url 'bsearch' %}">
+        {% csrf_token %}
+        <input type="text"name="searchq" class="container d-inline form-control mx-4"  placeholder="Search...books here">
+        <button type="submit" class="d-inline btn btn-primary">clickhere</button>
+    </form>
+    <div class="container-fluid">
+    
+    <div class="row row-cols-5 row-md-cols-3 row-sm-cols-2 justify-content-center">
+        <!-- <div class="col-12"> -->
+     
+        <!-- <div class="col btn bg-primary p-1 m-1 col-sm-6 col-md-4 col-lg-2"> -->
+        {% for fk in book%}
+        <div class="card mx-2 my-3 ">
+            <a href="{% url 'inspectpro' fk.catgryname fk.bookname %}">
+            <img src="{{ fk.bookcover.url }}" class="card-img-top img-thumbnail my-1">
+            <div class="card-body" >
+        
+            <div class="card-title">{{ fk.bookname }}</div>
+            <div class="card-text">
+               page no: {{fk.bookpageno}}<br>prize :{{fk.bookprize}}
+            </div>
+            
+        </div>
+        <div class="card-footer">
+            <small class="text-body-secondary">update in {{fk.uploadedtime}}</small>
+          </div>
+            </a>
+        </div>
+        
+        {% endfor %}
+ 
+        </div>
+    </div>
+<!-- </section> -->
+
+{% endif %}
+{% if noon %}
+    <div>
+        <p>{{ noon }}</p>
+    </div>
+{% endif %}
+</div>
+{% endblock content %}
+    
