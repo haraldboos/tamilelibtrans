@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-18 19:56+0530\n"
+"PO-Revision-Date: 2024-03-18 19:50+0530\n"
+"Last-Translator:   <rav1@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.10.0\n"
+
+#: taelibmodeltrans/settings.py:131
+#: taelimodel/templates/elibt/fk/inc/nev.html:43
+msgid "English"
+msgstr "english"
+
+#: taelibmodeltrans/settings.py:132
+#: taelimodel/templates/elibt/fk/inc/nev.html:44
+msgid "Tamil"
+msgstr "Tamil"
+
+#: taelibmodeltrans/settings.py:133
+#: taelimodel/templates/elibt/fk/inc/nev.html:45
+msgid "Dutch"
+msgstr "Dutch"
+
+#: taelibmodeltrans/settings.py:134
+#: taelimodel/templates/elibt/fk/inc/nev.html:46
+msgid "French"
+msgstr "French"
+
+#: taelimodel/models.py:39
+msgid "Enter Catagory Name"
+msgstr ""
+
+#: taelimodel/models.py:40
+msgid "Status of The Book"
+msgstr ""
+
+#: taelimodel/models.py:49
+msgid "Enter Book Name"
+msgstr ""
+
+#: taelimodel/models.py:50
+msgid "Discribe Book"
+msgstr ""
+
+#: taelimodel/models.py:54
+msgid "Select Catagory Name"
+msgstr ""
+
+#: taelimodel/models.py:54
+msgid "category"
+msgstr ""
+
+#: taelimodel/templates/elibt/fk/inc/nev.html:6
+#: taelimodel/templates/elibt/fk/inc/nev.html:10
+msgid "Tamil public library"
+msgstr "Tamil Public Library"
+
+#: taelimodel/templates/elibt/fk/inc/nev.html:16
+msgid "home"
+msgstr "home"
+
+#: taelimodel/templates/elibt/fk/inc/nev.html:20
+msgid "Logout"
+msgstr "logout"
+
+#: taelimodel/templates/elibt/fk/inc/nev.html:24
+msgid "register"
+msgstr "register"
+
+#: taelimodel/templates/elibt/fk/inc/nev.html:25
+msgid "login"
+msgstr "login"
+
+#: taelimodel/templates/elibt/fk/inc/nev.html:27
+msgid "collections"
+msgstr "collections"

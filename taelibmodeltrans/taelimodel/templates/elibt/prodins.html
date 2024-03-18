@@ -1,0 +1,109 @@
+{% extends 'elibt/fk/layout/mai.html' %}
+{% block content %}
+<div class="">
+<section class="bg-light py-4 my-5">
+        <div class="container">
+                <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                          <li class="breadcrumb-item"><a href="{% url 'home' %}">{{ book.catgryname }}</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">{{ book.bookname }}</li>
+                        </ol>
+                      </nav>
+                        <!-- {% if request.user.is_authenticated %}
+                                <a href="{% url 'viewcart' %}"><button type="button" class="btn btn-primary"> my card</button></a>
+                        {% endif %} -->
+                                  {% include 'elibt/fk/inc/message.html' %}
+
+                <!-- <div> {{ book.catgryname }}/{{ book.bookname }}</div> -->
+                <div class="row">
+                        <!-- <div class="col-12"> -->
+                        
+                        <!-- {% if error %}
+                                <p>{{ error }}</p>
+                        {% endif %} -->
+                        <div class="col-4 my-3">
+                          <img src="{{ book.bookcover.url }}" class="img-fluid img-thumbnail rounded">
+                        </div>
+                        <div class="col-8 my-3">
+                                <input type="hidden" value="{{book.bookno}}" id="bookid">
+                                {% csrf_token %}
+                                <div class="card">
+                                        <div class="card-body">
+                                        <h3 class="text-success fw-bold">Product Name: <div id="bkname">{{ book.bookname }}</div></h3>
+                                        <h4><p class="card-text fw-normal"><strong>Description:</strong> <pre><span class="text-start text-wrap word-break fs-6 lh-sm">{{ book.bookdiscrib }}</span></pre></p></h4>
+                                        <h5 class="my-2 "><strong>Price USD $<div id="price">{{book.bookprize}}</div> <strong></h5>
+                                        <select class="form-select" aria-label="Default select example" id="selelang">
+                                                        <option selected>See avilabel language and select it</option>
+                                                        {% for i in booklang%}
+                                                        <option value="{{i.booklang}}" >{{i.booklang}}</option>
+                                                        {% endfor %}
+                                                       
+                                        </select>
+                                        <button class="btn btn-primary" id="adcart"><i class="fa fa-cart"></i>Add to cart</button>
+                                        </div>
+                                        </div>
+                        <!-- </div> -->
+                        </div>
+                </div>
+        
+        </div>
+</section>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function(event){
+        const adc = document.getElementById("adcart");
+        const prize =document.getElementById("price").textContent;
+        const tkn = document.querySelector('[name="csrfmiddlewaretoken"]').value;
+        const bkid =document.getElementById("bookid").value; 
+        const bkname = document.getElementById("bkname").textContent;
+        const opt='See avilabel language and select it';
+        adc.addEventListener("click",function() { 
+        const langage =document.querySelector('#selelang');
+        const lang=langage.value;
+        if (lang!==opt){
+
+        
+        let postobject ={
+                        bookno: bkid,
+                        bknam: bkname,
+                        booklang:lang,
+                        prize: prize
+                };
+        console.log(tkn);
+        console.log(postobject);
+        fetch("/cart",{
+                method:'POST',
+                credentials:'same-origin',
+                headers:{
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRFToken': tkn
+                },
+                body: JSON.stringify(postobject)
+
+        }).then(response=>{
+                console.log(response);
+                return response.json();
+
+        }).then(data =>{
+                console.log(data);
+                alert(data['status']);
+                adc.textContent="card addd";
+
+        }).catch(error => {
+                console.error('ERROR:',error);
+        });
+}else{
+        alert('select the languge');
+}
+        // alert("cart added");
+});
+
+});
+
+        
+</script>
+
+{% endblock content %}

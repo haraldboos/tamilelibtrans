@@ -1,0 +1,39 @@
+{% extends 'elibt/fk/layout/mai.html' %}
+{% block content %}
+<div class="container">
+{% if request.user.is_authenticated %}
+<div class=" bg-primary  mx-5 text-right rounded"> 
+    
+    <h3 class=" text-center ">{{request.user}}</h3>
+</div>
+    {% if books %}
+<section class="bg-light py-3 my-5">
+    <div class="container-fluid">
+    
+    <div class="row row-cols-5 row-md-cols-3 row-sm-cols-2 justify-content-center">
+        <!-- <div class="col-12"> -->
+     
+        <!-- <div class="col btn bg-primary p-1 m-1 col-sm-6 col-md-4 col-lg-2"> -->
+        {% for fk in books%}
+        <div class="card mx-1 my-3">
+            
+            <img src="{{ fk.bookno.bookcover.url }}" class="card-img-top img-thumbnail">
+            <div class="card-body" >
+        
+            <div class="card-title">{{ fk.bookno.bookname }}</div></div>
+            <a href="{% url 'vpdf' fk.bookno.bookno fk.booklang %}"><button type="button">click to view book</button></a>
+        </div>
+        {% endfor %}`                                                                                                                                                             
+ 
+        </div>
+    </div>
+</section>
+{% endif %}
+{% if eupms %}
+<div class="justify-content-center m-3 alert alert-danger" role="alert"><h1><i class="bi bi-exclamation-triangle "></i>{{eupms}}</h1></div>
+{% endif %}
+{% endif %}
+
+</div>
+
+{% endblock content %}
