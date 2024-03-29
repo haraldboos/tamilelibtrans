@@ -36,7 +36,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'jazzmin',
-    'modeltranslation',
+    # 'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,15 +46,17 @@ INSTALLED_APPS = [
     'taelimodel',
     'rosetta',
     
+    
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
 
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -91,6 +93,7 @@ DATABASES = {
     }
 }
 
+# AUTH_USER_MODEL = 'taelimodel.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -119,6 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 TIME_ZONE = 'Asia/Colombo'
 
 USE_I18N = True
+USE_L10N = True
 
 USE_TZ = True
 
@@ -134,7 +138,7 @@ LANGUAGES = (
     ("fr", _("French")),
     
 )
-LOCAL_PATH = [
+LOCALE_PATHS = [
     BASE_DIR / 'locale/',
 ]
 STATIC_URL = '/static/'
@@ -148,6 +152,6 @@ MEDIA_ROOT = BASE_DIR/'static'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'ta'
 
 MODELTRANSLATION_LANGUAGE = LANGUAGES

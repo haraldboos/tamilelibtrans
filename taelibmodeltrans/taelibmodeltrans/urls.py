@@ -26,6 +26,13 @@ urlpatterns = i18n_patterns(
 
     path('', include('taelimodel.urls')),
 )
+# urlpatterns =[
+#     path('admin/', admin.site.urls),
+#     # path('rosetta/', include('rosetta.urls')),
+#     path('roseta/', include('rosetta.urls')),
+
+#     path('', include('taelimodel.urls')),
+# ]
 
 
 if settings.DEBUG:

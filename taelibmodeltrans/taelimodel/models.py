@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils.translation import gettext_lazy as _
+# from django.utils.translation import gettext_lazy a
 # from modeltranslation.translator import TranslationOptions
 # from modeltranslation.decorators import register
 # from parler.models import TranslatableModel,TranslatedFields
@@ -36,8 +36,8 @@ def uploadbook(request,filename):
 
 # @register
 class catagory(models.Model):
-    catagoryname = models.CharField(max_length=50,null=False,blank=False,verbose_name=_("Enter Catagory Name"))
-    showstatus  = models.BooleanField(default=False,help_text="0-show,1-Hide",verbose_name=_("Status of The Book"))
+    catagoryname = models.CharField(max_length=50,null=False,blank=False,verbose_name="Enter Catagory Name")
+    showstatus  = models.BooleanField(default=False,help_text="0-show,1-Hide",verbose_name="Status of The Book")
     createdate = models.DateTimeField(auto_now_add=True)
 
 
@@ -46,12 +46,12 @@ class catagory(models.Model):
 
 class books(models.Model):
    
-    bookname = models.CharField(max_length=40,verbose_name=_("Enter Book Name"))
-    bookdiscrib = models.CharField(max_length=1000,null=False,blank = False,verbose_name=_("Discribe Book"))
+    bookname = models.CharField(max_length=40,verbose_name="Enter Book Name")
+    bookdiscrib = models.CharField(max_length=1000,null=False,blank = False,verbose_name="Discribe Book")
 
 
 
-    catgryname = models.ForeignKey(catagory,on_delete=models.CASCADE,verbose_name=_("Select Catagory Name"),related_name=_('category')) 
+    catgryname = models.ForeignKey(catagory,on_delete=models.CASCADE,verbose_name="Select Catagory Name",related_name='category') 
     # bokid = bookidget()
     # bookname_fr=models.CharField()
     # bookname = models.CharField(max_length=40,verbose_name="Enter Book Name")

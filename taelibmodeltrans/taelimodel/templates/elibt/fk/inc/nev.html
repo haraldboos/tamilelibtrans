@@ -1,5 +1,7 @@
 {% load static %}
 {% load i18n %}
+{% load rosetta %}
+{{ link_html|safe }}
 
 <!-- <div class="bg-warning ">
   <div class="container">
@@ -56,51 +58,91 @@
   <!-- {% if request.user.is_authenticated %}
     <a href="{% url 'viewcart' %}"><button type="button" class="btn btn-primary m-2 justify-content-end "><i class="bi bi-cart-fill"></i> my card</button></a>
 {% endif %} -->
-{% load static %}
-{% load i18n %}
-<div class="bg-warning">
-  <div class="container">
+<div class=" w-100 " style="position: relative; top: 0;">
+  <img src="{% static 'images/ban.svg' %}" class="w-100" style="  z-index: -2;" alt="Background">
+
+  <div class="container justify-center" style="position: absolute;z-index: 0;top: 5%">
+
     <img src="{% static 'images/logo.svg' %}" height="200" class="mx-4 d-inline">
-    <h1 class="d-inline hh">{% trans 'Tamil public library' %}</h1>
+    <h1 class="d-inline hh">{% translate 'Tamil public library' %}</h1>
   </div>
+  </div>
+<div class="bg-warning">
+  <!-- <div class="container-fluid" style="">
+  <img src="{% static 'images/ban.svg' %}" style="left: 0; width: 100%; height: 100%; z-index: -1;" alt="Background">
+
+  <div class="container">
+
+    <img src="{% static 'images/logo.svg' %}" height="200" class="mx-4 d-inline">
+    <h1 class="d-inline hh">{% translate 'Tamil public library' %}</h1>
+  </div>
+  </div> -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container p-1">
-      <a class="navbar-brand" href="#">{% trans 'Tamil public library' %}</a>
+      <a class="navbar-brand" href="#"><span>{% trans 'Tamil public library' %}</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav mx-auto">
-          <a class="nav-link active mx-2" aria-current="page" href="{% url 'home' %}"><i class="bi bi-house-fill"></i> {% trans "home" %}</a>
+          <a class="nav-link active mx-2" aria-current="page" href="{% url 'home' %}"><i class="bi bi-house-fill"></i>{% trans "home" %}</a>
           {% if request.user.is_authenticated %}
             <a class="nav-link justify-align mx-2" href="{% url 'acount' %}"><i class="bi bi-person-badge"></i> {{request.user}}</a>
-            <a class="nav-link mx-2" href="{% url 'logout' %}"><i class="bi bi-box-arrow-left"></i> {% trans "Logout" %}</a>
+            <a class="nav-link mx-2" href="{% url 'logout' %}"><i class="bi bi-box-arrow-left"></i> {% translate "Logout" %}</a>
           {% else %}
-            <a class="nav-link mx-2" href="{% url 'register' %}"><i class="fa fa-users"></i> {% trans "register" %}</a>
-            <a class="nav-link mx-2" href="{% url 'login' %}"><i class="bi bi-box-arrow-in-right"></i> {% trans "login" %}</a>
+            <a class="nav-link mx-2" href="{% url 'register' %}"><i class="fa fa-users"></i> {% translate "register" %}</a>
+            <a class="nav-link mx-2" href="{% url 'login' %}"><i class="bi bi-box-arrow-in-right"></i> {% translate "login" %}</a>
           {% endif %}
-          <a class="nav-link mx-2" href="{% url 'coll' %}"><i class="bi bi-collection"></i> {% trans "collections" %}</a>
+          <a class="nav-link mx-2" href="{% url 'coll' %}"><i class="bi bi-collection"></i> {% translate "collections" %}</a>
         </div>
         {% if request.user.is_authenticated %}
           <a href="{% url 'viewcart' %}">
             <button type="button" class="btn btn-dark m-2 justify-content-end">
-              <i class="bi bi-cart-fill"></i> {% trans "my cart" %}
+              <i class="bi bi-cart-fill"></i> <span>{% trans "home" %}</span>
             </button>
           </a>
         {% endif %}
-        <div class="dropdown nev-link">
+        <!-- <div class="dropdown nev-link">
           <div class="btn mx-2 text-white btn-dark dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-translate"></i> {% trans "Click to Select Language" %}
           </div> 
           <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-            <!-- Language options -->
+            Language options
             <li><a class="dropdown-item" href="{% url 'swlanguage' 'en' %}">{% trans 'English' %}</a></li>
             <li><a class="dropdown-item" href="{% url 'swlanguage' 'ta' %}">{% trans 'Tamil' %}</a></li>
             <li><a class="dropdown-item" href="{% url 'swlanguage' 'nl' %}">{% trans 'Dutch' %}</a></li>
             <li><a class="dropdown-item" href="{% url 'swlanguage' 'fr' %}">{% trans 'French' %}</a></li>
+            Add more language options as needed --> 
+          <!-- </ul>
+        </div> -->
+        <!-- mytgryyyyr -->
+          <div class="dropdown nev-link ">
+          <div class="btn mx-2 text-white btn-dark dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-translate"></i> {% translate "Click to Select Language" %}
+          </div> 
+          <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+            <!-- Language options -->
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for lang in  languages %}
+            <li>
+              <a class="dropdown-item" href="/{{ lang.code }}/">
+                {{ lang.name_local }}
+              </a>
+              <!-- <a class="dropdown-item" href="{ lang.code %}">
+                {{ lang.name_local }}
+              </a> -->
+            </li>
+            {% endfor %}
+            <!-- <li><a class="dropdown-item" href="{% url 'swlanguage' 'en' %}">{% trans 'English' %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'swlanguage' 'ta' %}">{% trans 'Tamil' %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'swlanguage' 'nl' %}">{% trans 'Dutch' %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'swlanguage' 'fr' %}">{% trans 'French' %}</a></li> -->
             <!-- Add more language options as needed -->
           </ul>
         </div>
+        
       </div>
     </div>
   </nav>
