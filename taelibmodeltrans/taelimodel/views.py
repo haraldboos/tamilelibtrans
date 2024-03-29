@@ -8,7 +8,7 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from .form import userform ,SearchForm
 from .models import *
-from django.utils.translation import activate
+from django.utils.translation import activate,get_language
 
 from django.contrib.auth import authenticate,login,logout
 
@@ -17,6 +17,7 @@ none = "nothing"
 def home(request):
     # collection= catagory.objects.filter(showstatus=0)
     # ,{"list":collection}
+    print(request.LANGUAGE_CODE)
     return render(request,"elibt/hm.html")
 def collection(request):
     collection= catagory.objects.filter(showstatus=0)
@@ -26,7 +27,11 @@ def collection(request):
 def swlanguage(request, language):
     print(language)
     activate(language)
-    return redirect('/')
+    # pass
+    cur_lang=get_language()
+    print(cur_lang)
+    activate(language)
+    return redirect("language","/")
     # print('oooma')
     # return redirect(request.META.get('HTTP_REFERER','/'))
 def login_pg(request):
