@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-28 23:36+0530\n"
-"PO-Revision-Date: 2024-03-29 11:00+0530\n"
+"PO-Revision-Date: 2024-03-29 16:01+0530\n"
 "Last-Translator:   <rav1@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -24,7 +24,7 @@ msgstr ""
 #: taelimodel/templates/elibt/fk/inc/nev.html:98
 #: taelimodel/templates/elibt/fk/inc/nev.html:122
 msgid "English"
-msgstr "Engels"
+msgstr "Deutsch"
 
 #: taelibmodeltrans/settings.py:134
 #: taelimodel/templates/elibt/fk/inc/nev.html:45
