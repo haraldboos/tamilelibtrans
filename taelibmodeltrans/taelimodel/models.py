@@ -103,14 +103,14 @@ class cart(models.Model):
         return str(self.orderid)
 
 class Language(models.Model):
-    Language_choices={
-            'Tamil':'Tamil',
-            'English':'English',
-            'German':'German',
-            'Italy':'Italy',
-            'French':'French'
+    Language_choices=(
+            ('Tamil','Tamil'),
+            ('English','English'),
+            ('German','German'),
+            ('Italy','Italy'),
+            ('French','French')
             
-    }
+    )
     bookno = models.ForeignKey(books,on_delete=models.CASCADE)
     booklang = models.CharField(null=False,choices=Language_choices,blank=False,default=None,max_length=8,verbose_name="Enter The File Language")
     bookpdf = models.FileField(upload_to=uploadbook,null=False,blank=False,verbose_name="Upload In selected Language")
