@@ -36,7 +36,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'jazzmin',
-    # 'modeltranslation',
+    # 'cuser',
+    
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'taelimodel',
     'rosetta',
+    
     
     
 ]
