@@ -58,16 +58,18 @@
   <!-- {% if request.user.is_authenticated %}
     <a href="{% url 'viewcart' %}"><button type="button" class="btn btn-primary m-2 justify-content-end "><i class="bi bi-cart-fill"></i> my card</button></a>
 {% endif %} -->
-<div class=" w-100 " style="position: relative; top: 0;">
-  <img src="{% static 'images/ban.svg' %}" class="w-100" style="  z-index: -2;" alt="Background">
+<div class=" w-100 container bg-dark my-2 py-1 rounded"style="position: relative; top: 0;">
+  <!-- <img src="{% static 'images/ban.svg' %}" class="w-100" style="  z-index: -2;" alt="Background"> -->
 
-  <div class="container justify-center" style="position: absolute;z-index: 0;top: 5%">
+  <div class="container justify-center" style="position: relative;z-index: 1000;top: 5%">
 
     <img src="{% static 'images/logo.svg' %}" height="200" class="mx-4 d-inline">
-    <h1 class="d-inline hh">{% translate 'Tamil public library' %}</h1>
+    <h1 class="d-inline hh text-white">{% translate 'Tamil public library' %}</h1>
+    <h1 class="d-block hh text-white">{% translate 'Tamil public library' %}</h1>
+
   </div>
   </div>
-<div class="bg-warning">
+<div class="bg-white  rounded mt-3">
   <!-- <div class="container-fluid" style="">
   <img src="{% static 'images/ban.svg' %}" style="left: 0; width: 100%; height: 100%; z-index: -1;" alt="Background">
 
@@ -77,14 +79,14 @@
     <h1 class="d-inline hh">{% translate 'Tamil public library' %}</h1>
   </div>
   </div> -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container p-1">
-      <a class="navbar-brand" href="#"><span>{% trans 'Tamil public library' %}</span></a>
+  <nav class="navbar container rounded navbar-expand-lg navbar-dark bg-dark">
+    <div class=" p-1">
+      <!-- <a class="navbar-brand" href="#"><span>{% trans 'Tamil public library' %}</span></a> -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav mx-auto">
+        <div class="navbar-nav mx-start">
           <a class="nav-link active mx-2" aria-current="page" href="{% url 'home' %}"><i class="bi bi-house-fill"></i>{% trans "home" %}</a>
           {% if request.user.is_authenticated %}
             <a class="nav-link justify-align mx-2" href="{% url 'acount' %}"><i class="bi bi-person-badge"></i> {{request.user}}</a>
@@ -98,7 +100,7 @@
         {% if request.user.is_authenticated %}
           <a href="{% url 'viewcart' %}">
             <button type="button" class="btn btn-dark m-2 justify-content-end">
-              <i class="bi bi-cart-fill"></i> <span>{% trans "home" %}</span>
+              <i class="bi bi-cart-fill"></i> <span>{% trans "my cart" %}</span>
             </button>
           </a>
         {% endif %}
