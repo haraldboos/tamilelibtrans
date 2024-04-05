@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-28 23:36+0530\n"
-"PO-Revision-Date: 2024-03-29 10:59+0530\n"
+"PO-Revision-Date: 2024-04-03 12:19+0530\n"
 "Last-Translator:   <rav1@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -81,9 +81,9 @@ msgstr "உள்நுழைய"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:88
 msgid "my cart"
-msgstr "my cart"
+msgstr "என் அட்டை"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:94
 #: taelimodel/templates/elibt/fk/inc/nev.html:108
 msgid "Click to Select Language"
-msgstr "select language"
+msgstr "மொழியைத் தேர்ந்தெடுக்க "

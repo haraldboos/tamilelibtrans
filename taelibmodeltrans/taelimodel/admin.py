@@ -11,10 +11,10 @@ from .models import catagory,books,cart,Language
 
 
 
-# admin.site.register(catagory)
+admin.site.register(catagory)
 admin.site.register(books)
-# admin.site.register(cart)
-# admin.site.register(Language)
+admin.site.register(cart)
+admin.site.register(Language)
 # admin.site.register(books,bookAdmin)
 
 # @admin.register(books)
