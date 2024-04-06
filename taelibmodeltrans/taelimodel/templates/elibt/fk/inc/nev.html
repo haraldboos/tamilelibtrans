@@ -62,9 +62,13 @@
   <!-- <img src="{% static 'images/ban.svg' %}" class="w-100" style="  z-index: -2;" alt="Background"> -->
 
   <div class="container justify-center" style="position: relative;z-index: 0;top: 5%">
-
-    <img src="{% static 'images/logo.svg' %}" height="200" class="mx-4 d-inline">
-    <h1 class="d-inline hh text-white">{% translate 'Tamil public library' %}</h1>
+    <div class="row">
+    <img src="{% static 'images/logo.svg' %}" height="200" class="mx-4 d-inline col-4">
+    <div class="col mt-4 pt-2">
+    <h1 class="d-inline hh text-white">{% translate 'Tamil public library' %}</h1><br>
+    <h1 class="d-inline hh mt-3 text-white">{% translate 'A Gate Way of Knoledge' %}</h1>
+      </div>
+    </div>
   </div>
   </div>
 <div class="bg-dark container rounded">

@@ -8,30 +8,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-06 23:02+0530\n"
-"PO-Revision-Date: 2024-03-29 16:01+0530\n"
-"Last-Translator:   <rav1@gmail.com>\n"
+"POT-Creation-Date: 2024-04-06 23:00+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Translated-Using: django-rosetta 0.10.0\n"
-
 #: taelibmodeltrans/settings.py:136
 #: taelimodel/templates/elibt/fk/inc/nev.html:46
 #: taelimodel/templates/elibt/fk/inc/nev.html:115
 #: taelimodel/templates/elibt/fk/inc/nev.html:142
 msgid "English"
-msgstr "Deutsch"
+msgstr ""
 
 #: taelibmodeltrans/settings.py:137
 #: taelimodel/templates/elibt/fk/inc/nev.html:47
 #: taelimodel/templates/elibt/fk/inc/nev.html:116
 #: taelimodel/templates/elibt/fk/inc/nev.html:143
 msgid "Tamil"
-msgstr "Tamil"
+msgstr ""
 
 #: taelibmodeltrans/settings.py:138
 msgid "German"
@@ -42,7 +40,7 @@ msgstr ""
 #: taelimodel/templates/elibt/fk/inc/nev.html:118
 #: taelimodel/templates/elibt/fk/inc/nev.html:145
 msgid "French"
-msgstr "frans"
+msgstr ""
 
 #: taelimodel/templates/elibt/fk/inc/footer.html:129
 #: taelimodel/templates/elibt/fk/inc/nev.html:9
@@ -52,38 +50,38 @@ msgstr "frans"
 #: taelimodel/templates/elibt/fk/inc/nev.html:86
 #: taelimodel/templates/elibt/fk/layout/mai.html:14
 msgid "Tamil public library"
-msgstr "tamil openbare bibliotheek"
+msgstr ""
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:19
 #: taelimodel/templates/elibt/fk/inc/nev.html:92
 msgid "home"
-msgstr "thuis"
+msgstr ""
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:23
 #: taelimodel/templates/elibt/fk/inc/nev.html:95
 msgid "Logout"
-msgstr "uitloggen"
+msgstr ""
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:27
 #: taelimodel/templates/elibt/fk/inc/nev.html:97
 msgid "register"
-msgstr "register"
+msgstr ""
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:28
 #: taelimodel/templates/elibt/fk/inc/nev.html:98
 msgid "login"
-msgstr "Log in"
+msgstr ""
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:30
 #: taelimodel/templates/elibt/fk/inc/nev.html:100
 msgid "collections"
-msgstr "collecties"
+msgstr ""
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:48
 #: taelimodel/templates/elibt/fk/inc/nev.html:117
 #: taelimodel/templates/elibt/fk/inc/nev.html:144
 msgid "Dutch"
-msgstr "Nederlands"
+msgstr ""
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:69
 msgid "A Gate Way of Knoledge"
@@ -91,12 +89,12 @@ msgstr ""
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:105
 msgid "my cart"
-msgstr "mijn kaart"
+msgstr ""
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:111
 #: taelimodel/templates/elibt/fk/inc/nev.html:125
 msgid "Click to Select Language"
-msgstr "Klik om een ​​taal te selecteren"
+msgstr ""
 
 #: taelimodel/templates/elibt/register.html:23
 msgid "User Name"
@@ -115,10 +113,8 @@ msgid "Conform Password"
 msgstr ""
 
 #: taelimodel/templates/elibt/register.html:50
-#, fuzzy
-#| msgid "register"
 msgid "Register"
-msgstr "register"
+msgstr ""
 
 #: taelimodel/templates/elibt/register.html:52
 msgid "Alredy user ?"
@@ -127,6 +123,3 @@ msgstr ""
 #: taelimodel/templates/elibt/register.html:52
 msgid "Login Now"
 msgstr ""
-
-#~ msgid "Enter Book Name"
-#~ msgstr "Tamil openbare bibliotheek"
