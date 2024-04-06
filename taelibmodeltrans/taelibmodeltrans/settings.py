@@ -135,7 +135,7 @@ STATIC_URL = 'static/'
 LANGUAGES = (
     ("en", _("English")),
     ("ta", _("Tamil")),
-    ("nl", _("Dutch")),
+    ("de", _("German")),
     ("fr", _("French")),
     
 )

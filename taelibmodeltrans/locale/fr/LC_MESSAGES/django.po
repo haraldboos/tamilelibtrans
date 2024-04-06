@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-28 23:36+0530\n"
+"POT-Creation-Date: 2024-04-06 23:02+0530\n"
 "PO-Revision-Date: 2024-03-29 11:01+0530\n"
 "Last-Translator:   <rav1@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,71 +19,111 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: taelibmodeltrans/settings.py:133
-#: taelimodel/templates/elibt/fk/inc/nev.html:44
-#: taelimodel/templates/elibt/fk/inc/nev.html:98
-#: taelimodel/templates/elibt/fk/inc/nev.html:122
+#: taelibmodeltrans/settings.py:136
+#: taelimodel/templates/elibt/fk/inc/nev.html:46
+#: taelimodel/templates/elibt/fk/inc/nev.html:115
+#: taelimodel/templates/elibt/fk/inc/nev.html:142
 msgid "English"
 msgstr "anglaise"
 
-#: taelibmodeltrans/settings.py:134
-#: taelimodel/templates/elibt/fk/inc/nev.html:45
-#: taelimodel/templates/elibt/fk/inc/nev.html:99
-#: taelimodel/templates/elibt/fk/inc/nev.html:123
+#: taelibmodeltrans/settings.py:137
+#: taelimodel/templates/elibt/fk/inc/nev.html:47
+#: taelimodel/templates/elibt/fk/inc/nev.html:116
+#: taelimodel/templates/elibt/fk/inc/nev.html:143
 msgid "Tamil"
 msgstr "Tamil"
 
-#: taelibmodeltrans/settings.py:135
-#: taelimodel/templates/elibt/fk/inc/nev.html:46
-#: taelimodel/templates/elibt/fk/inc/nev.html:100
-#: taelimodel/templates/elibt/fk/inc/nev.html:124
-msgid "Dutch"
-msgstr "néerlandaise"
+#: taelibmodeltrans/settings.py:138
+msgid "German"
+msgstr ""
 
-#: taelibmodeltrans/settings.py:136
-#: taelimodel/templates/elibt/fk/inc/nev.html:47
-#: taelimodel/templates/elibt/fk/inc/nev.html:101
-#: taelimodel/templates/elibt/fk/inc/nev.html:125
+#: taelibmodeltrans/settings.py:139
+#: taelimodel/templates/elibt/fk/inc/nev.html:49
+#: taelimodel/templates/elibt/fk/inc/nev.html:118
+#: taelimodel/templates/elibt/fk/inc/nev.html:145
 msgid "French"
 msgstr "française"
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:7
-#: taelimodel/templates/elibt/fk/inc/nev.html:11
-#: taelimodel/templates/elibt/fk/inc/nev.html:65
-#: taelimodel/templates/elibt/fk/inc/nev.html:69
+#: taelimodel/templates/elibt/fk/inc/footer.html:129
+#: taelimodel/templates/elibt/fk/inc/nev.html:9
+#: taelimodel/templates/elibt/fk/inc/nev.html:13
+#: taelimodel/templates/elibt/fk/inc/nev.html:68
+#: taelimodel/templates/elibt/fk/inc/nev.html:81
+#: taelimodel/templates/elibt/fk/inc/nev.html:86
+#: taelimodel/templates/elibt/fk/layout/mai.html:14
 msgid "Tamil public library"
 msgstr "bibliothèque publique tamoule"
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:17
-#: taelimodel/templates/elibt/fk/inc/nev.html:75
+#: taelimodel/templates/elibt/fk/inc/nev.html:19
+#: taelimodel/templates/elibt/fk/inc/nev.html:92
 msgid "home"
 msgstr "maison"
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:21
-#: taelimodel/templates/elibt/fk/inc/nev.html:78
+#: taelimodel/templates/elibt/fk/inc/nev.html:23
+#: taelimodel/templates/elibt/fk/inc/nev.html:95
 msgid "Logout"
 msgstr "Se déconnecter"
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:25
-#: taelimodel/templates/elibt/fk/inc/nev.html:80
+#: taelimodel/templates/elibt/fk/inc/nev.html:27
+#: taelimodel/templates/elibt/fk/inc/nev.html:97
 msgid "register"
 msgstr "registre"
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:26
-#: taelimodel/templates/elibt/fk/inc/nev.html:81
+#: taelimodel/templates/elibt/fk/inc/nev.html:28
+#: taelimodel/templates/elibt/fk/inc/nev.html:98
 msgid "login"
 msgstr "se connecter"
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:28
-#: taelimodel/templates/elibt/fk/inc/nev.html:83
+#: taelimodel/templates/elibt/fk/inc/nev.html:30
+#: taelimodel/templates/elibt/fk/inc/nev.html:100
 msgid "collections"
 msgstr "collections"
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:88
+#: taelimodel/templates/elibt/fk/inc/nev.html:48
+#: taelimodel/templates/elibt/fk/inc/nev.html:117
+#: taelimodel/templates/elibt/fk/inc/nev.html:144
+msgid "Dutch"
+msgstr "néerlandaise"
+
+#: taelimodel/templates/elibt/fk/inc/nev.html:69
+msgid "A Gate Way of Knoledge"
+msgstr ""
+
+#: taelimodel/templates/elibt/fk/inc/nev.html:105
 msgid "my cart"
 msgstr "ma carte"
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:94
-#: taelimodel/templates/elibt/fk/inc/nev.html:108
+#: taelimodel/templates/elibt/fk/inc/nev.html:111
+#: taelimodel/templates/elibt/fk/inc/nev.html:125
 msgid "Click to Select Language"
 msgstr "Choisir la langue"
+
+#: taelimodel/templates/elibt/register.html:23
+msgid "User Name"
+msgstr ""
+
+#: taelimodel/templates/elibt/register.html:30
+msgid "User Email"
+msgstr ""
+
+#: taelimodel/templates/elibt/register.html:37
+msgid "Password"
+msgstr ""
+
+#: taelimodel/templates/elibt/register.html:44
+msgid "Conform Password"
+msgstr ""
+
+#: taelimodel/templates/elibt/register.html:50
+#, fuzzy
+#| msgid "register"
+msgid "Register"
+msgstr "registre"
+
+#: taelimodel/templates/elibt/register.html:52
+msgid "Alredy user ?"
+msgstr ""
+
+#: taelimodel/templates/elibt/register.html:52
+msgid "Login Now"
+msgstr ""
