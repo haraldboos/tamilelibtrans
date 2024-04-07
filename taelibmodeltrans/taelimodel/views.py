@@ -20,6 +20,7 @@ def home(request):
     print(request.LANGUAGE_CODE)
     return render(request,"elibt/hm.html")
 def collection(request):
+
     collection= catagory.objects.filter(showstatus=0)
     
     return render(request,"elibt/coll.html",{"list":collection})
@@ -75,6 +76,8 @@ def register(request):
     return render(request,"elibt/register.html",{'form':uf})
 
 def cprodects(request,name):
+    print(request.LANGUAGE_CODE)
+    activate(request.LANGUAGE_CODE)
     if catagory.objects.filter(catagoryname=name,showstatus=0):
         cbook =books.objects.filter(catgryname__catagoryname=name)
         return render(request,"elibt/cprodect.html",{"book":cbook})
