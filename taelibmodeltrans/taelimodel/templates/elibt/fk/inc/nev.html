@@ -57,7 +57,7 @@
 </div> -->
   <!-- {% if request.user.is_authenticated %}
     <a href="{% url 'viewcart' %}"><button type="button" class="btn btn-primary m-2 justify-content-end "><i class="bi bi-cart-fill"></i> my card</button></a>
-{% endif %} -->
+{% endif %} --><strong>
 <div class=" w-100 container rounded bg-dark my-2 p-2" style="position: relative; top: 0;">
   <!-- <img src="{% static 'images/ban.svg' %}" class="w-100" style="  z-index: -2;" alt="Background"> -->
 
@@ -66,7 +66,7 @@
     <img src="{% static 'images/logo.svg' %}" height="200" class="mx-4 d-inline col-4">
     <div class="col mt-4 pt-2">
     <h1 class="d-inline hh text-white">{% translate 'Tamil public library' %}</h1><br>
-    <h1 class="d-inline hh mt-3 text-white">{% translate 'A Gate Way of Knoledge' %}</h1>
+    <h1 class="d-inline hh mt-3  text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% translate 'A Gate Way of Knoledge' %}...</h1>
       </div>
     </div>
   </div>
@@ -97,12 +97,12 @@
             <a class="nav-link mx-2" href="{% url 'register' %}"><i class="fa fa-users"></i> {% translate "register" %}</a>
             <a class="nav-link mx-2" href="{% url 'login' %}"><i class="bi bi-box-arrow-in-right"></i> {% translate "login" %}</a>
           {% endif %}
-          <a class="nav-link mx-2" href="{% url 'coll' %}"><i class="bi bi-collection"></i> {% translate "collections" %}</a>
+          <a class="nav-link mx-2 font-weight-bold" href="{% url 'coll' %}"><i class="bi bi-collection"></i> {% translate "collections" %}</a>
         </div>
         {% if request.user.is_authenticated %}
           <a href="{% url 'viewcart' %}">
             <button type="button" class="btn btn-dark m-2 justify-content-end">
-              <i class="bi bi-cart-fill"></i> <span>{% trans "my cart" %}</span>
+              <i class="bi bi-cart-fill"></i> <span>{% trans 'my cart' %}</span>
             </button>
           </a>
         {% endif %}
@@ -151,3 +151,4 @@
     </div>
   </nav>
 </div>
+</strong>

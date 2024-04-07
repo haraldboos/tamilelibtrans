@@ -1,13 +1,15 @@
 {% extends 'elibt/fk/layout/mai.html' %}
 {% block content %}
 <!-- <div class="row"> -->
-{% include 'elibt/fk/inc/abanner.html' %}
+<!-- {% include 'elibt/fk/inc/abanner.html' %} -->
 <!-- <div class=" bg-primary  mx-5 text-right rounded"> 
     
     <h3 class=" text-center ">தமிழ் பொது நூலகம் <br><div class="ml-5">அறிவுக்கான வாயில்</div></h3>
 
 </div> -->
-<form method="post" action="{% url 'bsearch' %}" class="my-4">
+
+<!-- <div class="container"> -->
+<form method="post" action="{% url 'bsearch' %}" class="cotainer my-4">
     {% csrf_token %}
     <input type="text"name="searchc" class="container d-inline form-control mx-4"  placeholder="Search...books here">
     <button type="submit" class="d-inline btn btn-primary">clickhere</button>

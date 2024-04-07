@@ -9,7 +9,9 @@ class BookTranslationOptions(TranslationOptions):
      fields = ('bookname', 'bookdiscrib')  # Specify the fields you want to translate
 
 
-
+@register(catagory)
+class catagorytranslationoptions(TranslationOptions):
+    fields=('catagoryname',)
 
 admin.site.register(catagory)
 admin.site.register(books)
