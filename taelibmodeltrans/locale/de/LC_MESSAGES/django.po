@@ -9,14 +9,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-06 23:00+0530\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2024-04-11 22:02+0530\n"
+"Last-Translator:   <rav1@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.10.0\n"
+
 #: taelibmodeltrans/settings.py:136
 #: taelimodel/templates/elibt/fk/inc/nev.html:46
 #: taelimodel/templates/elibt/fk/inc/nev.html:115
@@ -50,7 +52,7 @@ msgstr ""
 #: taelimodel/templates/elibt/fk/inc/nev.html:86
 #: taelimodel/templates/elibt/fk/layout/mai.html:14
 msgid "Tamil public library"
-msgstr ""
+msgstr "Bibliothèque publique tamoule"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:19
 #: taelimodel/templates/elibt/fk/inc/nev.html:92
@@ -85,7 +87,7 @@ msgstr ""
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:69
 msgid "A Gate Way of Knoledge"
-msgstr ""
+msgstr "Une passerelle vers la connaissance"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:105
 msgid "my cart"

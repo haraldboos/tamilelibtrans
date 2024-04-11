@@ -2,9 +2,9 @@
 {% block content %}
 <div class="container">
 {% if request.user.is_authenticated %}
-<div class=" bg-primary  mx-5 text-right rounded"> 
+<div class="text-right rounded"> 
     
-    <h3 class=" text-center ">{{request.user}}</h3>
+    <h3 class=" text-center text-dark">Welcome {{request.user}}</h3>
 </div>
     {% if books %}
 <section class="bg-light py-3 my-5">

@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'gdstorage',
+
     'taelimodel',
     'rosetta',
     
@@ -93,6 +95,16 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'elib',
+#         'USER': 'root',
+#         'PASSWORD': 'rav113880',
+#         'HOST': 'localhost',
+#         'PORT': '3306',  # Default MySQL port
+#     }
+# }
 
 # AUTH_USER_MODEL = 'taelimodel.User'
 
@@ -156,3 +168,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'ta'
 
 MODELTRANSLATION_LANGUAGE = LANGUAGES
+
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'taelibmodeltrans/tamilpubliclib.json'

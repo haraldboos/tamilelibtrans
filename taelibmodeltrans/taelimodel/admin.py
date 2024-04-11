@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import catagory,books,cart,Language
+from .models import *
 # Register your models here.
 from modeltranslation.translator import register, TranslationOptions
 # # from .models import books
@@ -17,6 +17,7 @@ admin.site.register(catagory)
 admin.site.register(books)
 admin.site.register(cart)
 admin.site.register(Language)
+admin.site.register(file)
 # admin.site.register(books,bookAdmin)
 
 # @admin.register(books)

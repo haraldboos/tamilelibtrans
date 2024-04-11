@@ -68,13 +68,12 @@ document.addEventListener("DOMContentLoaded", function(event){
         
         let postobject ={
                         bookno: bkid,
-                        bknam: bkname,
                         booklang:lang,
                         prize: prize
                 };
         console.log(tkn);
         console.log(postobject);
-        fetch("/cart",{
+        fetch("{% url 'cart' %}",{
                 method:'POST',
                 credentials:'same-origin',
                 headers:{
@@ -86,9 +85,14 @@ document.addEventListener("DOMContentLoaded", function(event){
                 body: JSON.stringify(postobject)
 
         }).then(response=>{
+                if(!response.ok){
                 console.log(response);
-                return response.json();
+                throw new Error('network error')
+                }else{
+                        console.log(response);
 
+                        return response.json();
+                }
         }).then(data =>{
                 console.log(data);
                 alert(data['status']);
