@@ -17,8 +17,9 @@ none = "nothing"
 def home(request):
     # collection= catagory.objects.filter(showstatus=0)
     # ,{"list":collection}
+    bd = Language.objects.all()
     print(request.LANGUAGE_CODE)
-    return render(request,"elibt/hm.html")
+    return render(request,"elibt/hm.html",{"bd":bd})
 def collection(request):
 
     collection= catagory.objects.filter(showstatus=0)
@@ -88,8 +89,8 @@ def cprodects(request,name):
 
 def uacunt(request):
     if request.user.is_authenticated:
-        if cart.objects.filter(user=request.user,orderstatus=1):
-            upboks= cart.objects.filter(user=request.user,orderstatus=1)
+        if cart.objects.filter(user=request.user,orderstatus=0):
+            upboks= cart.objects.filter(user=request.user,orderstatus=0)
             print(upboks)
             return render(request,"elibt/fk/user/mu.html", {'books':upboks})
         else:
@@ -139,59 +140,65 @@ def rmcart(request,orderid):
     orid.delete()
     return redirect('viewcart')
 def mycart(request):
+    x=0
+    print(request.path)
     if request.method == 'POST':
-        print(request.body)
-    if request.headers.get('x-requested-with')=='XMLHttpRequest':
-        if request.user.is_authenticated:
-            fk = json.load(request)
-            print(fk)
-            print(request)
-            booklanguage=fk['booklang']
-            bookname=fk['bknam']
-            bookno=fk['bookno']
-            prize = fk['prize']
-            userid = request.user.id
-            username=request.user
-            print(bookname,bookno,prize)
-            print(userid)
-            print(username)
-            
-            book_status = books.objects.get(bookno=bookno)
-            if book_status:
-                if cart.objects.filter(user=request.user.id,bookno=bookno,booklang=booklanguage):
-                    print("books alredy in  cart")
-                    messages.warning(request,"books alredy in  cart")
-                    return JsonResponse({'status':'product alredy in cart'})
-                else:
-                    cart.objects.create(user=username,bookno=book_status,booklang=booklanguage,bookpr=prize)
-                    messages.warning(request,"books add cart sucess fully in  cart")
-                    return JsonResponse({'status':'proudct add cart sucess'},status=200)
-            else:
-                messages.warning(request,"books not avilable yet comming soon ")
-                return JsonResponse({'status':'product alredy in cart'})
+        # print(x=x+1)
+        print(request)
+        if request.headers.get('x-requested-with')=='XMLHttpRequest':
+            # print(request.data)
+            # print(x=x+1)
 
-
+            if request.user.is_authenticated:
+                fk = json.loads(request.body.decode('utf-8'))
+                print(fk)
+                print(request)
+                booklanguage=fk['booklang']
+                # bookname=fk['bknam']
+                bookno=fk['bookno']
+                prize = fk['prize']
+                userid = request.user.id
+                username=request.user
+                print(bookno,prize)
+                print(userid)
+                print(username)
                 
+                book_status = books.objects.get(bookno=bookno)
+                if book_status:
+                    if cart.objects.filter(user=request.user.id,bookno=bookno,booklang=booklanguage):
+                        print("books alredy in  cart")
+                        messages.warning(request,"books alredy in  cart")
+                        return JsonResponse({'status':'product alredy in cart'})
+                    else:
+                        cart.objects.create(user=username,bookno=book_status,booklang=booklanguage,bookpr=prize)
+                        messages.warning(request,"books add cart sucess fully in  cart")
+                        return JsonResponse({'status':'proudct add cart sucess'},status=200)
+                else:
+                    messages.warning(request,"books not avilable yet comming soon ")
+                    return JsonResponse({'status':'product alredy in cart'})
 
 
-        else:
-            messages.warning(request,"You Must Have to login to add cart")
-            return JsonResponse({'status':'login to add cart'}, status=200)
+                    
+
+
+            else:
+                messages.warning(request,"You Must Have to login to add cart")
+                return JsonResponse({'status':'login to add cart'}, status=200)
     else:
         return JsonResponse({'status':'invalid Access'}, status=200)
     # return HttpResponse("<h1>this is cart</h1>")
 
 def pdfviws(request,bookno,booklang):
     if request.user.is_authenticated:
-        if cart.objects.filter(user=request.user,bookno=bookno,booklang=booklang,orderstatus=1).exists():
+        if cart.objects.filter(user=request.user,bookno=bookno,booklang=booklang,orderstatus=0).exists():
             print('yes is there')
             book=Language.objects.get(bookno=bookno,booklang=booklang)
-            bk=Language.objects.get(bookno=1,booklang='Tamil')
+            # bk=Language.objects.get(bookno=2,booklang='Tamil')
             print(book)
-            print(bk.bookpdf,bk)
+            # print(bk.bookpdf,bk)
 
 
-            return render(request,"elibt/fk/user/acbook.html",{'book':book,'path':bk})
+            return render(request,"elibt/fk/user/acbook.html",{'book':book})
 
         
         else :
