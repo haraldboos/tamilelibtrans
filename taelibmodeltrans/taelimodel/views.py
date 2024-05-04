@@ -247,3 +247,8 @@ def csearch_view(request):
     else:
         form = SearchForm()
     return render(request, 'coll.html', {'form': form})
+def payment(request,ammount,order):
+    pass
+
+def webhook(request):
+    print(request)

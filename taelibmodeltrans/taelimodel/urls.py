@@ -14,7 +14,7 @@ urlpatterns=[
     path('viewcart',views.cartpage,name="viewcart"),
     path('cprodect/<str:name>',views.cprodects,name="cprodect"),
     path('switch/<str:language>/', views.swlanguage, name='swlanguage'),
-
+    path('webhook/',views.webhook,name='webhook'),
     path('cprodect/<str:name>/<str:prodect>',views.inspectpro,name="inspectpro"),
     path('vpdf/<int:bookno>/<str:booklang>',views.pdfviws,name='vpdf'),
 

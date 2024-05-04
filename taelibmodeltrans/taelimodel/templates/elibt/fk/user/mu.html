@@ -4,24 +4,24 @@
 {% if request.user.is_authenticated %}
 <div class="text-right rounded"> 
     
-    <h3 class=" text-center text-dark">Welcome {{request.user}}</h3>
+    <!-- <h3 class=" text-center text-dark">Welcome {{request.user}}</h3> -->
 </div>
     {% if books %}
 <section class="bg-light py-3 my-5">
-    <div class="container-fluid">
+    <div class="container-fluid bg-dark rounded">
     
     <div class="row row-cols-5 row-md-cols-3 row-sm-cols-2 justify-content-center">
         <!-- <div class="col-12"> -->
      
         <!-- <div class="col btn bg-primary p-1 m-1 col-sm-6 col-md-4 col-lg-2"> -->
         {% for fk in books%}
-        <div class="card mx-1 my-3">
+        <div class="card mx-1 my-3 border-secondary">
             
-            <img src="{{ fk.bookno.bookcover.url }}" class="card-img-top img-thumbnail">
-            <div class="card-body" >
+            <img src="{{ fk.bookno.bookcover.url }}" class=" border-secondary p-2  card-img-top">
+            <div class="card-body border-secondary" >
         
             <div class="card-title">{{ fk.bookno.bookname }}</div></div>
-            <a href="{% url 'vpdf' fk.bookno.bookno fk.booklang %}"><button type="button">click to view book</button></a>
+            <a href="{% url 'vpdf' fk.bookno.bookno fk.booklang %}"><center class="p-2"><button type="button" class="btn btn-secondary mx-auto mb-1 ">click to view book</button></center></a>
         </div>
         {% endfor %}`                                                                                                                                                             
  
