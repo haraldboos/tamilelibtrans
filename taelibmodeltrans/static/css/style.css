@@ -1,0 +1,40 @@
+   /* .th{
+
+        } */
+        .hh{
+            font-family: "Kanit",sans-serif;
+            /* font-size: 10vh; */
+
+            font-style: normal;
+            left: 0;
+            right: 0;
+            width: max-content;
+            
+         }
+        .hhc{
+            position: relative;
+            width: 100%; 
+        }
+        
+        @media screen and (max-width:977px){
+            /* .hh{ */
+                /* font-size */
+                /* font-size: 20%; */
+                /* .hh {
+                } */
+            /* } */
+            .hh{
+            font-size: 16px;
+            }
+            /* .hhc{ */
+                /* top: 0; */
+
+            /* } */
+        }
+        /* @media screen (max-width:7455px) {
+            .dfd{
+                width:10% ;
+                top: 0;
+            }
+             */
+        /* } */

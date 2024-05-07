@@ -61,12 +61,12 @@
 <div class=" w-100 container rounded h-fit my-2 p-1 " style="position: relative; top: 0;">
   <img src="{% static 'images/bann1.svg' %}" class="w-100 dfd rounded" style="  z-index: -3;" alt="Background">
 
-  <div class="container  position-absolute  row p-1" style="top: 0%;">
+  <div class="container mx-auto position-absolute  row p-1" style="top: 0%;">
     <!-- <div class="row"> -->
-    <img src="{% static 'images/logo1.svg' %}"class="  col-4 col-sm-2 mx-4  p-1 flex-column d-flex col " style="width: 16%;" >
-    <div class="col hhc pt-2 mx-end  d-inline" style="top: 6%;">
-    <h1 class="d-inline hh text-white">{% translate 'Tamil public library' %}</h1><br>
-    <h1 class="d-inline hh mt-3  text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% translate 'A Gate Way of Knoledge' %}...</h1>
+    <img src="{% static 'images/logo1.svg' %}"class="top-0 col-4 col-sm-2 mx-4  p-1 flex-column d-flex col " style="width: 16%;" >
+    <div class="col hhc pt-2 mx-end mb-2 text-center d-inline text-wrap " >
+    <h1 class="d-inline hh text-white  display-3 ">{% translate 'Tamil public library' %}</h1><br>
+    <h3 class="d-inline hh mt-3  text-white display-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% translate 'A Gate Way of Knoledge' %}...</h3>
       <!-- </div> -->
     
     </div>
@@ -90,7 +90,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav mx-start">
-          <a class="nav-link active mx-2" aria-current="page" href="{% url 'home' %}"><i class="bi bi-house-fill"></i>{% trans "home" %}</a>
+          <a class="nav-link active mx-2" aria-current="page" href="{% url 'home' %}"><i class="bi bi-house-fill"></i> {% trans "home" %}</a>
           {% if request.user.is_authenticated %}
             <a class="nav-link justify-align mx-2" href="{% url 'acount' %}"><i class="bi bi-person-badge"></i> {{request.user}}</a>
             <a class="nav-link mx-2" href="{% url 'logout' %}"><i class="bi bi-box-arrow-left"></i> {% translate "Logout" %}</a>
@@ -99,6 +99,8 @@
             <a class="nav-link mx-2" href="{% url 'login' %}"><i class="bi bi-box-arrow-in-right"></i> {% translate "login" %}</a>
           {% endif %}
           <a class="nav-link mx-2 font-weight-bold" href="{% url 'coll' %}"><i class="bi bi-collection"></i> {% translate "collections" %}</a>
+          <a class="nav-link mx-2" href="#"><i class="fa fa-users"></i> {% translate "About us" %}</a>
+
         </div>
         {% if request.user.is_authenticated %}
           <a href="{% url 'viewcart' %}">
