@@ -22,7 +22,10 @@
      
     </style>
 </head>
-<body class="bg-white">
+<body class="top-0">
+    <div class="position-relative">
+        <img src="{% static 'images/lib2.jpg' %}" class="position-absolute top-0 start-0 bg-image h-100 w-100" style="z-index: -10;object-fit: cover;"  >
+        <div class="position-relative">
     {% include 'elibt/fk/inc/nev.html' %}
 
 
@@ -31,6 +34,7 @@
 
     {% endblock content %}
     {% include 'elibt/fk/inc/footer.html' %}
-
+            </div>
+            </div>
 </body>
 </html>
