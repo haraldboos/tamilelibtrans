@@ -16,7 +16,7 @@
             <div class="row">
                 {% include 'elibt/fk/inc/message.html' %}
 
-                <div class="col-6">
+                <div class="col-6 text-white">
                     <form method="post" action="">
                         {% csrf_token %}
                         <div class="mb-4">
@@ -47,9 +47,9 @@
                             <label class="text-danger">{{ form.errors.password2 }}</label>
                         {% endif %}
                         </div>
-                        <button type="submit" style="background-color: #242323;" class="btn ">{% trans 'Register'%}</button>
+                        <button type="submit" style="background-color: #242323;" class="btn text-white">{% trans 'Register'%}</button>
                     </form>
-                    <p class="my-2 text-white">{% trans 'Alredy user ?'%}<a href="{% url 'login' %}"  class="text-white"></a>{% trans 'Login Now'%}</a></p>
+                    <p class="my-2 text-white">{% trans 'Alredy user ?'%}<a href="{% url 'login' %}"  class="text-white ">{% trans 'Login Now'%}</a></p>
                 </div>
             </div>
         </div>

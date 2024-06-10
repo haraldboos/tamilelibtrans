@@ -1,0 +1,18 @@
+{% block content %}
+
+<section class="container mx-auto "><form method="post" action="{% url 'bsearch' %}" class=" my-4">
+    <div class="row-cols-2 mx-auto row">
+    <div class="form-inline d-inline mx-auto col-lg-10 col-md-8 col-sm-7">
+    {% csrf_token %}
+    <!-- <div class="col "> -->
+    <input type="text"name="searchc" class=" form-control"  placeholder="Search...books here">
+    <!-- </div> -->
+    <!-- <div class="col "> -->
+    
+        <!-- </div> -->
+
+</div>
+<button type="submit" class=" btn btn-secondary col-auto d-inline">clickhere</button>
+</div>
+</form></section>
+{% endblock content %}

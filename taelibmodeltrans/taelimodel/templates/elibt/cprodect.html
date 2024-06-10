@@ -7,12 +7,14 @@
     <a href="{% url 'viewcart' %}"><button type="button" class="btn btn-primary"> my card</button></a>
 {% endif %} -->
 {% if book %}
+{% include 'elibt/fk/inc/search.html' %}
+
 <section class="bg-light py-3 my-5">
-    <form method="post" action="{% url 'bsearch' %}">
+    <!-- <form method="post" action="{% url 'bsearch' %}">
         {% csrf_token %}
         <input type="text"name="searchq" class="container d-inline form-control mx-4"  placeholder="Search...books here">
         <button type="submit" class="d-inline btn btn-primary">clickhere</button>
-    </form>
+    </form> -->
 
     <div class="container-fluid">
     
