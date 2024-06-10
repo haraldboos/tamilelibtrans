@@ -1,18 +1,55 @@
+{% extends 'elibt/fk/layout/mai.html' %}
+
 {% block content %}
 
-<section class="container mx-auto "><form method="post" action="{% url 'bsearch' %}" class=" my-4">
-    <div class="row-cols-2 mx-auto row">
-    <div class="form-inline d-inline mx-auto col-lg-10 col-md-8 col-sm-7">
-    {% csrf_token %}
-    <!-- <div class="col "> -->
-    <input type="text"name="searchc" class=" form-control"  placeholder="Search...books here">
-    <!-- </div> -->
-    <!-- <div class="col "> -->
-    
-        <!-- </div> -->
+{% if book %}
+{% include 'elibt/fk/inc/search.html' %}
 
+<section class="bg-light py-3 my-5">
+    <!-- <form method="post" action="{% url 'bsearch' %}">
+        {% csrf_token %}
+        <input type="text"name="searchq" class="container d-inline form-control mx-4"  placeholder="Search...books here">
+        <button type="submit" class="d-inline btn btn-primary">clickhere</button>
+    </form> -->
+
+    <div class="container-fluid">
+    
+    <div class="row row-cols-5 row-md-cols-3 row-sm-cols-2 justify-content-center">
+        <!-- <div class="col-12"> -->
+     
+        <!-- <div class="col btn bg-primary p-1 m-1 col-sm-6 col-md-4 col-lg-2"> -->
+            {% blocktrans %}
+
+        {% for fk in book%}
+        <div class="card mx-2 my-3 ">
+            <a href="{% url 'inspectpro' fk.catgryname fk.bookname %}" class="text-decoration-none">
+            <img src="{{ fk.bookcover.url }}" class="card-img-top img-thumbnail my-1">
+            <div class="card-body" >
+        
+            <div class="card-title">{{ fk.bookname }}</div>
+            <div class="card-title">{{ fk.booknameen}}</div>
+
+            <div class="card-text">
+               {% trans 'Page no' %}: {{fk.bookpageno}}<br>{% trans 'Prize' %} :{{fk.bookprize}}
+            </div>
+            
+            </div>
+            <div class="card-footer">
+            <small class="text-body-secondary">update in {{fk.uploadedtime}}</small>
+            </div>
+            </a>
+        </div>
+        
+        {% endfor %}
+        {% endblocktrans %}
+
+ 
+        </div>
+    </div>
+</section>
+{% else %}
+<div>
+    <p>{{ error }}</p>
 </div>
-<button type="submit" class=" btn btn-secondary col-auto d-inline">clickhere</button>
-</div>
-</form></section>
+{% endif %}
 {% endblock content %}
