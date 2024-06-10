@@ -216,7 +216,7 @@ def bsearch_view(request):
         if request.POST.get('searchq',''):
             form = request.POST.get('searchq','')
             print(form)
-            results = books.objects.filter(bookname__icontains=form)  
+            results = books.objects.filter(bookname__icontains=form)  | catagory.objects.filter(catagoryname__icontains=form)  
             print(results)# Adjust field as per your model
             return render(request, 'elibt/cprodect.html', {'book': results, 'query': form})
         elif request.POST.get('searchc',''):
@@ -224,7 +224,7 @@ def bsearch_view(request):
             print(form)
             results = catagory.objects.filter(catagoryname__icontains=form)  
             print(results)# Adjust field as per your model
-            return render(request, 'elibt/cprodect.html', {'list': results, 'query': form})
+            return render(request, 'elibt/search.html', {'list': results, 'query': form})
         # if form.is_valid():
         #     query = form.cleaned_data['query']
         #     results = books.objects.filter(bookname__icontains=query)  # Adjust field as per your model

@@ -38,3 +38,13 @@
             }
              */
         /* } */
+        .btn-fixed-size {
+            
+            width: 150px; /* Set your desired width */
+            height: 50px; /* Set your desired height */
+            white-space: nowrap; /* Prevents text from wrapping */
+            overflow: hidden; /* Hides any overflow text */
+            text-overflow: ellipsis; /* Adds '...' for overflow text */
+            display: inline-block; /* Ensure the button maintains its block-level formatting */
+            text-align: center; /* Center the text */
+        }
