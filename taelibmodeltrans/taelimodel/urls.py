@@ -17,6 +17,8 @@ urlpatterns=[
     path('webhook/',views.webhook,name='webhook'),
     path('cprodect/<str:name>/<str:prodect>',views.inspectpro,name="inspectpro"),
     path('vpdf/<int:bookno>/<str:booklang>',views.pdfviws,name='vpdf'),
+    path('ourteams/',views.teams,name='team'),
+
 
 ]
 # urlpatterns = [
