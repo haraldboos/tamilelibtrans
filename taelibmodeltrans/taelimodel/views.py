@@ -212,26 +212,36 @@ def pdfviws(request,bookno,booklang):
     
 
 def bsearch_view(request):
+    reasultcat=False
+    resultsbook=False
+    non=False
     if request.method == 'POST':
         if request.POST.get('searchc',''):
+
             form = request.POST.get('searchc','')
-            print(form)
-            results = books.objects.filter(bookname__icontains=form)  
-            print(results)# Adjust field as per your model
-            return render(request, 'elibt/search.html', {'book': results, 'query': form})
-        elif request.POST.get('searchc',''):
-            form = request.POST.get('searchc','')
-            print(form)
-            results = catagory.objects.filter(catagoryname__icontains=form)  
-            print(results)# Adjust field as per your model
-            return render(request, 'elibt/search.html', {'list': results, 'book': results,'query': form})
-        # if form.is_valid():
-        #     query = form.cleaned_data['query']
-        #     results = books.objects.filter(bookname__icontains=query)  # Adjust field as per your model
-        #  return render(request, 'search_results.html', {'results': results, 'query': query})
-        else:
-            non = 'no reasult for ur key word ', 
-            return render(request, 'elibt/search.html', {'form': form,'noon':non})
+            
+            if books.objects.filter(bookname__icontains=form):
+                resultsbook = books.objects.filter(bookname__icontains=form)  
+                print(resultsbook)# Adjust field as per your model
+                
+                # return render(request, 'elibt/search.html', {'book': results, 'query': form})
+            if catagory.objects.filter(catagoryname__icontains=form):
+                # form = request.POST.get('searchc',''
+                reasultcat=catagory.objects.filter(catagoryname__icontains=form)
+                # print(form)
+                # results = catagory.objects.filter(catagoryname__icontains=form)  
+                print(reasultcat)# Adjust field as per your model
+                
+            if (reasultcat!=False or reasultcat!=False):   
+                print('oooma') 
+                return render(request, 'elibt/search.html', {'list': reasultcat, 'book': resultsbook,'form': form})
+            # if form.is_valid():
+            #     query = form.cleaned_data['query']
+            #     results = books.objects.filter(bookname__icontains=query)  # Adjust field as per your model
+            #  return render(request, 'search_results.html', {'results': results, 'query': query})
+            else:
+                non = 'no reasult for ur key word' 
+                return render(request, 'elibt/search.html', {'form': form,'noon':non})
 
     else:
         non = 'no reasult for ur key word ', 
@@ -249,6 +259,7 @@ def csearch_view(request):
     return render(request, 'coll.html', {'form': form})
 def payment(request,ammount,order):
     pass
-
+def ourteam(request):
+    pass
 def webhook(request):
     print(request)
