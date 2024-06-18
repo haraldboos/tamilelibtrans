@@ -48,3 +48,18 @@
             display: inline-block; /* Ensure the button maintains its block-level formatting */
             text-align: center; /* Center the text */
         }
+        /* .sframe{
+            position: relative;
+        }
+        .overl{
+            position: absolute;
+            top: 0;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 50%; 
+        }
+
+        .sframe:hover .overl {
+            opacity: 1;
+        } */
