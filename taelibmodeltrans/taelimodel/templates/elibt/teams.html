@@ -1,7 +1,47 @@
 {% extends 'elibt/fk/layout/mai.html' %}
 {% block content %}
 {% load static %}
+<div class="container">
+    <div class="row row-cols-lg-5 row-cols-md-3 p-3 row-cols-sm-2 row-cols-xm-2  justify-content-center">
+        <!-- <div class="row-cols-8"> -->
+            {% for x in times %}
 
+        <div class="col-3 sframe m-3 ">
+            <!-- <div>
+                <>
+            </div> -->
+            <img src="{% static 'images/12.jpg' %}" class="rounded-circle show h-100 w-100 " alt="">
+            <div class="position-relative">
+                <p class="text-white text-center position-absolute top-0 ">ceo</p>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- </div> -->
+        
+    </div>
+    <div class="row row-cols-lg-5 row-cols-md-3 p-3 row-cols-sm-2 row-cols-xm-2  justify-content-center">
+        <!-- <div class="row-cols-8"> -->
+            {% for x in times %}
+
+        <div class="col-3  m-3 ">
+            <!-- <div>
+                <>
+            </div> -->
+            <div class="card">
+            <img src="{% static 'images/12.jpg' %}" class="card-img-top show h-100 w-100 " alt="">
+
+            <div class="card-body">
+                <p class="card-text text-center m-0">evtn to  givr 1000 books in Newwriliya</p>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+        <!-- </div> -->
+        
+    </div>
+</div>
 
 
 {% endblock content %}

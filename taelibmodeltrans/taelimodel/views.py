@@ -259,7 +259,7 @@ def csearch_view(request):
     return render(request, 'coll.html', {'form': form})
 def payment(request,ammount,order):
     pass
-def ourteam(request):
+def ourteams(request):
     fffk=range(9)
     return render(request,'elibt/teams.html',{'times':fffk})
 def webhook(request):
