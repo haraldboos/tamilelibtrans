@@ -18,6 +18,8 @@ urlpatterns=[
     path('cprodect/<str:name>/<str:prodect>',views.inspectpro,name="inspectpro"),
     path('vpdf/<int:bookno>/<str:booklang>',views.pdfviws,name='vpdf'),
     path('ourteams/',views.ourteams,name='teams'),
+    path('ourproject/',views.ourproject,name='project'),
+
 
 
 ]

@@ -63,3 +63,34 @@
         .sframe:hover .overl {
             opacity: 1;
         } */
+        /* .team-membertx {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 200px;
+            margin: 10px;
+        }
+        .team-membertx img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+        .team-membertx .overlaytx {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.5); 
+            opacity: 0;
+            transition: opacity 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 50%;
+        }
+        .team-membertx:hover .overlaytx {
+            opacity: 1;
+        } */

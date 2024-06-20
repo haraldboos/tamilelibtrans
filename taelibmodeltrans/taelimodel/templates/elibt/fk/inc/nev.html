@@ -100,7 +100,7 @@
           {% endif %}
           <a class="nav-link mx-2 font-weight-bold" href="{% url 'coll' %}"><i class="bi bi-collection"></i> {% translate "collections" %}</a>
           <a class="nav-link mx-2" href="{% url 'teams' %}"><i class="fa fa-users"></i> {% translate "Our Team" %}</a>
-          <a class="nav-link mx-2" href="#"><i class="fa fa-users"></i> {% translate "Our Projects" %}</a>
+          <a class="nav-link mx-2" href="{% url 'project' %}"><i class="fa fa-users"></i> {% translate "Our Projects" %}</a>
 
         </div>
         {% if request.user.is_authenticated %}
