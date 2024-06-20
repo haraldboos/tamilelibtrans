@@ -264,3 +264,6 @@ def ourteams(request):
     return render(request,'elibt/teams.html',{'times':fffk})
 def webhook(request):
     print(request)
+def ourproject(request):
+    fffk=range(9)
+    return render(request,'elibt/ourpoject.html',{'times':fffk})
