@@ -1,27 +1,3 @@
-{% extends 'elibt/fk/layout/mai.html' %}
-{% block content %}
-{% load static %}
-<div class="container">
-{% if request.user.is_authenticated %}
-<div class="btn bg-primary  mx-5 text-right rounded"> 
-    
-    <h3 class=" text-center "><i class="bi bi-person-circle m-1"></i>{{request.user}}</h3>
-</div>
-<!--  
-<h1>{{book}}</h1>
-<h1>{{path}}</h1> -->
-<div class="container justify-content-center">
-<center><h1 class="mt-2">{{book.bookno.bookname}}</h1>
-</center>
-    <iframe src="https://drive.google.com/file/d/{{ book.gdbookid }}/preview" type="application/pdf" width="100%" height="1000px"  sandbox="allow-same-origin allow-scripts"></iframe>
-
-</div>
-    {% if eupms %}
-<div class="justify-content-center m-3 alert alert-danger" role="alert"><h1><i class="bi bi-exclamation-triangle "></i>{{eupms}}</h1></div>
-{% endif %}
-{% endif %}
-
-</div>
-
-
-{% endblock content %}
+version https://git-lfs.github.com/spec/v1
+oid sha256:ff79eea227135075ad472b78be39e2514e4700d2e256cb25bab0dddbe7af1e5b
+size 865
