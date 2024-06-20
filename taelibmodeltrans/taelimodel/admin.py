@@ -1,25 +1,3 @@
-from django.contrib import admin
-from .models import *
-# Register your models here.
-from modeltranslation.translator import register, TranslationOptions
-# # from .models import books
-
-@register(books)
-class BookTranslationOptions(TranslationOptions):
-     fields = ('bookname', 'bookdiscrib')  # Specify the fields you want to translate
-
-
-@register(catagory)
-class catagorytranslationoptions(TranslationOptions):
-    fields=('catagoryname',)
-
-admin.site.register(catagory)
-admin.site.register(books)
-admin.site.register(cart)
-admin.site.register(Language)
-admin.site.register(file)
-# admin.site.register(books,bookAdmin)
-
-# @admin.register(books)
-# class BookAdmin(TranslationAdmin):
-#     pass
+version https://git-lfs.github.com/spec/v1
+oid sha256:dda3dc13c1709b00479eb727770d12c2938be00723f7a199c00405875a11a9de
+size 694
