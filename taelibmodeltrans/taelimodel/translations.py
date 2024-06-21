@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3089d245763f0c8df4cf665640fc3c85b38140827d76be3bdd2656e4d6bb3b74
-size 360
+from modeltranslation.translator import register, TranslationOptions
+from .models import books,catagory
+
+@register(books)
+class BookTranslationOptions(TranslationOptions):
+    fields = ('bookname', 'bookdiscrib')  # Specify the fields you want to translate
+
+@register(catagory)
+class catagorytranslationoptions(TranslationOptions):
+    fields=('catagoryname',)

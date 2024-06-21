@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1e4afb12d0ba640e854c16615a58bed1f660555717c826a4c69a2f3ccf81b0ac
-size 409
+"""
+ASGI config for taelibmodeltrans project.
+
+It exposes the ASGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/4.1/howto/deployment/asgi/
+"""
+
+import os
+
+from django.core.asgi import get_asgi_application
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'taelibmodeltrans.settings')
+
+application = get_asgi_application()

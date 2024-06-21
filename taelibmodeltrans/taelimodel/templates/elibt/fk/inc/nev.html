@@ -1,3 +1,158 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f83d7e9fe7fb68120d9569aa9313e36e85853c6668f0bfc66576311ff6fa9f9f
-size 8996
+{% load static %}
+{% load i18n %}
+{% load rosetta %}
+{{ link_html|safe }}
+
+<!-- <div class="bg-warning ">
+  <div class="container">
+<img src="{% static 'images/logo.svg' %}" height="200" class="mx-4 d-inline">
+<h1 class="d-inline hh">{% trans 'Tamil public library' %}</h1>
+</div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <div class="container p-1 ">
+      <a class="navbar-brand" href="#">{% trans 'Tamil public library' %}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav mx-auto ">
+          <a class="nav-link active mx-2" aria-current="page" href="{% url 'home' %}"><i class="bi bi-house-fill"></i> {% trans "home" %}</a>
+          {% if request.user.is_authenticated %}
+            <a class="nav-link justify-align mx-2" href="{% url 'acount' %}"><i class="bi bi-person-badge"></i> {{request.user}}</a>
+          
+            <a class="nav-link mx-2" href="{% url 'logout' %}"><i class="bi bi-box-arrow-left"></i> {% trans "Logout" %}</a>
+          {% else %}
+          <div class="navbar-nav ml-auto ">
+
+            <a class="nav-link mx-2" href="{% url 'register' %}"><i class="fa fa-users"></i> {% trans "register" %}</a>
+            <a class="nav-link mx-2" href="{% url 'login' %}"><i class="bi bi-box-arrow-in-right"></i> {% trans "login" %}</a>
+          {% endif %}
+          <a class="nav-link mx-2" href="{% url 'coll' %}"><i class="bi bi-collection"></i> {% trans "collections" %}</a>
+          </div> -->
+          <!-- <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-sign-in"></i>Login</a> -->
+
+          <!-- <a class="nav-link disabled" aria-disabled="true">Disabled</a> -->
+        <!-- </div>
+        {% if request.user.is_authenticated %}
+    <a href="{% url 'viewcart' %}"><button type="button" class="btn btn-dark m-2 justify-content-end "><i class="bi bi-cart-fill"></i> my card</button></a>
+
+{% endif %}
+<div class="dropdown nev-link">
+    <div class="btn mx-2 text-white btn-dark dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-translate"></i> Click to Select Language</a>
+</div> 
+<ul class="dropdown-menu" aria-labelledby="languageDropdown"> -->
+  <!-- Language options -->
+  <!-- <li><a class="dropdown-item" href="{% url 'swlanguage' 'en' %}">{% trans 'English' %}</a></li>
+  <li><a class="dropdown-item" href="{% url 'swlanguage' 'ta' %}">{% trans 'Tamil' %}</a></li>
+  <li><a class="dropdown-item" href="{% url 'swlanguage' 'nl' %}">{% trans 'Dutch' %}</a></li>
+  <li><a class="dropdown-item" href="{% url 'swlanguage' 'fr' %}">{% trans 'French' %}</a></li> -->
+
+  <!-- Add more language options as needed -->
+<!-- </ul>
+</div>
+      </div>
+    </div>
+  </nav>
+</div> -->
+  <!-- {% if request.user.is_authenticated %}
+    <a href="{% url 'viewcart' %}"><button type="button" class="btn btn-primary m-2 justify-content-end "><i class="bi bi-cart-fill"></i> my card</button></a>
+{% endif %} --><strong>
+<div class=" w-100 container rounded h-fit p-1 " style="position: relative; top: 0;">
+  <img src="{% static 'images/bann1.svg' %}" class="w-100 dfd rounded" style="  z-index: -3;" alt="Background">
+
+  <div class="container mx-auto position-absolute  row p-1" style="top: 0%;">
+    <!-- <div class="row"> -->
+    <img src="{% static 'images/logo1.svg' %}"class="top-0 col-4 col-sm-2 mx-4  p-1 flex-column d-flex col " style="width: 16%;" >
+    <div class="col hhc pt-2 mx-end mb-2 text-center d-inline text-wrap " >
+    <h1 class="d-inline hh text-white  display-3 ">{% translate 'Tamil public library' %}</h1><br>
+    <h3 class="d-inline hh mt-3  text-white display-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% translate 'A Gate Way of Knoledge' %}...</h3>
+      <!-- </div> -->
+    
+    </div>
+  </div>
+  </div>
+<div class="bg-dark container rounded">
+  <!-- <div class="container-fluid" style="">
+  <img src="{% static 'images/ban.svg' %}" style="left: 0; width: 100%; height: 100%; z-index: -1;" alt="Background">
+
+  <div class="container">
+
+    <img src="{% static 'images/logo.svg' %}" height="200" class="mx-4 d-inline">
+    <h1 class="d-inline hh">{% translate 'Tamil public library' %}</h1>
+  </div>
+  </div> -->
+  <nav class="navbar rounded navbar-expand-lg navbar-dark bg-dark">
+    <div class="container p-1">
+      <!-- <a class="navbar-brand" href="#"><span>{% trans 'Tamil public library' %}</span></a> -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav mx-start">
+          <a class="nav-link active mx-2" aria-current="page" href="{% url 'home' %}"><i class="bi bi-house-fill"></i> {% trans "home" %}</a>
+          {% if request.user.is_authenticated %}
+            <a class="nav-link justify-align mx-2" href="{% url 'acount' %}"><i class="bi bi-person-badge"></i> {{request.user}}</a>
+            <a class="nav-link mx-2" href="{% url 'logout' %}"><i class="bi bi-box-arrow-left"></i> {% translate "Logout" %}</a>
+          {% else %}
+            <a class="nav-link mx-2" href="{% url 'register' %}"><i class="fa fa-users"></i> {% translate "register" %}</a>
+            <a class="nav-link mx-2" href="{% url 'login' %}"><i class="bi bi-box-arrow-in-right"></i> {% translate "login" %}</a>
+          {% endif %}
+          <a class="nav-link mx-2 font-weight-bold" href="{% url 'coll' %}"><i class="bi bi-collection"></i> {% translate "collections" %}</a>
+          <a class="nav-link mx-2" href="{% url 'teams' %}"><i class="fa fa-users"></i> {% translate "Our Team" %}</a>
+          <a class="nav-link mx-2" href="{% url 'project' %}"><i class="fa fa-users"></i> {% translate "Our Projects" %}</a>
+
+        </div>
+        {% if request.user.is_authenticated %}
+          <a href="{% url 'viewcart' %}">
+            <button type="button" class="btn btn-dark m-2 justify-content-end">
+              <i class="bi bi-cart-fill"></i> <span>{% trans 'my cart' %}</span>
+            </button>
+          </a>
+        {% endif %}
+        <!-- <div class="dropdown nev-link">
+          <div class="btn mx-2 text-white btn-dark dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-translate"></i> {% trans "Click to Select Language" %}
+          </div> 
+          <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+            Language options
+            <li><a class="dropdown-item" href="{% url 'swlanguage' 'en' %}">{% trans 'English' %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'swlanguage' 'ta' %}">{% trans 'Tamil' %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'swlanguage' 'nl' %}">{% trans 'Dutch' %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'swlanguage' 'fr' %}">{% trans 'French' %}</a></li>
+            Add more language options as needed --> 
+          <!-- </ul>
+        </div> -->
+        <!-- mytgryyyyr -->
+          <div class="dropdown nev-link mx-end">
+          <div class="btn mx-end text-white btn-dark dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-translate"></i> {% translate "Click to Select Language" %}
+          </div> 
+          <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+            <!-- Language options -->
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for lang in  languages %}
+            <li>
+              <a class="dropdown-item" href="/{{ lang.code }}/">
+                {{ lang.name_local }}
+              </a>
+              <!-- <a class="dropdown-item" href="{ lang.code %}">
+                {{ lang.name_local }}
+              </a> -->
+            </li>
+            {% endfor %}
+            <!-- <li><a class="dropdown-item" href="{% url 'swlanguage' 'en' %}">{% trans 'English' %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'swlanguage' 'ta' %}">{% trans 'Tamil' %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'swlanguage' 'nl' %}">{% trans 'Dutch' %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'swlanguage' 'fr' %}">{% trans 'French' %}</a></li> -->
+            <!-- Add more language options as needed -->
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </nav>
+</div>
+</strong>
