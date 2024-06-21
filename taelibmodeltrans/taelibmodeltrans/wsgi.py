@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:529552c5e2b3b7190d1e0076e16a718844bc743e8924c013cfbfd7ca98fe7924
-size 409
+"""
+WSGI config for taelibmodeltrans project.
+
+It exposes the WSGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/4.1/howto/deployment/wsgi/
+"""
+
+import os
+
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'taelibmodeltrans.settings')
+
+application = get_wsgi_application()

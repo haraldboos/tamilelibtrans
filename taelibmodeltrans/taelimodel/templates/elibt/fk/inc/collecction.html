@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1a531157925623cb579432f4c2f635b7c36cefbd371ed865a9bd1a9a06e010ed
-size 792
+{% block content %}
+
+<section class=" py-3 my-5">
+    <div class="container">
+    
+    <div class="row  row-cols-lg-5 row-cols-md-4 row-cols-sm-2 row-cols-xs-2 justify-content-center mx-3">
+        <!-- <div class="col-12"> -->
+        
+        <!-- <div class="col btn bg-primary p-1 m-1 col-sm-6 col-md-4 col-lg-2"> -->
+        <!-- {{list}} -->
+        {% for fk in list%} 
+        <div class="col rounded mt-2 p-1 " >
+
+        <a href="{% url 'cprodect' fk.catagoryname %}">
+                <button type="button" class="btn  bg-dark btn-block btn-fixed-size btn-lg text-white">{{ fk.catagoryname }}</button>
+        </a>
+    </div>
+
+        {% endfor %}
+ 
+        </div>
+    </div>
+        <!-- </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    </section>
+    {% endblock content %}
