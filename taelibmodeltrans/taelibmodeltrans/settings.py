@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+        'corsheaders',
+
     'gdstorage',
     'taelimodel',
     'rosetta',
@@ -61,6 +63,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -144,7 +147,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIC_URL = 'static/'
 LANGUAGES = (
     ("en", _("English")),
     ("ta", _("Tamil")),
@@ -161,7 +164,11 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
+    
 ]
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR / 'media'
+
 MEDIA_URL = '/images/'
 MEDIA_ROOT = BASE_DIR/'static'
 # Default primary key field type
@@ -173,3 +180,5 @@ MODELTRANSLATION_DEFAULT_LANGUAGE = 'ta'
 MODELTRANSLATION_LANGUAGE = LANGUAGES
 
 GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'taelibmodeltrans/tamilpubliclib.json'
+CORS_ORIGIN_ALLOW_ALL = True  # Allow all origins for testing, adjust as needed for production
+

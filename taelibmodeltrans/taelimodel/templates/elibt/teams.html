@@ -5,42 +5,86 @@
     .team-membertx {
         position: relative;
         overflow: hidden;
-        border-radius: 50%;
-    
-
+        /* border-radius: 50%; */
+       
     }
-        /* width: 100%;
-        max-width: 200px; /* Adjust as needed */
-        /* margin: 10px; */ 
-    
-    .team-membertx img {
+
+    .iim {
         display: block;
-        height: auto;
-        height: 100%;
-        object-fit: cover;
-        width: 100%;
+        width: 300px;
+        height: 300px;
+        justify-self: center;
 
+        object-fit: cover; /* Ensure image covers the entire container */
     }
+
     .team-membertx .overlaytx {
         position: absolute;
-        /* top: auto; */
+        width: 100%;
+        height: 100%;
         top: 0;
         bottom: 0;
         left: 0;
-        right: 0; 
+        justify-self: center;
+        right: 0;
+        /* translate; */
         background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-        /* color: white; */
+        /* color: rgb(32, 32, 32); */
         opacity: 0;
         transition: opacity 0.5s;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
-        /* object-fit: ; */
+        border-radius: 50%;
+        object-fit: fill; /* Ensure image covers the entire container */
+
     }
     .team-membertx:hover .overlaytx {
         opacity: 1;
     }
+.overtxt{
+    object-fit: fill;
+    text-size-adjust: 5%;
+}
+.image-container {
+  position: relative;
+  width: 100%;
+  max-width: 300px; /* Adjust this as needed */
+}
+
+.image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
 </style>
 <div class="container">
     <h2 class="h2 text-center text-white my-3">OUR Team Members</h2>
@@ -48,14 +92,20 @@
         <!-- <div class="row-cols-8"> -->
             {% for x in times %}
 
-        <div class="col-3 m-3 team-membertx">
+        <div class="col-3 h-100 ">
             <!-- <div>
                 <>
             </div> -->
-            <img src="{% static 'images/12.jpg' %}" class="rounded-circle h-100 w-100 " alt="">
-            <div class="overlaytx rounded-circle h-100 w-100">
-                <p class="text-white text-center ">ceo</p>
+            <div class="image-container">
+                <img src="{{x.image.url}}" class="rounded-circle img-fluid" alt="">
+                <div class="overlay ">
+                    <p class="text-white text text-center ">{{x.name}}
+                </p>
+                
+    
+                </div>
             </div>
+           
         </div>
         {% endfor %}
 
