@@ -13,11 +13,11 @@
                 <>
             </div> -->
             <div class="card">
-            <img src="{% static 'images/12.jpg' %}" class="card-img-top show h-100 w-100 " alt="">
-
-            <div class="card-body">
-                <p class="card-text text-center m-0">evtn to  givr 1000 books in Newwriliya</p>
-            </div>
+            <img src="{{ x.cover.url }}" class="card-img-top show h-100 w-100 " alt="">
+            <a href="{% url 'ppview' x.prid %}">
+            <div class="card-body btn">
+                <p class="card-text text-center m-0">{{ x.name}}</p>
+            </div></a>
             </div>
         </div>
         {% endfor %}

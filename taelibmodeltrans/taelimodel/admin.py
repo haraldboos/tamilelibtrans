@@ -18,6 +18,9 @@ admin.site.register(books)
 admin.site.register(cart)
 admin.site.register(Language)
 admin.site.register(file)
+admin.site.register(Adminstration)
+admin.site.register(Projects)
+
 # admin.site.register(books,bookAdmin)
 
 # @admin.register(books)

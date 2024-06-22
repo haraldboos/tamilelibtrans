@@ -203,13 +203,15 @@ class file(models.Model):
 #     def save(self, *args, **kwargs):
 #         super().save(*args, **kwargs)
 class Adminstration(models.Model):
-    name = models.CharField(max_length=20,null=False,default=False)
-    image=models.ImageField(upload_to=uploadcover,null=False,blank=False,default=False)
+    name = models.CharField(max_length=20,null=False,default=None)
+    image=models.ImageField(upload_to=uploadcover,null=False,blank=False,default=None)
     adid =models.AutoField(primary_key=True)
-    ocation=models.CharField(max_length=20,null=False,default=False)
+    ocation=models.CharField(max_length=20,null=False,default=None)
 
 class Projects(models.Model):
-    name = models.CharField(max_length=20,null=False,default=False)
+    prid =models.AutoField(primary_key=True)
+
+    name = models.CharField(max_length=20,null=False,default=None)
     date = models.DateField()
-    cover=models.ImageField(upload_to=uploadcover,null=False,blank=False,default=False)
-    file=models.FileField(upload_to=uploadbook,null=False,blank=False,default=False)
+    cover=models.ImageField(upload_to=uploadcover,null=False,blank=False,default=None)
+    file=models.FileField(upload_to=uploadbook,null=False,blank=False,default=None)

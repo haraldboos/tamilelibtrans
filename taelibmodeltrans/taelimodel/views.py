@@ -261,9 +261,23 @@ def payment(request,ammount,order):
     pass
 def ourteams(request):
     fffk=range(9)
-    return render(request,'elibt/teams.html',{'times':fffk})
+    ad=Adminstration.objects.all()
+    return render(request,'elibt/teams.html',{'times':ad})
 def webhook(request):
     print(request)
 def ourproject(request):
+    project=Projects.objects.all()
     fffk=range(9)
-    return render(request,'elibt/ourpoject.html',{'times':fffk})
+    for l in project:
+        print(l.cover.url,'ll')
+    return render(request,'elibt/ourpoject.html',{'times':project,})
+
+def projectv(request,pid):
+    if request.user.is_authenticated:
+        pdff=Projects.objects.filter(prid=pid)
+        print(pdff)
+        for y in pdff:
+            print(y.name)
+            # for e in y:
+            #     print(e)
+        return render(request,'elibt/projectview.html',{'pddf':pdff,})
