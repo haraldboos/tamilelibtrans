@@ -3,21 +3,110 @@
 {% load rosetta %}
 {{ link_html|safe }}
 <style>
-      .ool{
-        font-size: 4vw;
+  .paragraphhh{
+    text-align: start;
+  }
+    .ool{
+        font-size: 4rem; /* Default font size */
     }
     .sool{
-        font-size: 2vw;
+        font-size: 2rem; /* Default font size */
     }
-    @media screen and (max-width: 500px){
+    .iig{
+      width: 11rem;
+    }
+    @media screen and (max-width: 994px){
         .ool{
-            font-size: 2vw;
+            margin-left: 0;
+            font-size: 3rem; /* Smaller screen font size */
         }
+        .paragraphhh{
+    text-align: start;
+  }
+  .iig{
+      width: 8rem;
+    }
         .sool{
-            font-size: 1vw;
+            margin-left: 0;
+            text-decoration-color: blue;
+            font-size: 1.5rem; /* Smaller screen font size */
+        }
+    }
+    @media screen and (max-width: 800px){
+        .ool{
+            margin-left: 0;
+            font-size: 2.5rem; /* Smaller screen font size */
+        }
+        .paragraphhh{
+    text-align: start;
+  }
+  .iig{
+      width: 8rem;
+    }
+        .sool{
+            margin-left: 0;
+            text-decoration-color: blue;
+            font-size: 0.75rem; /* Smaller screen font size */
+        }
+    }
+    @media screen and (max-width: 767px){
+        .ool{
+            margin-left: 0;
+            font-size: 1.5rem; /* Smaller screen font size */
+        }
+        .paragraphhh{
+    text-align: start;
+  }
+  .iig{
+      width: 6rem;
+    }
+        .sool{
+            margin-left: 0;
+            text-decoration-color: blue;
+            font-size: 0.5rem; /* Smaller screen font size */
+        }
+    }
+    @media screen and (max-width: 490px){
+        .ool{
+            margin-left: 0;
+            font-size: 0.75rem; /* Smaller screen font size */
+        }
+        .paragraphhh{
+    text-align: start;
+  }
+  .iig{
+      width: 6rem;
+    }
+        .sool{
+            margin-left: 0;
+            text-decoration-color: blue;
+            font-size: 0.5rem; /* Smaller screen font size */
         }
     }
 
+    @media screen and (max-width: 375px){
+        .ool{
+            margin-left: 0;
+            font-size: 0.55rem; 
+            text-align: center;
+            /* Smaller screen font size */
+        }
+        .paragraphhh{
+    text-align: center;
+    /* margin-left: -10px; */
+
+  }
+  .iig{
+      width: 5rem;
+      text-align: center;
+
+    }
+        .sool{
+            /* margin-left: -; */
+            /* text-decoration-color: blue; */
+            font-size: 0.30rem; /* Smaller screen font size */
+        }
+    }
 </style>
 <!-- <div class="bg-warning ">
   <div class="container">
@@ -92,13 +181,13 @@
     </div>
   </div>
   </div> -->
-  <div class="container d-flex row-cols-2  position-absolute top-50 start-50 translate-middle d-block align-items-center">
-    <div class=" col-md-2 col-sm-3 d-flex d-inline justify-content-center align-items-center ">
-      <img src="{% static 'images/logo1.svg' %}" style="width: 11vw;" class="img-fluid" alt="Logo">
+  <div class="container d-flex row-cols-2 h-fit position-absolute top-50 start-50 translate-middle d-block align-items-center">
+    <div class=" col-md-2 p-3  d-flex d-inline iig justify-content-center align-items-center ">
+      <img src="{% static 'images/logo1.svg' %}"  class="img-fluid " alt="Logo">
     </div>
-    <div class=" col-md-10 container d-inline text-center text-md-start">
+    <div class=" col-md-10 container paragraphhh d-inline text-center text-md-start">
       <h1  class="text-white ool  ">{% translate 'Tamil public library' %}</h1>
-      <h3 class="  mt-3   sool text-white ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% translate 'A Gate Way of Knoledge' %}...</h3>
+      <h3 class="  ml-3   sool text-white ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% translate 'A Gate Way of Knoledge' %}...</h3>
     </div>
   </div>
   </div>
