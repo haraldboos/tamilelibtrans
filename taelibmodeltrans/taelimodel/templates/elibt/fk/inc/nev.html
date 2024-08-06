@@ -2,7 +2,23 @@
 {% load i18n %}
 {% load rosetta %}
 {{ link_html|safe }}
+<style>
+      .ool{
+        font-size: 4vw;
+    }
+    .sool{
+        font-size: 2vw;
+    }
+    @media screen and (max-width: 500px){
+        .ool{
+            font-size: 2vw;
+        }
+        .sool{
+            font-size: 1vw;
+        }
+    }
 
+</style>
 <!-- <div class="bg-warning ">
   <div class="container">
 <img src="{% static 'images/logo.svg' %}" height="200" class="mx-4 d-inline">
@@ -57,18 +73,32 @@
 </div> -->
   <!-- {% if request.user.is_authenticated %}
     <a href="{% url 'viewcart' %}"><button type="button" class="btn btn-primary m-2 justify-content-end "><i class="bi bi-cart-fill"></i> my card</button></a>
-{% endif %} --><strong>
-<div class=" w-100 container rounded h-fit p-1 " style="position: relative; top: 0;">
+{% endif %} -->
+<strong>
+
+<div class=" w-100 container  position-relative h-fit p-1 " style="position: relative; top: 0;">
   <img src="{% static 'images/bann1.svg' %}" class="w-100 dfd rounded" style="  z-index: -3;" alt="Background">
 
-  <div class="container mx-auto position-absolute  row p-1" style="top: 0%;">
-    <!-- <div class="row"> -->
-    <img src="{% static 'images/logo1.svg' %}"class="top-0 col-4 col-sm-2 mx-4  p-1 flex-column d-flex col " style="width: 16%;" >
-    <div class="col hhc pt-2 mx-end mb-2 text-center d-inline text-wrap " >
-    <h1 class="d-inline hh text-white  display-3 ">{% translate 'Tamil public library' %}</h1><br>
-    <h3 class="d-inline hh mt-3  text-white display-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% translate 'A Gate Way of Knoledge' %}...</h3>
-      <!-- </div> -->
+  <!-- <div class="container position-absolute top-50 start-50 translate-middle d-flex align-items-center" style="height: 100%;">
+    <div class="row w-100 text-center text-md-start">
+      <div class=" p-3 col-12 col-md-2 col-sm-3 ml-3 d-flex justify-content-center align-items-center">
+      <img src="{% static 'images/logo1.svg' %}" class="img-fluid">
+    </div>
+  <div class="col-12 col-md-8 pt-2 text-center text-md-start text-wrap text-break">
+
+    <h1 class="d-inline hh text-white display-4 ">{% translate 'Tamil public library' %}</h1><br><br>
+    <h3 class="d-inline hh mt-3  text-center  text-white display-7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% translate 'A Gate Way of Knoledge' %}...</h3>
     
+    </div>
+  </div>
+  </div> -->
+  <div class="container d-flex row-cols-2  position-absolute top-50 start-50 translate-middle d-block align-items-center">
+    <div class=" col-md-2 col-sm-3 d-flex d-inline justify-content-center align-items-center ">
+      <img src="{% static 'images/logo1.svg' %}" style="width: 11vw;" class="img-fluid" alt="Logo">
+    </div>
+    <div class=" col-md-10 container d-inline text-center text-md-start">
+      <h1  class="text-white ool  ">{% translate 'Tamil public library' %}</h1>
+      <h3 class="  mt-3   sool text-white ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% translate 'A Gate Way of Knoledge' %}...</h3>
     </div>
   </div>
   </div>

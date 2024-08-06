@@ -273,11 +273,13 @@ def ourproject(request):
     return render(request,'elibt/ourpoject.html',{'times':project,})
 
 def projectv(request,pid):
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
         pdff=Projects.objects.filter(prid=pid)
         print(pdff)
         for y in pdff:
             print(y.name)
             # for e in y:
             #     print(e)
+        if not pdff:
+            return render(request, 'elibt/projectview.html', {'error_message': 'The project not uploaded yet.'})
         return render(request,'elibt/projectview.html',{'pddf':pdff,})
