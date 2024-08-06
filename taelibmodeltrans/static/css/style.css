@@ -1,9 +1,6 @@
-   /* .th{
 
-        } */
         .hh{
             font-family: "Kanit",sans-serif;
-            /* font-size: 10vh; */
 
             font-style: normal;
             left: 0;
@@ -15,22 +12,36 @@
             position: relative;
             width: 100%; 
         }
-        
-        @media screen and (max-width:977px){
-            /* .hh{ */
-                /* font-size */
-                /* font-size: 20%; */
-                /* .hh {
-                } */
-            /* } */
-            .hh{
-            font-size: 16px;
-            }
-            /* .hhc{ */
-                /* top: 0; */
-
-            /* } */
+        .flx{
+            display: flex;
         }
+        .ool{
+            font-size: 4vw;
+        }
+        .sool{
+            font-size: 2vw;
+        }
+        @media screen and (max-width:390px){
+   
+   
+       .ool{
+        font-size: 2vw;
+       }
+       .sool{
+        font-size: 1vw;
+       }
+        }
+        /* @media screen and (max-width:777px){
+   
+   
+            .hh{
+                width: max-content;
+            }
+            .flx{
+                display: inline-block;
+                display: flex;
+            }
+        } */
         /* @media screen (max-width:7455px) {
             .dfd{
                 width:10% ;
@@ -48,49 +59,4 @@
             display: inline-block; /* Ensure the button maintains its block-level formatting */
             text-align: center; /* Center the text */
         }
-        /* .sframe{
-            position: relative;
-        }
-        .overl{
-            position: absolute;
-            top: 0;
-            background: rgba(0, 0, 0, 0.5);
-            opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 50%; 
-        }
-
-        .sframe:hover .overl {
-            opacity: 1;
-        } */
-        /* .team-membertx {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            max-width: 200px;
-            margin: 10px;
-        }
-        .team-membertx img {
-            display: block;
-            width: 100%;
-            height: auto;
-            border-radius: 50%;
-        }
-        .team-membertx .overlaytx {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.5); 
-            opacity: 0;
-            transition: opacity 0.5s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            border-radius: 50%;
-        }
-        .team-membertx:hover .overlaytx {
-            opacity: 1;
-        } */
+ 
