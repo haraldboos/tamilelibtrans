@@ -91,11 +91,11 @@ class books(models.Model):
 # register(books,booktr)    
 class cart(models.Model):
 
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
-    bookno=models.ForeignKey(books,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,on_delete=models.CASCADE,verbose_name="Ordered User")
+    bookno=models.ForeignKey(books,on_delete=models.CASCADE,verbose_name="Booke Number")
     orderid=models.UUIDField(default=uuid.uuid4,primary_key=True,editable=False)
-    ordertime=models.DateTimeField(auto_now_add=True)
-    booklang=models.CharField(null=False,verbose_name="book languageg u want",default=None,max_length=10)
+    ordertime=models.DateTimeField(auto_now_add=True,verbose_name="Ordered Time")
+    booklang=models.CharField(null=False,verbose_name="Selected book languageg ",default=None,max_length=10)
     bookpr=models.IntegerField(default=None)
     orderstatus=models.BooleanField(default=0,help_text="0-payment not done,1-payment done")
     
@@ -132,9 +132,10 @@ class Language(models.Model):
             
     )
     bookno = models.ForeignKey(books,on_delete=models.CASCADE)
-    booklang = models.CharField(null=False,choices=Language_choices,blank=False,default=None,max_length=8,verbose_name="Enter The File Language")
-    bookpdf = models.FileField(upload_to=uploadbook,null=False,blank=False,verbose_name="Upload In selected Language")
+    booklang = models.CharField(null=False,choices=Language_choices,blank=False,default=None,max_length=8,verbose_name="File Language")
+    bookpdf = models.FileField(upload_to=uploadbook,null=False,blank=False,verbose_name="Book selected Language")
     gdbookid =models.CharField(max_length=255,blank=True,verbose_name="the id for every file from google drive")
+    paid=models.BooleanField(default=False,verbose_name="Paid Book or")
     def uploadtogoogle(self):
         print(self.bookpdf)
         tamilpucredintial=service_account.Credentials.from_service_account_file('taelimodel/tamilpubliclib.json')
@@ -203,15 +204,19 @@ class file(models.Model):
 #     def save(self, *args, **kwargs):
 #         super().save(*args, **kwargs)
 class Adminstration(models.Model):
-    name = models.CharField(max_length=20,null=False,default=None)
-    image=models.ImageField(upload_to=uploadcover,null=False,blank=False,default=None)
-    adid =models.AutoField(primary_key=True)
-    ocation=models.CharField(max_length=20,null=False,default=None)
+    name = models.CharField(max_length=20,null=False,default=None,verbose_name='Person Name')
+    image=models.ImageField(upload_to=uploadcover,null=False,blank=False,default=None,verbose_name="Profile Picture")
+    adid =models.AutoField(primary_key=True,editable=False)
+    ocation=models.CharField(max_length=20,null=False,default=None,verbose_name="Ocation")
 
 class Projects(models.Model):
-    prid =models.AutoField(primary_key=True)
+    prid =models.AutoField(primary_key=True,editable=False)
+    name = models.CharField(max_length=20,null=False,default=None,verbose_name="Project Name")
+    date = models.DateField(verbose_name="Project Date")
+    cover=models.ImageField(upload_to=uploadcover,null=False,blank=False,default=None,verbose_name="Project Cover")
+    file=models.FileField(upload_to=uploadbook,null=False,blank=False,default=None,verbose_name="Project File")
 
-    name = models.CharField(max_length=20,null=False,default=None)
-    date = models.DateField()
-    cover=models.ImageField(upload_to=uploadcover,null=False,blank=False,default=None)
-    file=models.FileField(upload_to=uploadbook,null=False,blank=False,default=None)
+class Banner(models.Model):
+    date=models.DateTimeField(auto_now=True)
+    image=models.ImageField(upload_to=uploadbook,verbose_name="upload A Home Banner")
+    status=models.BooleanField(default=True)
