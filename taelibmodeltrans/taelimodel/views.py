@@ -17,9 +17,10 @@ none = "nothing"
 def home(request):
     # collection= catagory.objects.filter(showstatus=0)
     # ,{"list":collection}
+    abanner=Banner.objects.filter(status=True).order_by('-date')
     bd = Language.objects.all()
     print(request.LANGUAGE_CODE)
-    return render(request,"elibt/hm.html",{"bd":bd})
+    return render(request,"elibt/hm.html",{"bd":bd,"banner":abanner})
 def collection(request):
 
     collection= catagory.objects.filter(showstatus=0)

@@ -11,6 +11,7 @@
     }
     .sool{
         font-size: 2rem; /* Default font size */
+        margin-left: 20%;
     }
     .iig{
       width: 11rem;
@@ -27,7 +28,7 @@
       width: 8rem;
     }
         .sool{
-            margin-left: 0;
+            /* margin-left: 0; */
             text-decoration-color: blue;
             font-size: 1.5rem; /* Smaller screen font size */
         }
@@ -44,7 +45,7 @@
       width: 8rem;
     }
         .sool{
-            margin-left: 0;
+            /* margin-left: 0; */
             text-decoration-color: blue;
             font-size: 0.75rem; /* Smaller screen font size */
         }
@@ -52,33 +53,44 @@
     @media screen and (max-width: 767px){
         .ool{
             margin-left: 0;
-            font-size: 1.5rem; /* Smaller screen font size */
+            font-size: 1.5rem;
+            /* left: 100px; */
+            /* flex-grow: inherit; */
+             /* Smaller screen font size */
+             
         }
         .paragraphhh{
     text-align: start;
+    /* background-color: red;
+    text-decoration-color: black; */
   }
   .iig{
       width: 6rem;
+      /* background-color: antiquewhite; */
     }
         .sool{
-            margin-left: 0;
-            text-decoration-color: blue;
+            /* margin-left: px; */
+            /* text-decoration-color: blue; */
             font-size: 0.5rem; /* Smaller screen font size */
+            /* text-align: center !important; Ensure subtitle is centered */
+
         }
     }
     @media screen and (max-width: 490px){
         .ool{
-            margin-left: 0;
-            font-size: 0.75rem; /* Smaller screen font size */
+          /* background-color: aliceblue; */
+            /* margin-left: 0; */
+            font-size: 1rem; /* Smaller screen font size */
         }
-        .paragraphhh{
+        /* .paragraphhh{
     text-align: start;
-  }
+    background-color: aqua;
+  } */
   .iig{
       width: 6rem;
     }
         .sool{
-            margin-left: 0;
+            /* margi; */
             text-decoration-color: blue;
             font-size: 0.5rem; /* Smaller screen font size */
         }
@@ -86,25 +98,31 @@
 
     @media screen and (max-width: 375px){
         .ool{
-            margin-left: 0;
-            font-size: 0.55rem; 
+            /* margin-left: 0; */
+            font-size: 0.9rem; 
             text-align: center;
             /* Smaller screen font size */
         }
-        .paragraphhh{
-    text-align: center;
-    /* margin-left: -10px; */
+        /* .paragraphhh{ */
+    /* text-align: center;
+     */
+     /* color: aqua; */
+     /* font-size: 1px; */
+     /* text-decoration-line: line-through; */
+    /* margin-left: ; */
 
-  }
+  /* } */
   .iig{
       width: 5rem;
-      text-align: center;
+      /* text-align: center; */
 
     }
         .sool{
             /* margin-left: -; */
             /* text-decoration-color: blue; */
-            font-size: 0.30rem; /* Smaller screen font size */
+            font-size: 0.50rem; /* Smaller screen font size */
+     /* text-decoration-line: line-through; */
+
         }
     }
 </style>
@@ -182,12 +200,12 @@
   </div>
   </div> -->
   <div class="container d-flex row-cols-2 h-fit position-absolute top-50 start-50 translate-middle d-block align-items-center">
-    <div class=" col-md-2 p-3  d-flex d-inline iig justify-content-center align-items-center ">
-      <img src="{% static 'images/logo1.svg' %}"  class="img-fluid " alt="Logo">
+    <div class=" col-2 p-3 h-fit d-flex d-inline iig justify-content-center align-items-center ">
+      <img src="{% static 'images/logo1.svg' %}"  class="img-fluid  " alt="Logo">
     </div>
-    <div class=" col-md-10 container paragraphhh d-inline text-center text-md-start">
+    <div class="col-10 container-fluid paragraphhh d-inline text-start">
       <h1  class="text-white ool  ">{% translate 'Tamil public library' %}</h1>
-      <h3 class="  ml-3   sool text-white ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% translate 'A Gate Way of Knoledge' %}...</h3>
+      <h3 class="    sool text-white">{% translate 'A Gate Way of Knoledge' %}...</h3>
     </div>
   </div>
   </div>
