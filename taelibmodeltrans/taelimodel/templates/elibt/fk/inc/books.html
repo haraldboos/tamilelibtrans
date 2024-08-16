@@ -15,7 +15,7 @@
             
                 <div class="card-title">{{ fk.bookname }}</div>
                 <div class="card-text">
-                   page no: {{fk.bookpageno}}<br>prize :{{fk.bookprize}}
+                   page no: {{fk.bookpageno}}<br>{% if not fk.paid %}Free Book{% else %}prize :{{fk.bookprize}}{% endif %}
                 </div>
                 
             </div>
