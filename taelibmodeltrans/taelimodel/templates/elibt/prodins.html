@@ -34,7 +34,7 @@
                                         <div class="card-body">
                                         <h3 class="text-success fw-bold">Product Name: <div id="bkname">{{ book.bookname }}</div></h3>
                                         <h4><p class="card-text fw-normal"><strong>Description:</strong> <pre><span class="text-start text-wrap word-break fs-6 lh-sm">{{ book.bookdiscrib }}</span></pre></p></h4>
-                                        <h5 class="my-2 "><strong>Price USD $<div id="price">{{book.bookprize}}</div> <strong></h5>
+                                        <h5 class="my-2 "><strong>{% if not book.paid %} This is free Book in All language {% else %}Price USD $<div id="price">{{book.bookprize}}</div>{% endif %} <strong></h5>
                                         <select class="form-select" aria-label="Default select example" id="selelang">
                                                         <option selected>See avilabel language and select it</option>
                                                         {% for i in booklang%}
@@ -42,7 +42,7 @@
                                                         {% endfor %}
                                                        
                                         </select>
-                                        <button class="btn btn-primary" id="adcart"><i class="fa fa-cart"></i>Add to cart</button>
+                                        <button class="btn btn-primary my-2" id="adcart"><i class="fa fa-cart"></i>{% if not book.paid %} book is totaly free add to {% else %}Add to cart {% endif %}</button>
                                         </div>
                                         </div>
                         <!-- </div> -->

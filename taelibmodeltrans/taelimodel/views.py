@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
+from django.db.models import Q
 
 import json
 from django.shortcuts import render,redirect
@@ -90,8 +91,9 @@ def cprodects(request,name):
 
 def uacunt(request):
     if request.user.is_authenticated:
-        if cart.objects.filter(user=request.user,orderstatus=0):
-            upboks= cart.objects.filter(user=request.user,orderstatus=0)
+        # print(cart.objects.filter(user=request.user).filter(Q(orderstatus=True) | Q(bookno__paid=False)).exists())
+        if cart.objects.filter(user=request.user).filter(Q(orderstatus=True) | Q(bookno__paid=False)).exists():
+            upboks= cart.objects.filter(user=request.user).filter(Q(orderstatus=True) | Q(bookno__paid=False))
             print(upboks)
             return render(request,"elibt/fk/user/mu.html", {'books':upboks})
         else:
@@ -191,7 +193,7 @@ def mycart(request):
 
 def pdfviws(request,bookno,booklang):
     if request.user.is_authenticated:
-        if cart.objects.filter(user=request.user,bookno=bookno,booklang=booklang,orderstatus=0).exists():
+        if cart.objects.filter(user=request.user,bookno=bookno,booklang=booklang).filter(Q(orderstatus=True) | Q(bookno__paid=False)).exists():
             print('yes is there')
             book=Language.objects.get(bookno=bookno,booklang=booklang)
             # bk=Language.objects.get(bookno=2,booklang='Tamil')
@@ -204,12 +206,14 @@ def pdfviws(request,bookno,booklang):
         
         else :
             errro='You are restricted to this book'
-            return HttpResponse('<h1>omm</h1>')
+            messages.warning(request,"You are restricted to this book")
+
+            return HttpResponse('<h1>Youe are restricted</h1>')
     else :  
             
-            messages.warning(request,"You Must Have to login to view the book")
+             messages.warning(request,"You Must Have to login to view the book")
 
-            return HttpResponse('<h1>omm</h1>')
+             return redirect('/login')
     
 
 def bsearch_view(request):
@@ -274,13 +278,17 @@ def ourproject(request):
     return render(request,'elibt/ourpoject.html',{'times':project,})
 
 def projectv(request,pid):
-    # if request.user.is_authenticated:
+    if request.user.is_authenticated:
         pdff=Projects.objects.filter(prid=pid)
-        print(pdff)
-        for y in pdff:
-            print(y.name)
+        # print(pdff)
+        # for y in pdff:
+        #     print(y.name)
             # for e in y:
             #     print(e)
         if not pdff:
             return render(request, 'elibt/projectview.html', {'error_message': 'The project not uploaded yet.'})
         return render(request,'elibt/projectview.html',{'pddf':pdff,})
+    else:
+       messages.warning(request,"You Must Have to login to view the Projects")
+       return redirect("/login")
+

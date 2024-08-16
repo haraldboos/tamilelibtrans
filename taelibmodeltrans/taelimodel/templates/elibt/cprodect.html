@@ -32,7 +32,8 @@
             <div class="card-title">{{ fk.booknameen}}</div>
 
             <div class="card-text">
-               {% trans 'Page no' %}: {{fk.bookpageno}}<br>{% trans 'Prize' %} :{{fk.bookprize}}
+
+               {% trans 'Page no' %}: {{fk.bookpageno}}<br>{% if  fk.paid %}{% trans 'Prize' %} :{{fk.bookprize}}{% else %}Free Book{% endif %}
             </div>
             
             </div>

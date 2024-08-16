@@ -3,11 +3,11 @@
 {% block content %}
 <section>
     <div class="container  my-4">
-        <div class="row  ">
-            <form method="post" class="form-inline" action="{% url 'bsearch' %}">
+        <div class=" container">
+            <form method="post" class="form-inline d-flex gap-2 mx-auto" action="{% url 'bsearch' %}">
                 {% csrf_token %}
                 <!-- <div class=""> -->
-                    <input type="text"name="searchc" class="rounded col-lg-10 col-md-9 col-sm-8 ml-4"  placeholder="{% trans 'Search...Books here' %}">
+                    <input aria-label="Search" type="search"name="searchc" class="rounded  form-control "  placeholder="{% trans 'Search...Books here' %}">
 
                 <!-- </div> -->
                 <button type="submit" class="  btn btn-dark col-auto ">{% trans 'Click Here' %}</button>

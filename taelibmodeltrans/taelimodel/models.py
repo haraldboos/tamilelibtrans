@@ -68,7 +68,8 @@ class books(models.Model):
     bookpageno =models.IntegerField(null=True,verbose_name="Enter book page")
     bookprize=models.IntegerField(default=None,verbose_name="Enter the prize of the book")
     bookno =models.IntegerField(editable=False,null=False,default=None,verbose_name="book no auto created")
-    
+    paid=models.BooleanField(default=True,verbose_name="book paid")
+
     def save(self, *args, **kwargs):
       
         if not self.bookno:
@@ -135,7 +136,7 @@ class Language(models.Model):
     booklang = models.CharField(null=False,choices=Language_choices,blank=False,default=None,max_length=8,verbose_name="File Language")
     bookpdf = models.FileField(upload_to=uploadbook,null=False,blank=False,verbose_name="Book selected Language")
     gdbookid =models.CharField(max_length=255,blank=True,verbose_name="the id for every file from google drive")
-    paid=models.BooleanField(default=False,verbose_name="Paid Book or")
+    # paid=models.BooleanField(default=False,verbose_name="Paid Book or")
     def uploadtogoogle(self):
         print(self.bookpdf)
         tamilpucredintial=service_account.Credentials.from_service_account_file('taelimodel/tamilpubliclib.json')
