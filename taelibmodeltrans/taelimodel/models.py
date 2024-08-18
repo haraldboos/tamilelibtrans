@@ -220,6 +220,8 @@ class Adminstration(models.Model):
     image=models.ImageField(upload_to=uploadcover,null=False,blank=False,default=None,verbose_name="Profile Picture")
     adid =models.AutoField(primary_key=True,editable=False)
     ocation=models.CharField(max_length=20,null=False,default=None,verbose_name="Ocation")
+    status=models.BooleanField(default=True)
+
     class Meta:
         # unique_together = ('bookno', 'booklang')
         verbose_name = 'Our Adminastraion'
@@ -231,6 +233,7 @@ class Projects(models.Model):
     date = models.DateField(verbose_name="Project Date")
     cover=models.ImageField(upload_to=uploadcover,null=False,blank=False,default=None,verbose_name="Project Cover")
     file=models.FileField(upload_to=uploadbook,null=False,blank=False,default=None,verbose_name="Project File")
+    status=models.BooleanField(default=True)
     class Meta:
         # unique_together = ('bookno', 'booklang')
         verbose_name = 'Our Projects'
