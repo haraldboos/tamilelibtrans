@@ -43,12 +43,15 @@ def uploadbook(request,filename):
 # @register
 class catagory(models.Model):
     catagoryname = models.CharField(max_length=50,null=False,blank=False,verbose_name="Enter Catagory Name")
-    showstatus  = models.BooleanField(default=False,help_text="0-show,1-Hide",verbose_name="Status of The Book")
+    showstatus  = models.BooleanField(default=False,help_text="0-show,1-Hide",verbose_name="Hide")
     createdate = models.DateTimeField(auto_now_add=True)
 
 
     def __str__(self):
         return self.catagoryname
+    class Meta:
+        verbose_name = 'Books Catagory'
+        verbose_name_plural = 'Books Catagory'
 
 class books(models.Model):
    
@@ -77,14 +80,17 @@ class books(models.Model):
         
         super().save(*args, **kwargs)
     def __str__(self):
-        return str(self.bookno)
+        return f"Book No:{self.bookno} Book Name '{self.bookname}'  "
+
  
     # def save(self, *args, **kwargs):
     #     if not self.bookid:
     #         self.bookid = bookidget()
     #     super().save(*args, **kwargs)
 
-
+    class Meta:
+        verbose_name = 'Books '
+        verbose_name_plural = 'Books'
 
 # @register(books)
   
@@ -108,7 +114,9 @@ class cart(models.Model):
 
     def __str__(self):
         return str(self.orderid)
-
+    class Meta:
+        verbose_name = 'Book Order In Cart'
+        verbose_name_plural = 'Book Order In Cart'
 class Language(models.Model):
     # permission = GoogleDriveFilePermission(
     # GoogleDrivePermissionRole.READER,
@@ -132,7 +140,7 @@ class Language(models.Model):
             ('French','French')
             
     )
-    bookno = models.ForeignKey(books,on_delete=models.CASCADE)
+    bookno = models.ForeignKey(books,on_delete=models.CASCADE,verbose_name="Book Number")
     booklang = models.CharField(null=False,choices=Language_choices,blank=False,default=None,max_length=8,verbose_name="File Language")
     bookpdf = models.FileField(upload_to=uploadbook,null=False,blank=False,verbose_name="Book selected Language")
     gdbookid =models.CharField(max_length=255,blank=True,verbose_name="the id for every file from google drive")
@@ -150,11 +158,11 @@ class Language(models.Model):
         miyaboobs=MediaFileUpload(self.bookpdf.path,resumable=True)
         room = sex.files().create(body=fmesex, media_body=miyaboobs).execute()
         filepath = self.bookpdf
-        print(filepath)
+        # print(filepath)
         # fid = self.fiestorg._get_file_id(filepath)
 
         self.gdbookid=room.get('id')
-        print(self.gdbookid)
+        # print(self.gdbookid)
         permission = {
             'type':'anyone',
             'role':'reader',
@@ -166,7 +174,7 @@ class Language(models.Model):
 
             
         }
-        sex.permissions().create(fileId= self.gdbookid, body=permission).execute()
+        sex.permissions().create(fileId=self.gdbookid, body=permission).execute()
         
     def save(self, *args, **kwargs):
         #     self.uploadtogoogle()
@@ -177,18 +185,21 @@ class Language(models.Model):
         #     if self.gdbookid is None:
         #         print("Google Drive file ID is None, cannot assign to gdbookid.")
         if not self.pk: 
-            print('11') # Check if the instance is being created
+            # print('11') # Check if the instance is being created
             super().save(*args, **kwargs)  # Call save to generate the primary key
 
         self.uploadtogoogle()  # Upload the file to Google Drive
-        print('12')
+        # print('12')
     # Now that the file has been uploaded, save the instance with the gdbookid
         super().save(*args, **kwargs)
 
     class Meta:
-        unique_together = ('bookno', 'booklang') 
+        unique_together = ('bookno', 'booklang')
+        verbose_name = 'Books In Languages'
+        verbose_name_plural = 'Books In Languages'
+         
     def __str__(self):
-        return str(self.bookno)
+        return f"{self.bookno} in {self.booklang} "
 
 # fiestorg= GoogleDriveStorage(permissions=(permission,))
 class file(models.Model):
@@ -205,10 +216,14 @@ class file(models.Model):
 #     def save(self, *args, **kwargs):
 #         super().save(*args, **kwargs)
 class Adminstration(models.Model):
-    name = models.CharField(max_length=20,null=False,default=None,verbose_name='Person Name')
+    name = models.CharField(max_length=30,null=False,default=None,verbose_name='Person Name')
     image=models.ImageField(upload_to=uploadcover,null=False,blank=False,default=None,verbose_name="Profile Picture")
     adid =models.AutoField(primary_key=True,editable=False)
     ocation=models.CharField(max_length=20,null=False,default=None,verbose_name="Ocation")
+    class Meta:
+        # unique_together = ('bookno', 'booklang')
+        verbose_name = 'Our Adminastraion'
+        verbose_name_plural = 'Our Adminastraion'
 
 class Projects(models.Model):
     prid =models.AutoField(primary_key=True,editable=False)
@@ -216,8 +231,38 @@ class Projects(models.Model):
     date = models.DateField(verbose_name="Project Date")
     cover=models.ImageField(upload_to=uploadcover,null=False,blank=False,default=None,verbose_name="Project Cover")
     file=models.FileField(upload_to=uploadbook,null=False,blank=False,default=None,verbose_name="Project File")
-
+    class Meta:
+        # unique_together = ('bookno', 'booklang')
+        verbose_name = 'Our Projects'
+        verbose_name_plural = 'Our Projects'
 class Banner(models.Model):
     date=models.DateTimeField(auto_now=True)
     image=models.ImageField(upload_to=uploadbook,verbose_name="upload A Home Banner")
     status=models.BooleanField(default=True)
+    # quote=models.CharField(max_length=40,verbose_name="quote",blank=True)
+
+    # def __str__(self):
+    #     return f"Banner {self.id} - {self.quote}"
+    class Meta:
+        # unique_together = ('bookno', 'booklang')
+        verbose_name = 'Home Banner'
+        verbose_name_plural = 'Home Banner'
+class Oursponser(models.Model):
+    logo=models.ImageField(upload_to=uploadbook,verbose_name="Sponser'd Logo",default=None)
+    name=models.CharField(max_length=20,verbose_name="Sponsord Name",default=None)
+    date=models.DateTimeField(auto_now=True)
+    status=models.BooleanField(default=True)
+    class Meta:
+        # unique_together = ('bookno', 'booklang')
+        verbose_name = 'Our Sponser'
+        verbose_name_plural = 'Our Sponser'
+class BannerQuote(models.Model):
+    quote=models.CharField(max_length=60,default=None,verbose_name="Quote")
+    date=models.DateTimeField(auto_now=True)
+    status=models.BooleanField(default=True)
+
+    class Meta:
+        # unique_together = ('bookno', 'booklang')
+        verbose_name = 'Banner Quote'
+        verbose_name_plural = 'Banner Quote'
+
