@@ -18,9 +18,9 @@ none = "nothing"
 def home(request):
     # collection= catagory.objects.filter(showstatus=0)
     # ,{"list":collection}
-    abanner=Banner.objects.filter(status=True).order_by('-date')
+    abanner=Banner.objects.filter(status=True).order_by('-date')[0:5]
     bd = Language.objects.all()
-    print(request.LANGUAGE_CODE)
+    # print(request.LANGUAGE_CODE)
     return render(request,"elibt/hm.html",{"bd":bd,"banner":abanner})
 def collection(request):
 
@@ -29,11 +29,11 @@ def collection(request):
     return render(request,"elibt/coll.html",{"list":collection})
 
 def swlanguage(request, language):
-    print(language)
+    # print(language)
     activate(language)
     # pass
     cur_lang=get_language()
-    print(cur_lang)
+    # print(cur_lang)
     activate(language)
     return redirect("language","/")
     # print('oooma')
@@ -68,7 +68,7 @@ def logout_pg(request):
 def register(request):
     uf=userform()
     if request.method=='POST':
-        print(request)
+        # print(request)
         uf=userform(request.POST)
         if uf.is_valid():
             uf.save()
@@ -79,7 +79,7 @@ def register(request):
     return render(request,"elibt/register.html",{'form':uf})
 
 def cprodects(request,name):
-    print(request.LANGUAGE_CODE)
+    # print(request.LANGUAGE_CODE)
     activate(request.LANGUAGE_CODE)
     if catagory.objects.filter(catagoryname=name,showstatus=0):
         cbook =books.objects.filter(catgryname__catagoryname=name)
@@ -94,7 +94,7 @@ def uacunt(request):
         # print(cart.objects.filter(user=request.user).filter(Q(orderstatus=True) | Q(bookno__paid=False)).exists())
         if cart.objects.filter(user=request.user).filter(Q(orderstatus=True) | Q(bookno__paid=False)).exists():
             upboks= cart.objects.filter(user=request.user).filter(Q(orderstatus=True) | Q(bookno__paid=False))
-            print(upboks)
+            # print(upboks)
             return render(request,"elibt/fk/user/mu.html", {'books':upboks})
         else:
             messages.warning(request,"ur account is empty buy any books")
@@ -154,17 +154,17 @@ def mycart(request):
 
             if request.user.is_authenticated:
                 fk = json.loads(request.body.decode('utf-8'))
-                print(fk)
-                print(request)
+                # print(fk)
+                # print(request)
                 booklanguage=fk['booklang']
                 # bookname=fk['bknam']
                 bookno=fk['bookno']
                 prize = fk['prize']
                 userid = request.user.id
                 username=request.user
-                print(bookno,prize)
-                print(userid)
-                print(username)
+                # print(bookno,prize)
+                # print(userid)
+                # print(username)
                 
                 book_status = books.objects.get(bookno=bookno)
                 if book_status:
@@ -194,10 +194,10 @@ def mycart(request):
 def pdfviws(request,bookno,booklang):
     if request.user.is_authenticated:
         if cart.objects.filter(user=request.user,bookno=bookno,booklang=booklang).filter(Q(orderstatus=True) | Q(bookno__paid=False)).exists():
-            print('yes is there')
+            # print('yes is there')
             book=Language.objects.get(bookno=bookno,booklang=booklang)
             # bk=Language.objects.get(bookno=2,booklang='Tamil')
-            print(book)
+            # print(book)
             # print(bk.bookpdf,bk)
 
 
@@ -267,7 +267,8 @@ def payment(request,ammount,order):
 def ourteams(request):
     fffk=range(9)
     ad=Adminstration.objects.all()
-    return render(request,'elibt/teams.html',{'times':ad})
+    spon=Adminstration.objects.all()
+    return render(request,'elibt/teams.html',{'times':ad,'sponser':spon})
 def webhook(request):
     print(request)
 def ourproject(request):

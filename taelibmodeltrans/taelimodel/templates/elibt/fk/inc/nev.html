@@ -270,15 +270,12 @@
             {% get_current_language as LANGUAGE_CODE %}
             {% get_available_languages as LANGUAGES %}
             {% get_language_info_list for LANGUAGES as languages %}
-            {% for lang in  languages %}
-            <li>
-              <a class="dropdown-item" href="/{{ lang.code }}/">
-                {{ lang.name_local }}
-              </a>
-              <!-- <a class="dropdown-item" href="{ lang.code %}">
-                {{ lang.name_local }}
-              </a> -->
-            </li>
+            {% for lang in languages %}
+                <li>
+                    <a class="dropdown-item" href="/{{ lang.code }}/">
+                        {{ lang.name_local }}
+                    </a>
+                </li>
             {% endfor %}
             <!-- <li><a class="dropdown-item" href="{% url 'swlanguage' 'en' %}">{% trans 'English' %}</a></li>
             <li><a class="dropdown-item" href="{% url 'swlanguage' 'ta' %}">{% trans 'Tamil' %}</a></li>

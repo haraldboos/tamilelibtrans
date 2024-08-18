@@ -1,5 +1,5 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import books,catagory
+from .models import books,catagory,Banner,BannerQuote
 
 @register(books)
 class BookTranslationOptions(TranslationOptions):
@@ -8,3 +8,7 @@ class BookTranslationOptions(TranslationOptions):
 @register(catagory)
 class catagorytranslationoptions(TranslationOptions):
     fields=('catagoryname',)
+
+@register(BannerQuote)
+class bannerQuotetranslationoptions(TranslationOptions):
+    fields = ('quote',)

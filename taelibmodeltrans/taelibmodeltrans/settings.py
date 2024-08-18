@@ -13,8 +13,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
 import os
+# from .custom_language import *
 
 
+import django.conf.locale
 
 
 
@@ -140,20 +142,67 @@ USE_L10N = True
 
 USE_TZ = True
 
+DEFAULT_CHARSET = 'utf-8'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 # STATIC_URL = 'static/'
-LANGUAGES = (
+EXTRA_LANG_INFO = {
+    'en': {
+        'bidi': False,
+        'code': 'en',
+        'name': 'English',
+        'name_local': 'English',
+    },
+    'ta': {
+        'bidi': False,
+        'code': 'ta',
+        'name': 'Tamil',
+        'name_local': 'தமிழ்',
+    },
+    'de': {
+        'bidi': False,
+        'code': 'de',
+        'name': 'German',
+        'name_local': 'Deutsch',
+    },
+    'fr': {
+        'bidi': False,
+        'code': 'fr',
+        'name': 'French',
+        'name_local': 'Français',
+    },
+    'it': {
+        'bidi': False,
+        'code': 'it',
+        'name': 'Italian',
+        'name_local': 'Italiano',
+    },
+    'si': {
+        'bidi': False,
+        'code': 'si',
+        'name': 'Sinhala',
+        'name_local': 'සිංහල',
+    },
+}
+
+LANG_INFO = dict(EXTRA_LANG_INFO.items())
+django.conf.locale.LANG_INFO = LANG_INFO
+
+LANGUAGES = [
     ("en", _("English")),
     ("ta", _("Tamil")),
     ("de", _("German")),
     ("fr", _("French")),
     ("it", _("Italy")),
+    # ("en-US", _("English")),
+
+    ("si", _("Sinhala")),
 
     
-)
+]
+
 LOCALE_PATHS = [
     BASE_DIR / 'locale/',
 ]

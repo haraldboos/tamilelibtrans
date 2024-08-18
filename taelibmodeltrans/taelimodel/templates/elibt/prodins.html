@@ -2,6 +2,12 @@
 {% load i18n %}
 {% load rosetta %}
 {% block content %}
+
+<style>
+        .hidden {
+  display: none;
+}
+</style>
 <div class="">
 <section class="bg-light py-4 my-5">
         <div class="container">
@@ -34,7 +40,7 @@
                                         <div class="card-body">
                                         <h3 class="text-success fw-bold">Product Name: <div id="bkname">{{ book.bookname }}</div></h3>
                                         <h4><p class="card-text fw-normal"><strong>Description:</strong> <pre><span class="text-start text-wrap word-break fs-6 lh-sm">{{ book.bookdiscrib }}</span></pre></p></h4>
-                                        <h5 class="my-2 "><strong>{% if not book.paid %} This is free Book in All language {% else %}Price USD $<div id="price">{{book.bookprize}}</div>{% endif %} <strong></h5>
+                                        <h5 class="my-2 "><strong>{% if not book.paid %} This is free Book in All language<div class="hidden" id="price">{{book.bookprize}}</div> {% else %}Price USD $<div id="price">{{book.bookprize}}</div>{% endif %} <strong></h5>
                                         <select class="form-select" aria-label="Default select example" id="selelang">
                                                         <option selected>See avilabel language and select it</option>
                                                         {% for i in booklang%}
