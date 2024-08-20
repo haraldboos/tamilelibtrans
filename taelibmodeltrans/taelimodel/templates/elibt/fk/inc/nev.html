@@ -3,6 +3,36 @@
 {% load rosetta %}
 {{ link_html|safe }}
 <style>
+     div.en {
+      font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  /* font-weight: <weight>; */
+  font-style: normal;
+        }
+
+        div.ta {
+          /* font-family: "Playfair Display", serif; */
+          font-family: "Anek Tamil", sans-serif;
+
+          font-optical-sizing: auto;
+  /* font-weight: <weight>; */
+  font-style: normal;
+        }
+        div.it {
+          font-family: "Playfair Display", serif;
+        }
+
+        div.fr {
+          font-family: "Playfair Display", serif;
+        }
+        div.de {
+          font-family: "Playfair Display", serif;
+        }
+        div.si{
+          font-family: "Maname", serif;
+
+        }
+
   .paragraphhh{
     text-align: start;
   }
@@ -100,7 +130,7 @@
         .ool{
             /* margin-left: 0; */
             font-size: 0.9rem; 
-            text-align: center;
+            /* text-align: center; */
             /* Smaller screen font size */
         }
         /* .paragraphhh{ */
@@ -182,7 +212,7 @@
     <a href="{% url 'viewcart' %}"><button type="button" class="btn btn-primary m-2 justify-content-end "><i class="bi bi-cart-fill"></i> my card</button></a>
 {% endif %} -->
 <strong>
-
+<div class="{% get_current_language as LANGUAGE_CODE %} {{ LANGUAGE_CODE }}">
 <div class=" w-100 container  position-relative h-fit p-1 " style="position: relative; top: 0;">
   <img src="{% static 'images/bann1.svg' %}" class="w-100 dfd rounded" style="  z-index: -3;" alt="Background">
 
@@ -199,7 +229,7 @@
     </div>
   </div>
   </div> -->
-  <div class="container d-flex row-cols-2 h-fit position-absolute top-50 start-50 translate-middle d-block align-items-center">
+  <div class="container d-flex row-cols-2 row-12 h-fit position-absolute top-50 start-50 translate-middle d-block align-items-center">
     <div class=" col-2 p-3 h-fit d-flex d-inline iig justify-content-center align-items-center ">
       <img src="{% static 'images/logo1.svg' %}"  class="img-fluid  " alt="Logo">
     </div>
@@ -209,6 +239,7 @@
     </div>
   </div>
   </div>
+</div>
 <div class="bg-dark container rounded">
   <!-- <div class="container-fluid" style="">
   <img src="{% static 'images/ban.svg' %}" style="left: 0; width: 100%; height: 100%; z-index: -1;" alt="Background">
@@ -227,22 +258,22 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav mx-start">
-          <a class="nav-link active mx-2" aria-current="page" href="{% url 'home' %}"><i class="bi bi-house-fill"></i> {% trans "home" %}</a>
+          <a class="nav-link btn active btn-dark mx-1 gap-2 d-flex align-items-center " aria-current="page" href="{% url 'home' %}"><i class="bi bi-house-fill"></i><span> {% trans "home" %}</span> </a>
           {% if request.user.is_authenticated %}
-            <a class="nav-link justify-align mx-2" href="{% url 'acount' %}"><i class="bi bi-person-badge"></i> {{request.user}}</a>
-            <a class="nav-link mx-2" href="{% url 'logout' %}"><i class="bi bi-box-arrow-left"></i> {% translate "Logout" %}</a>
+            <a class="nav-link btn btn-dark justify-align mx-1 text-wrap  d-flex align-items-center gap-2" href="{% url 'acount' %}"><i class="bi bi-person-badge"></i><span> {{request.user}}</span> </a>
+            <a class="nav-link btn btn-dark flex mx-1 text-wrap  d-flex align-items-center gap-2" href="{% url 'logout' %}"><i class="bi bi-box-arrow-left"></i><span> {% translate "Logout" %}</span> </a>
           {% else %}
-            <a class="nav-link mx-2" href="{% url 'register' %}"><i class="fa fa-users"></i> {% translate "register" %}</a>
-            <a class="nav-link mx-2" href="{% url 'login' %}"><i class="bi bi-box-arrow-in-right"></i> {% translate "login" %}</a>
+            <a class="nav-link btn btn-dark mx-1 text-wrap  d-flex align-items-center gap-2" href="{% url 'register' %}"><i class="fa fa-users"></i><span> {% translate "register" %}</span> </a>
+            <a class="nav-link btn btn-dark mx-1 text-wrap  d-flex align-items-center gap-2" href="{% url 'login' %}"><i class="bi bi-box-arrow-in-right"></i><span> {% translate "login" %}</span> </a>
           {% endif %}
-          <a class="nav-link mx-2 font-weight-bold" href="{% url 'coll' %}"><i class="bi bi-collection"></i> {% translate "collections" %}</a>
-          <a class="nav-link mx-2" href="{% url 'teams' %}"><i class="fa fa-users"></i> {% translate "Our Team" %}</a>
-          <a class="nav-link mx-2" href="{% url 'project' %}"><i class="fa fa-users"></i> {% translate "Our Projects" %}</a>
+          <a class="nav-link btn  btn-dark mx-1 text-wrap  d-flex align-items-center gap-2" href="{% url 'coll' %}"><i class="bi bi-collection "></i><span> {% translate "collections" %}</span></a>
+          <a class="nav-link btn  btn-dark mx-1 text-wrap  d-flex align-items-center gap-2" href="{% url 'teams' %}"><i class="fa fa-users"></i><span> {% translate "Our Team" %}</span></a>
+          <a class="nav-link btn  btn-dark mx-1 text-wrap  d-flex align-items-center gap-2" href="{% url 'project' %}"><i class="bi bi-kanban"></i><span> {% translate "Our Projects" %}</span></a>
 
         </div>
         {% if request.user.is_authenticated %}
           <a href="{% url 'viewcart' %}">
-            <button type="button" class="btn btn-dark m-2 justify-content-end">
+            <button type="button" class="btn text-wrap  btn-dark mx-1 gap-2  d-flex align-items-center ">
               <i class="bi bi-cart-fill"></i> <span>{% trans 'my cart' %}</span>
             </button>
           </a>
@@ -277,11 +308,7 @@
                     </a>
                 </li>
             {% endfor %}
-            <!-- <li><a class="dropdown-item" href="{% url 'swlanguage' 'en' %}">{% trans 'English' %}</a></li>
-            <li><a class="dropdown-item" href="{% url 'swlanguage' 'ta' %}">{% trans 'Tamil' %}</a></li>
-            <li><a class="dropdown-item" href="{% url 'swlanguage' 'nl' %}">{% trans 'Dutch' %}</a></li>
-            <li><a class="dropdown-item" href="{% url 'swlanguage' 'fr' %}">{% trans 'French' %}</a></li> -->
-            <!-- Add more language options as needed -->
+
           </ul>
         </div>
         

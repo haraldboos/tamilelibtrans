@@ -1,8 +1,10 @@
 {% extends 'elibt/fk/layout/mai.html' %}
+{% load i18n %}
+{% load rosetta %}
 {% block content %}
 {% load static %}
 <div class="container">
-    <h2 class="h2 text-center text-white my-3">OUR PROJECTS</h2>
+    <h2 class="h2 text-center text-white my-3">{%trans 'OUR PROJECTS' %}</h2>
 
     <div class="row row-cols-lg-5 row-cols-md-3 p-3 row-cols-sm-2 row-cols-xm-2  justify-content-center">
         <!-- <div class="row-cols-8"> -->

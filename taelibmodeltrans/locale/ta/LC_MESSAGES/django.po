@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-18 02:06+0530\n"
-"PO-Revision-Date: 2024-06-23 02:03+0530\n"
+"POT-Creation-Date: 2024-08-20 16:48+0530\n"
+"PO-Revision-Date: 2024-08-20 16:23+0530\n"
 "Last-Translator:   <rav1@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -20,16 +20,14 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
 #: taelibmodeltrans/settings.py:194
-#: taelimodel/templates/elibt/fk/inc/nev.html:169
-#: taelimodel/templates/elibt/fk/inc/nev.html:256
-#: taelimodel/templates/elibt/fk/inc/nev.html:280
+#: taelimodel/templates/elibt/fk/inc/nev.html:199
+#: taelimodel/templates/elibt/fk/inc/nev.html:287
 msgid "English"
 msgstr "ஆங்கிலம்"
 
 #: taelibmodeltrans/settings.py:195
-#: taelimodel/templates/elibt/fk/inc/nev.html:170
-#: taelimodel/templates/elibt/fk/inc/nev.html:257
-#: taelimodel/templates/elibt/fk/inc/nev.html:281
+#: taelimodel/templates/elibt/fk/inc/nev.html:200
+#: taelimodel/templates/elibt/fk/inc/nev.html:288
 msgid "Tamil"
 msgstr "தமிழ்"
 
@@ -38,90 +36,88 @@ msgid "German"
 msgstr "ஜெர்மன்"
 
 #: taelibmodeltrans/settings.py:197
-#: taelimodel/templates/elibt/fk/inc/nev.html:172
-#: taelimodel/templates/elibt/fk/inc/nev.html:259
-#: taelimodel/templates/elibt/fk/inc/nev.html:283
+#: taelimodel/templates/elibt/fk/inc/nev.html:202
+#: taelimodel/templates/elibt/fk/inc/nev.html:290
 msgid "French"
 msgstr "பிரெஞ்சு"
 
 #: taelibmodeltrans/settings.py:198
 msgid "Italy"
-msgstr ""
+msgstr "Italia"
 
 #: taelibmodeltrans/settings.py:201
 msgid "Sinhala"
-msgstr ""
+msgstr "සිංහල"
 
 #: taelimodel/templates/elibt/cprodect.html:36
 msgid "Page no"
-msgstr ""
+msgstr "பக்க எண்"
 
 #: taelimodel/templates/elibt/cprodect.html:36
 msgid "Prize"
-msgstr ""
+msgstr "விலை"
 
 #: taelimodel/templates/elibt/fk/inc/footer.html:132
-#: taelimodel/templates/elibt/fk/inc/nev.html:132
-#: taelimodel/templates/elibt/fk/inc/nev.html:136
-#: taelimodel/templates/elibt/fk/inc/nev.html:196
-#: taelimodel/templates/elibt/fk/inc/nev.html:207
-#: taelimodel/templates/elibt/fk/inc/nev.html:219
-#: taelimodel/templates/elibt/fk/inc/nev.html:224
+#: taelimodel/templates/elibt/fk/inc/nev.html:162
+#: taelimodel/templates/elibt/fk/inc/nev.html:166
+#: taelimodel/templates/elibt/fk/inc/nev.html:226
+#: taelimodel/templates/elibt/fk/inc/nev.html:237
+#: taelimodel/templates/elibt/fk/inc/nev.html:250
+#: taelimodel/templates/elibt/fk/inc/nev.html:255
 #: taelimodel/templates/elibt/fk/layout/mai.html:17
 msgid "Tamil public library"
-msgstr "தமிழ் பொது நூலகம்"
+msgstr "தமிழ் பொது நூலகம் "
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:142
-#: taelimodel/templates/elibt/fk/inc/nev.html:230
+#: taelimodel/templates/elibt/fk/inc/nev.html:172
+#: taelimodel/templates/elibt/fk/inc/nev.html:261
 #: taelimodel/templates/elibt/prodins.html:16
 msgid "home"
-msgstr "வீடு"
+msgstr "முகப்பு "
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:146
-#: taelimodel/templates/elibt/fk/inc/nev.html:233
+#: taelimodel/templates/elibt/fk/inc/nev.html:176
+#: taelimodel/templates/elibt/fk/inc/nev.html:264
 msgid "Logout"
 msgstr "வெளியேறு"
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:150
-#: taelimodel/templates/elibt/fk/inc/nev.html:235
+#: taelimodel/templates/elibt/fk/inc/nev.html:180
+#: taelimodel/templates/elibt/fk/inc/nev.html:266
 msgid "register"
 msgstr "பதிவு"
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:151
-#: taelimodel/templates/elibt/fk/inc/nev.html:236
+#: taelimodel/templates/elibt/fk/inc/nev.html:181
+#: taelimodel/templates/elibt/fk/inc/nev.html:267
 msgid "login"
-msgstr "உள்நுழைய"
+msgstr "உள் நுழைய "
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:153
-#: taelimodel/templates/elibt/fk/inc/nev.html:238
+#: taelimodel/templates/elibt/fk/inc/nev.html:183
+#: taelimodel/templates/elibt/fk/inc/nev.html:269
 msgid "collections"
-msgstr "தொகுதி "
+msgstr "சேகரிப்புகள் "
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:171
-#: taelimodel/templates/elibt/fk/inc/nev.html:258
-#: taelimodel/templates/elibt/fk/inc/nev.html:282
+#: taelimodel/templates/elibt/fk/inc/nev.html:201
+#: taelimodel/templates/elibt/fk/inc/nev.html:289
 msgid "Dutch"
 msgstr "டச்சு"
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:197
-#: taelimodel/templates/elibt/fk/inc/nev.html:208
+#: taelimodel/templates/elibt/fk/inc/nev.html:227
+#: taelimodel/templates/elibt/fk/inc/nev.html:238
 msgid "A Gate Way of Knoledge"
-msgstr "அறிவுக்கு ஒரு வாசல்"
+msgstr "அறிவுக்கு ஒரு வாசல்."
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:239
+#: taelimodel/templates/elibt/fk/inc/nev.html:270
 msgid "Our Team"
-msgstr ""
+msgstr "எங்கள் குழு"
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:240
+#: taelimodel/templates/elibt/fk/inc/nev.html:271
 msgid "Our Projects"
-msgstr ""
+msgstr "எங்கள் திட்டங்கள்"
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:246
+#: taelimodel/templates/elibt/fk/inc/nev.html:277
 msgid "my cart"
 msgstr "என் அட்டை"
 
-#: taelimodel/templates/elibt/fk/inc/nev.html:252
-#: taelimodel/templates/elibt/fk/inc/nev.html:266
+#: taelimodel/templates/elibt/fk/inc/nev.html:283
+#: taelimodel/templates/elibt/fk/inc/nev.html:297
 msgid "Click to Select Language"
 msgstr "மொழியைத் தேர்ந்தெடுக்க "
 
@@ -131,19 +127,31 @@ msgstr ""
 
 #: taelimodel/templates/elibt/fk/inc/search.html:13
 msgid "Click Here"
-msgstr ""
+msgstr "இங்கே கிளிக் செய்யவும்"
 
+#: taelimodel/templates/elibt/fk/user/mu.html:13
+#, fuzzy
+#| msgid "collections"
+msgid "My Collections"
+msgstr "தொகுதி "
+
+#: taelimodel/templates/elibt/loginsite.html:23
 #: taelimodel/templates/elibt/register.html:23
 msgid "User Name"
 msgstr "பயனர் பெயர்"
 
-#: taelimodel/templates/elibt/register.html:30
-msgid "User Email"
-msgstr "பயனர் மின்னஞ்சல்"
-
+#: taelimodel/templates/elibt/loginsite.html:27
 #: taelimodel/templates/elibt/register.html:37
 msgid "Password"
 msgstr "கடவுச்சொல்"
+
+#: taelimodel/templates/elibt/ourpoject.html:7
+msgid "OUR PROJECTS"
+msgstr "எங்கள் திட்டங்கள்"
+
+#: taelimodel/templates/elibt/register.html:30
+msgid "User Email"
+msgstr "பயனர் மின்னஞ்சல்"
 
 #: taelimodel/templates/elibt/register.html:44
 msgid "Conform Password"
@@ -160,5 +168,16 @@ msgid "Alredy user ?"
 msgstr "ஏற்கனவே பயனர்"
 
 #: taelimodel/templates/elibt/register.html:52
-msgid "Login Now"
-msgstr "இப்போது உள்நுழையவும்"
+msgid "Login"
+msgstr "உள் நுழைய "
+
+#: taelimodel/templates/elibt/teams.html:95
+msgid "Our Team Members"
+msgstr "எங்கள் குழு உறுப்பினர்கள்"
+
+#: taelimodel/templates/elibt/teams.html:124
+msgid "Our Sponsors"
+msgstr "எங்கள் ஆதரவாளர்கள்"
+
+#~ msgid "Login Now"
+#~ msgstr "இப்போது உள்நுழையவும்"

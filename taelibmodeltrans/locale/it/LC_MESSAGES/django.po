@@ -8,14 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-20 15:41+0530\n"
-"PO-Revision-Date: 2024-08-20 17:09+0530\n"
+"POT-Creation-Date: 2024-08-20 16:50+0530\n"
+"PO-Revision-Date: 2024-08-20 17:00+0530\n"
 "Last-Translator:   <rav1@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
 #: taelibmodeltrans/settings.py:194
@@ -65,13 +66,13 @@ msgstr ""
 #: taelimodel/templates/elibt/fk/inc/nev.html:255
 #: taelimodel/templates/elibt/fk/layout/mai.html:17
 msgid "Tamil public library"
-msgstr "දෙමළ මහජන පුස්තකාලය "
+msgstr "Biblioteca pubblica Tamil"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:172
 #: taelimodel/templates/elibt/fk/inc/nev.html:261
 #: taelimodel/templates/elibt/prodins.html:16
 msgid "home"
-msgstr "නිවස"
+msgstr "La casa"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:176
 #: taelimodel/templates/elibt/fk/inc/nev.html:264
@@ -81,17 +82,17 @@ msgstr ""
 #: taelimodel/templates/elibt/fk/inc/nev.html:180
 #: taelimodel/templates/elibt/fk/inc/nev.html:266
 msgid "register"
-msgstr "ලියාපදිංචි කරන්න"
+msgstr "Registrazione"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:181
 #: taelimodel/templates/elibt/fk/inc/nev.html:267
 msgid "login"
-msgstr "ඇතුල් වන්න"
+msgstr "Accesso"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:183
 #: taelimodel/templates/elibt/fk/inc/nev.html:269
 msgid "collections"
-msgstr "එකතු කිරීම"
+msgstr "Collezioni"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:201
 #: taelimodel/templates/elibt/fk/inc/nev.html:289
@@ -101,15 +102,15 @@ msgstr ""
 #: taelimodel/templates/elibt/fk/inc/nev.html:227
 #: taelimodel/templates/elibt/fk/inc/nev.html:238
 msgid "A Gate Way of Knoledge"
-msgstr "දැනුම සඳහා  දොරටුවකි"
+msgstr "Una porta d'accesso alla conoscenza"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:270
 msgid "Our Team"
-msgstr "අපේ කණ්ඩායම"
+msgstr "Il nostro team"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:271
 msgid "Our Projects"
-msgstr "අපගේ ව්යාපෘති"
+msgstr "I nostri progetti"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:277
 msgid "my cart"
@@ -118,7 +119,7 @@ msgstr ""
 #: taelimodel/templates/elibt/fk/inc/nev.html:283
 #: taelimodel/templates/elibt/fk/inc/nev.html:297
 msgid "Click to Select Language"
-msgstr "භාෂාව තේරීමට ක්ලික් කරන්න"
+msgstr "Scegliere la lingua"
 
 #: taelimodel/templates/elibt/fk/inc/search.html:10
 msgid "Search...Books here"
@@ -135,12 +136,12 @@ msgstr ""
 #: taelimodel/templates/elibt/loginsite.html:23
 #: taelimodel/templates/elibt/register.html:23
 msgid "User Name"
-msgstr "පරිශීලක නාමය"
+msgstr "Nome utente"
 
 #: taelimodel/templates/elibt/loginsite.html:27
 #: taelimodel/templates/elibt/register.html:37
 msgid "Password"
-msgstr "මුරපදය"
+msgstr "Password di accesso"
 
 #: taelimodel/templates/elibt/ourpoject.html:7
 msgid "OUR PROJECTS"
@@ -148,15 +149,15 @@ msgstr ""
 
 #: taelimodel/templates/elibt/register.html:30
 msgid "User Email"
-msgstr "පරිශීලක ඊමේල්"
+msgstr "Email utente"
 
 #: taelimodel/templates/elibt/register.html:44
 msgid "Conform Password"
-msgstr "මුරපදය අනුකූල වේ"
+msgstr "Password di conformità"
 
 #: taelimodel/templates/elibt/register.html:50
 msgid "Register"
-msgstr "ලියාපදිංචි කරන්න"
+msgstr "Registrazione"
 
 #: taelimodel/templates/elibt/register.html:52
 msgid "Alredy user ?"
@@ -164,12 +165,12 @@ msgstr ""
 
 #: taelimodel/templates/elibt/register.html:52
 msgid "Login"
-msgstr "ඇතුල් වන්න"
+msgstr "Accesso"
 
 #: taelimodel/templates/elibt/teams.html:95
 msgid "Our Team Members"
-msgstr "අපේ කණ්ඩායමේ සාමාජිකයින්"
+msgstr "I membri del nostro team"
 
 #: taelimodel/templates/elibt/teams.html:124
 msgid "Our Sponsors"
-msgstr "අපගේ අනුග්‍රාහකයින්"
+msgstr "I nostri sponsor"

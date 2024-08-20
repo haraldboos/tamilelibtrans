@@ -18,12 +18,51 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kavivanar&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Maname&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pavanam&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@100..800&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+<style>
+        body.en {
+      font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  /* font-weight: <weight>; */
+  font-style: normal;
+        }
+
+        body.ta {
+          /* font-family: "Playfair Display", serif; */
+          font-family: "Anek Tamil", sans-serif;
+
+          font-optical-sizing: auto;
+  /* font-weight: <weight>; */
+  font-style: normal;
+        }
+        body.it {
+          font-family: "Playfair Display", serif;
+        }
+
+        body.fr {
+          font-family: "Playfair Display", serif;
+        }
+        body.de {
+          font-family: "Playfair Display", serif;
+        }
+        body.si{
+          font-family: "Maname", serif;
+
+        }
+</style>
+
 </head>
-<body class="top-0 "style="background-color: #3e4551">
+<body class="top-0 {% get_current_language as LANGUAGE_CODE %} {{ LANGUAGE_CODE }} "style="background-color: #3e4551">
     <div class="top-0">
         <!-- <img src="#" class="position-absolute  start-0 bg-image h-100 w-100" style="z-index: -10;object-fit: cover;top: 0;"  > -->
         <div class="">
@@ -36,7 +75,8 @@
     {% block content %}
 
     {% endblock content %}
-    {% include 'elibt/fk/inc/footer.html' %}
+    <div class="bottom-0">
+    {% include 'elibt/fk/inc/footer.html' %}</div>
             </div>
             </div>
 </body>

@@ -219,7 +219,7 @@ class Adminstration(models.Model):
     name = models.CharField(max_length=30,null=False,default=None,verbose_name='Person Name')
     image=models.ImageField(upload_to=uploadcover,null=False,blank=False,default=None,verbose_name="Profile Picture")
     adid =models.AutoField(primary_key=True,editable=False)
-    ocation=models.CharField(max_length=20,null=False,default=None,verbose_name="Ocation")
+    ocation=models.CharField(max_length=20,null=False,verbose_name="Ocation")
     status=models.BooleanField(default=True)
 
     class Meta:

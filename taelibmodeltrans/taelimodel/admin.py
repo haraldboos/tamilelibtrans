@@ -10,6 +10,9 @@ from modeltranslation.translator import register, TranslationOptions
 class BookTranslationOptions(TranslationOptions):
      fields = ('bookname', 'bookdiscrib')  # Specify the fields you want to translate
 
+@register(Adminstration)
+class AdminastrationTransulation(TranslationOptions):
+    fields=('ocation',)
 
 @register(catagory)
 class catagorytranslationoptions(TranslationOptions):
@@ -50,6 +53,8 @@ class LanguageAdmin(admin.ModelAdmin):
     get_bookname.short_description = 'Book Name'
     get_booknamecatagory.short_description='Catagory'
 # admin.site.register(file)
+@admin.register(Adminstration)
+
 class AdministrationAdmin(admin.ModelAdmin):
     list_display = ('adid', 'name', 'ocation')
     search_fields = ('name',)

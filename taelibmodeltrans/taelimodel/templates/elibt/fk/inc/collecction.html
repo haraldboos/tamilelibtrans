@@ -1,20 +1,21 @@
 {% block content %}
 
 <section class=" py-3 my-5">
-    <div class="container">
+    <div class="container ">
     
-    <div class="row  row-cols-lg-5 row-cols-md-4 row-cols-sm-2 row-cols-xs-2 justify-content-center mx-3">
+    <div class="row  row-cols-lg-4 row-cols-md-4 row-cols-sm-2 row-cols-xs-2 justify-content-center mx-3">
         <!-- <div class="col-12"> -->
         
         <!-- <div class="col btn bg-primary p-1 m-1 col-sm-6 col-md-4 col-lg-2"> -->
         <!-- {{list}} -->
         {% for fk in list%} 
-    <div class="col rounded mt-2 p-1" >
+    <div class="col-4 rounded mt-2 p-1" >
 
         <a href="{% url 'cprodect' fk.catagoryname %}">
-                <button type="button" class="btn  bg-dark btn-block btn-fixed-size btn-lg text-white">{{ fk.catagoryname }}</button>
+                <button type="button" class="btn bg-dark btn-block  btn-lg text-white">{{ fk.catagoryname }}</button>
         </a>
     </div>
+    <!-- <button type="button" class="btn  bg-dark btn-block btn-fixed-size btn-lg text-white">{{ fk.catagoryname }}</button> -->
 
         {% endfor %}
  

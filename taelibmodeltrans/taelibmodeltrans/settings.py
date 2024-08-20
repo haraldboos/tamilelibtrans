@@ -31,9 +31,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-vgxvk!bnbss$jv-tg&p15nryiedrp$*7_5or9%g=!+f2p2gid*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['46.231.206.192','tamilpubliclibrary.org','127.0.0.1']
 
 
 # Application definition

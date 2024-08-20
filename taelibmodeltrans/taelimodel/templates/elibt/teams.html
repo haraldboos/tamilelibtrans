@@ -1,4 +1,6 @@
 {% extends 'elibt/fk/layout/mai.html' %}
+{% load i18n %}
+{% load rosetta %}
 {% block content %}
 {% load static %}
 <style>
@@ -73,6 +75,8 @@
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
+  /* text-wrap: stable; */
+font-size: large;
 }
 
 .image-container:hover .overlay {
@@ -81,32 +85,33 @@
 
 .text {
   color: white;
-  font-size: 1.5rem;
+  /* font-size: 100%; */
   text-align: center;
+  text-wrap: wrap;
 }
 
 </style>
 <div class="container">
-    <h2 class="h2 text-center text-white my-3">Our Team Members</h2>
-    <div class="row row-cols-lg-5 row-cols-md-3  row-cols-sm-2 row-cols-xm-2  justify-content-center">
+    <h2 class="h2 text-center text-white my-3">{% trans 'Our Team Members' %}</h2>
+    <div class="row row-cols-lg-5 row-cols-md-4  row-cols-sm-3 row-cols-xm-3  justify-content-center">
         <!-- <div class="row-cols-8"> -->
             {% for x in times %}
 
-        <div class="col-3 h-100 ">
+        <div class="col-4  ">
             <!-- <div>
                 <>
             </div> -->
             <div class="image-container">
                 <img src="{{x.image.url}}" class="rounded-circle img-fluid" alt="">
                 <div class="overlay ">
-                    <p class="text-white text text-center ">{{x.name}}
+                    <p class="text-white text text-center h-4 ">{{x.name}}
                 </p>
                 
     
                 </div>
             </div>
-            <div class="text-white text-center text-bold h2">{{x.ocation}}</div>
-           
+            <div class="text-white text-center text-bold h4">{{x.ocation}}</div>
+
         </div>
         {% endfor %}
 
@@ -116,7 +121,7 @@
     <hr class="hr bg-light">
     {% if sponser %}
     <div>
-    <h2 class="h2 text-center text-white my-3">Our Sponsers</h2>
+    <h2 class="h2 text-center text-white my-3">{% trans 'Our Sponsors'%}</h2>
 
     <div class="container mt-3 ">
         <div class="row-cols-4 justify-content-center row">
