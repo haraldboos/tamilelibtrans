@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-20 22:49+0530\n"
-"PO-Revision-Date: 2024-08-20 17:09+0530\n"
+"PO-Revision-Date: 2024-08-21 01:14+0530\n"
 "Last-Translator:   <rav1@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -50,11 +50,11 @@ msgstr ""
 
 #: taelimodel/templates/elibt/cprodect.html:36
 msgid "Page no"
-msgstr ""
+msgstr "පිටු අංක"
 
 #: taelimodel/templates/elibt/cprodect.html:36
 msgid "Prize"
-msgstr ""
+msgstr "ත්යාගය"
 
 #: taelimodel/templates/elibt/fk/inc/footer.html:132
 #: taelimodel/templates/elibt/fk/inc/nev.html:162
@@ -76,7 +76,7 @@ msgstr "නිවස"
 #: taelimodel/templates/elibt/fk/inc/nev.html:176
 #: taelimodel/templates/elibt/fk/inc/nev.html:264
 msgid "Logout"
-msgstr ""
+msgstr "පිටවීම"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:180
 #: taelimodel/templates/elibt/fk/inc/nev.html:266
@@ -113,7 +113,7 @@ msgstr "අපගේ ව්යාපෘති"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:277
 msgid "my cart"
-msgstr ""
+msgstr "මගේ කරත්තය"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:283
 #: taelimodel/templates/elibt/fk/inc/nev.html:297
@@ -122,15 +122,15 @@ msgstr "භාෂාව තේරීමට ක්ලික් කරන්න"
 
 #: taelimodel/templates/elibt/fk/inc/search.html:10
 msgid "Search...Books here"
-msgstr ""
+msgstr "මෙහි පොත් සොයන්න"
 
 #: taelimodel/templates/elibt/fk/inc/search.html:13
 msgid "Click Here"
-msgstr ""
+msgstr "මගේ කරත්තය"
 
 #: taelimodel/templates/elibt/fk/user/mu.html:13
 msgid "My Collections"
-msgstr ""
+msgstr "මගේ එකතු කිරීම්"
 
 #: taelimodel/templates/elibt/loginsite.html:23
 #: taelimodel/templates/elibt/register.html:23
@@ -149,7 +149,7 @@ msgstr "ඇතුල් වන්න"
 
 #: taelimodel/templates/elibt/ourpoject.html:7
 msgid "OUR PROJECTS"
-msgstr ""
+msgstr "අපගේ ව්යාපෘති"
 
 #: taelimodel/templates/elibt/register.html:30
 msgid "User Email"
@@ -165,7 +165,7 @@ msgstr "ලියාපදිංචි කරන්න"
 
 #: taelimodel/templates/elibt/register.html:52
 msgid "Alredy user ?"
-msgstr ""
+msgstr "දැනටමත් පරිශීලකයා ?"
 
 #: taelimodel/templates/elibt/teams.html:95
 msgid "Our Team Members"
