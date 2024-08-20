@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-20 15:41+0530\n"
-"PO-Revision-Date: 2024-08-20 16:39+0530\n"
+"POT-Creation-Date: 2024-08-20 22:49+0530\n"
+"PO-Revision-Date: 2024-08-20 22:50+0530\n"
 "Last-Translator:   <rav1@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -66,7 +66,7 @@ msgstr "Prix"
 #: taelimodel/templates/elibt/fk/inc/nev.html:255
 #: taelimodel/templates/elibt/fk/layout/mai.html:17
 msgid "Tamil public library"
-msgstr "Bibliothèque publique tamoule"
+msgstr "Tamilische öffentliche Bibliothek"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:172
 #: taelimodel/templates/elibt/fk/inc/nev.html:261
@@ -102,7 +102,7 @@ msgstr ""
 #: taelimodel/templates/elibt/fk/inc/nev.html:227
 #: taelimodel/templates/elibt/fk/inc/nev.html:238
 msgid "A Gate Way of Knoledge"
-msgstr "Une passerelle vers la connaissance"
+msgstr "Ein Tor zum Wissen"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:270
 msgid "Our Team"
@@ -143,6 +143,11 @@ msgstr "Name des Benutzers"
 msgid "Password"
 msgstr "Kennwort"
 
+#: taelimodel/templates/elibt/loginsite.html:30
+#: taelimodel/templates/elibt/register.html:52
+msgid "Login"
+msgstr "Anmeldung"
+
 #: taelimodel/templates/elibt/ourpoject.html:7
 msgid "OUR PROJECTS"
 msgstr "Unsere Projekte"
@@ -162,10 +167,6 @@ msgstr "Registrieren"
 #: taelimodel/templates/elibt/register.html:52
 msgid "Alredy user ?"
 msgstr "Déjà utilisateur ?"
-
-#: taelimodel/templates/elibt/register.html:52
-msgid "Login"
-msgstr "Anmeldung"
 
 #: taelimodel/templates/elibt/teams.html:95
 msgid "Our Team Members"

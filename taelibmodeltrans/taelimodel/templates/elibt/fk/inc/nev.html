@@ -20,16 +20,26 @@
         }
         div.it {
           font-family: "Playfair Display", serif;
+          font-optical-sizing: auto;
+          font-style: normal;
+
         }
 
         div.fr {
           font-family: "Playfair Display", serif;
+          font-optical-sizing: auto;
+          font-style: normal;
         }
         div.de {
           font-family: "Playfair Display", serif;
+          font-optical-sizing: auto;
+          font-style: normal;
+          /* font-size: 3.5rem; */
         }
         div.si{
           font-family: "Maname", serif;
+          font-optical-sizing: auto;
+          font-style: normal;
 
         }
 
@@ -37,8 +47,19 @@
     text-align: start;
   }
     .ool{
-        font-size: 4rem; /* Default font size */
+        font-size: 4rem;
+        /* font-size: 300%; */
+
+
     }
+    div.de.ool{
+      font-size: 300%; 
+/* text-wrap: stable; */
+/* text-decoration-color: aqua; */
+    }
+    .small-ool {
+  font-size: 3.5rem; /* Adjust this size as needed for German and French */
+}
     .sool{
         font-size: 2rem; /* Default font size */
         margin-left: 20%;
@@ -49,8 +70,14 @@
     @media screen and (max-width: 994px){
         .ool{
             margin-left: 0;
-            font-size: 3rem; /* Smaller screen font size */
+            /* font-size: 3rem; Smaller screen font size */
+            font-size: 180%;
+
+
         }
+        .small-ool {
+  font-size: 2rem; /* Adjust this size as needed for German and French */
+}
         .paragraphhh{
     text-align: start;
   }
@@ -60,14 +87,17 @@
         .sool{
             /* margin-left: 0; */
             text-decoration-color: blue;
-            font-size: 1.5rem; /* Smaller screen font size */
+            font-size: 2rem; /* Smaller screen font size */
         }
     }
     @media screen and (max-width: 800px){
         .ool{
             margin-left: 0;
-            font-size: 2.5rem; /* Smaller screen font size */
+            /* font-size: 2.5rem; Smaller screen font size */
         }
+        .small-ool {
+  font-size: 1.8rem; /* Adjust this size as needed for German and French */
+}
         .paragraphhh{
     text-align: start;
   }
@@ -77,7 +107,7 @@
         .sool{
             /* margin-left: 0; */
             text-decoration-color: blue;
-            font-size: 0.75rem; /* Smaller screen font size */
+            font-size: 1rem; /* Smaller screen font size */
         }
     }
     @media screen and (max-width: 767px){
@@ -89,6 +119,9 @@
              /* Smaller screen font size */
              
         }
+        .small-ool {
+  font-size: 1.4rem; /* Adjust this size as needed for German and French */
+}
         .paragraphhh{
     text-align: start;
     /* background-color: red;
@@ -101,7 +134,7 @@
         .sool{
             /* margin-left: px; */
             /* text-decoration-color: blue; */
-            font-size: 0.5rem; /* Smaller screen font size */
+            font-size: 1rem; /* Smaller screen font size */
             /* text-align: center !important; Ensure subtitle is centered */
 
         }
@@ -112,6 +145,9 @@
             /* margin-left: 0; */
             font-size: 1rem; /* Smaller screen font size */
         }
+        .small-ool {
+  font-size: 1rem; /* Adjust this size as needed for German and French */
+}
         /* .paragraphhh{
     text-align: start;
     background-color: aqua;
@@ -129,7 +165,7 @@
     @media screen and (max-width: 375px){
         .ool{
             /* margin-left: 0; */
-            font-size: 0.9rem; 
+            font-size: 0.7rem; 
             /* text-align: center; */
             /* Smaller screen font size */
         }
@@ -142,6 +178,9 @@
     /* margin-left: ; */
 
   /* } */
+  .small-ool {
+  font-size: 0.8rem; /* Adjust this size as needed for German and French */
+}
   .iig{
       width: 5rem;
       /* text-align: center; */
@@ -234,7 +273,7 @@
       <img src="{% static 'images/logo1.svg' %}"  class="img-fluid  " alt="Logo">
     </div>
     <div class="col-10 container-fluid paragraphhh d-inline text-start">
-      <h1  class="text-white ool  ">{% translate 'Tamil public library' %}</h1>
+      <h1  class="text-white  {% if LANGUAGE_CODE == 'de' or LANGUAGE_CODE == 'fr' %}small-ool{% else %}ool{% endif %}  ">{% translate 'Tamil public library' %}</h1>
       <h3 class="    sool text-white">{% translate 'A Gate Way of Knoledge' %}...</h3>
     </div>
   </div>
