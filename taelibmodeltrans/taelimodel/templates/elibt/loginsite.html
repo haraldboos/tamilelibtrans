@@ -1,4 +1,6 @@
 {% extends 'elibt/fk/layout/mai.html' %}
+{% load i18n %}
+{% load rosetta %}
 {% block content %}
 {% load static %}
 <!-- <div class="row"> -->
@@ -18,11 +20,11 @@
                    <form action="" method="post">
                     {% csrf_token %}
                     <div class="mb-4">
-                        <label for="" class="form-label">User Name</label>
+                        <label for="" class="form-label">{%trans 'User Name'%}</label>
                         <input type="text" name="username" id="username" class="form-control" placeholder="Enter Username">
                     </div>
                     <div class="mb-4">
-                        <label for="" class="form-label">Password</label>
+                        <label for="" class="form-label">{%trans 'Password'%}</label>
                         <input type="password" name="pass" id="pass" class="form-control" placeholder="Enter Password">
                     </div>
                     <button type="submit" style="background-color: #242323;" class="btn text-white">Login</button>

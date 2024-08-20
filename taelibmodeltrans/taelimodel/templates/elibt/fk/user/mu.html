@@ -1,4 +1,6 @@
 {% extends 'elibt/fk/layout/mai.html' %}
+{% load i18n %}
+{% load rosetta %}
 {% block content %}
 <div class="container ">
 {% if request.user.is_authenticated %}
@@ -8,7 +10,7 @@
 <!-- </div> -->
     {% if books %}
 <section class=" py-3 my-5">
-     <h1 class="mx-auto text-center my-3 text-white">My Collections</h1>
+     <h1 class="mx-auto text-center my-3 text-white">{% trans 'My Collections'%}</h1>
     <div class="container-fluid bg-dark rounded">
     
     <div class="row row-cols-5 row-md-cols-3 row-sm-cols-2 justify-content-center">
