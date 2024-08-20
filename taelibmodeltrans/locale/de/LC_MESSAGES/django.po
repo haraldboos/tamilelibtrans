@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-20 22:49+0530\n"
-"PO-Revision-Date: 2024-08-20 22:50+0530\n"
+"PO-Revision-Date: 2024-08-21 01:12+0530\n"
 "Last-Translator:   <rav1@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -77,7 +77,7 @@ msgstr "Startseite"
 #: taelimodel/templates/elibt/fk/inc/nev.html:176
 #: taelimodel/templates/elibt/fk/inc/nev.html:264
 msgid "Logout"
-msgstr "Déconnexion"
+msgstr "Abmelden"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:180
 #: taelimodel/templates/elibt/fk/inc/nev.html:266
@@ -114,7 +114,7 @@ msgstr "Unsere Projekte"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:277
 msgid "my cart"
-msgstr "mon panier"
+msgstr "Einkaufswagen"
 
 #: taelimodel/templates/elibt/fk/inc/nev.html:283
 #: taelimodel/templates/elibt/fk/inc/nev.html:297
@@ -123,11 +123,11 @@ msgstr "Sprache wählen"
 
 #: taelimodel/templates/elibt/fk/inc/search.html:10
 msgid "Search...Books here"
-msgstr ""
+msgstr "Buch Suche hier..."
 
 #: taelimodel/templates/elibt/fk/inc/search.html:13
 msgid "Click Here"
-msgstr "Cliquez ici"
+msgstr "Hier klicken"
 
 #: taelimodel/templates/elibt/fk/user/mu.html:13
 msgid "My Collections"
@@ -166,7 +166,7 @@ msgstr "Registrieren"
 
 #: taelimodel/templates/elibt/register.html:52
 msgid "Alredy user ?"
-msgstr "Déjà utilisateur ?"
+msgstr "Bereits Benutzer  ?"
 
 #: taelimodel/templates/elibt/teams.html:95
 msgid "Our Team Members"

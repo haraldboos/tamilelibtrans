@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-20 22:49+0530\n"
-"PO-Revision-Date: 2024-08-20 16:23+0530\n"
+"PO-Revision-Date: 2024-08-21 01:18+0530\n"
 "Last-Translator:   <rav1@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -123,7 +123,7 @@ msgstr "மொழியைத் தேர்ந்தெடுக்க "
 
 #: taelimodel/templates/elibt/fk/inc/search.html:10
 msgid "Search...Books here"
-msgstr ""
+msgstr "புத்தகங்களை தேட ..."
 
 #: taelimodel/templates/elibt/fk/inc/search.html:13
 msgid "Click Here"
@@ -163,14 +163,13 @@ msgid "Conform Password"
 msgstr "கடவுச்சொல்லை உறுதிப்படுத்தவும்"
 
 #: taelimodel/templates/elibt/register.html:50
-#, fuzzy
 #| msgid "register"
 msgid "Register"
 msgstr "பதிவு"
 
 #: taelimodel/templates/elibt/register.html:52
 msgid "Alredy user ?"
-msgstr "ஏற்கனவே பயனர்"
+msgstr "ஏற்கனவே பயனர் ?"
 
 #: taelimodel/templates/elibt/teams.html:95
 msgid "Our Team Members"
