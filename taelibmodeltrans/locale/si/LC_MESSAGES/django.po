@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-20 15:41+0530\n"
+"POT-Creation-Date: 2024-08-20 22:49+0530\n"
 "PO-Revision-Date: 2024-08-20 17:09+0530\n"
 "Last-Translator:   <rav1@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -142,6 +142,11 @@ msgstr "පරිශීලක නාමය"
 msgid "Password"
 msgstr "මුරපදය"
 
+#: taelimodel/templates/elibt/loginsite.html:30
+#: taelimodel/templates/elibt/register.html:52
+msgid "Login"
+msgstr "ඇතුල් වන්න"
+
 #: taelimodel/templates/elibt/ourpoject.html:7
 msgid "OUR PROJECTS"
 msgstr ""
@@ -161,10 +166,6 @@ msgstr "ලියාපදිංචි කරන්න"
 #: taelimodel/templates/elibt/register.html:52
 msgid "Alredy user ?"
 msgstr ""
-
-#: taelimodel/templates/elibt/register.html:52
-msgid "Login"
-msgstr "ඇතුල් වන්න"
 
 #: taelimodel/templates/elibt/teams.html:95
 msgid "Our Team Members"
