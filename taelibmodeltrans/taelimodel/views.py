@@ -21,7 +21,9 @@ def home(request):
     abanner=Banner.objects.filter(status=True).order_by('-date')[0:5]
     bd = Language.objects.all()
     # print(request.LANGUAGE_CODE)
-    return render(request,"elibt/hm.html",{"bd":bd,"banner":abanner})
+    spon=Oursponser.objects.filter(status=True)
+
+    return render(request,"elibt/hm.html",{"bd":bd,"banner":abanner,"sponser":spon})
 def collection(request):
 
     collection= catagory.objects.filter(showstatus=0)

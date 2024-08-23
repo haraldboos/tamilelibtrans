@@ -252,7 +252,7 @@
 {% endif %} -->
 <strong>
 <div class="{% get_current_language as LANGUAGE_CODE %} {{ LANGUAGE_CODE }}">
-<div class=" w-100 container  position-relative h-fit p-1 " style="position: relative; top: 0;">
+<div class=" w-100 container  position-relative h-fit mx-auto  " style="position: relative; top: 0;">
   <img src="{% static 'images/bann1.svg' %}" class="w-100 dfd rounded" style="  z-index: -3;" alt="Background">
 
   <!-- <div class="container position-absolute top-50 start-50 translate-middle d-flex align-items-center" style="height: 100%;">
@@ -279,8 +279,9 @@
   </div>
   </div>
 </div>
-<div class="bg-dark container rounded">
-  <!-- <div class="container-fluid" style="">
+<div class=" container my-2 mx-auto rounded">
+  <div class="container bg-dark rounded" >
+      <!-- <div class="container-fluid" style="">
   <img src="{% static 'images/ban.svg' %}" style="left: 0; width: 100%; height: 100%; z-index: -1;" alt="Background">
 
   <div class="container">
@@ -289,8 +290,9 @@
     <h1 class="d-inline hh">{% translate 'Tamil public library' %}</h1>
   </div>
   </div> -->
-  <nav class="navbar rounded navbar-expand-lg navbar-dark bg-dark">
-    <div class="container p-1">
+  
+  <nav class="navbar container rounded navbar-expand-lg navbar-dark bg-dark">
+    <div class=" container-fluid">
       <!-- <a class="navbar-brand" href="#"><span>{% trans 'Tamil public library' %}</span></a> -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -354,5 +356,6 @@
       </div>
     </div>
   </nav>
+  </div>
 </div>
 </strong>
