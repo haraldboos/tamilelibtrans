@@ -28,7 +28,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@100..800&display=swap" rel="stylesheet">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <style>
         body.en {
       font-family: "Playfair Display", serif;
@@ -65,6 +70,7 @@ font-size: medium;
         }
 </style>
 
+
 </head>
 <body class="top-0 {% get_current_language as LANGUAGE_CODE %} {{ LANGUAGE_CODE }} "style="background-color: #3e4551">
     <div class="top-0">
@@ -84,4 +90,27 @@ font-size: medium;
             </div>
             </div>
 </body>
+<!-- <script>
+  const swiper = new Swiper('.swiper', {
+  // Optional parameters
+  direction: 'vertical',
+  loop: true,
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+});
+</script> -->
 </html>
