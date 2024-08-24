@@ -146,9 +146,18 @@ class Language(models.Model):
     gdbookid =models.CharField(max_length=255,blank=True,verbose_name="the id for every file from google drive")
     # paid=models.BooleanField(default=False,verbose_name="Paid Book or")
     def uploadtogoogle(self):
+    #  try:
         print(self.bookpdf)
-        tamilpucredintial=service_account.Credentials.from_service_account_file('taelimodel/tamilpubliclib.json')
+        tamilpucredintial=service_account.Credentials.from_service_account_file('taelimodel/tamilpubliclib.json',scopes=['https://www.googleapis.com/auth/drive.file'])
+    #  except Exception as e:
+    #     print(f"Error loading credentials: {e}")
+    #     return   
+    #  try:
         sex = build('drive','v3',credentials=tamilpucredintial)
+    #  except Exception as e:
+    #     print(f"Error creating Google Drive service: {e}")
+    #     return
+    #  try:
         bok = f"{self.bookno}_{self.booklang}"
         print(bok)
         fmesex={
@@ -175,7 +184,9 @@ class Language(models.Model):
             
         }
         sex.permissions().create(fileId=self.gdbookid, body=permission).execute()
-        
+    #  except Exception as e:
+    #     print(f"Error uploading file to Google Drive: {e}")
+    #     return
     def save(self, *args, **kwargs):
         #     self.uploadtogoogle()
 
