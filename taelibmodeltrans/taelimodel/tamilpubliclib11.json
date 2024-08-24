@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "tamilpubliclib",
+  "private_key_id": "146fd3cd002a3083e2aa4958be66f7ae37ebb883",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCf6bXQ5NDJkNZI\n2HRRKVfc/xwxTAKI/1NWW8wMU5xGKqmOstVRO4liNwMSKBO5MsWcAC3vaVQGz97h\nyAMtqyRrdFEYy83sV3TLbZwO9YfnPrvQNrFL/7gt2TJ2DNa7KLLt7wTzBxQ+Wuk3\nIH5ql14B3rBu+RWHZwRdxGdKtlHtDVtlxTpo3UjJZQvskZYoDs5jAcpRyLheRTKN\nwIKbVMZCO3xeokmZAsfyWKA5TIM6XcW1335o+wZ4aUk23pBbcUzLFXOfpSmGVbGK\n4wXiLpht9KQbLdQR9KfmIFDEhptSanRf1kIA3y0nrCtC1fX+V/vDWESgAR+wJe5H\npiWRcpIHAgMBAAECggEAL4CxbdhK3VWVEhaalvF9FD0EFvDJYADYtLKYLqE3rvBF\nZgphq7vP18kXtHELStx2Lx0uiAv11gAx6UgNCafpLbJj1MXV6fsgyr1IunjdYigU\niol0qWrRP21hvAecUgSJAn0aL0dPECbZWHLimq9UUaHhL1X2uz4y4dfSBzOZqpzw\n37uPF4tZprPu8RXuPaiT2H0bDakHNpTG57a8Kq1ELIzN4IyJBU0gsy4fAZ3QtGR8\n1k99RLmxd0i3pvWDfFTA+qLlV7eZlJk6dz8ur9MMT4JpOIFhxYTTqXIrU+OgaMGR\niSHGQCNbh5iNqkFKJeBa85P0ZKF/wJGbFw8H9mazgQKBgQDRFZdQtwQqzk+Fhxn0\nvYeNxIap4MfEX5gEJ0E0CFosvgYQnIkBHj6wD0Hqq+FFbR6vgp8Rsh5udunOhlgY\ngTI5QIvqQ7t77XsQOkcjQQu15te65SvqcoXum2oD1xvG8PJamzpn03A9h2hCaLgX\nHxt8XVq5LBAW4riNB0bKFNFS9wKBgQDDy5I8IR2jWF/F+a4h0ObbnV0mt4nAgWKu\na5PtZ6vEyBnuqN8+4eJ4I7Ip2kFlAvywwJTMmYZoVpMc22DT4HMvUk93pr+9UlWR\nDjUHTdlZeTDjmNwQWabiV4WwUA3vhFD9Rr+FyIbs9Q3SMoyxEbLVtub65xvYVNoo\nzcifAVrlcQKBgEtoEg6WMvaNObjapM3TnRPQERErdGCqaVT2I1n0uTDxx5YuHms8\n0TcGCavtGW3EkRCTd3MWXktQr7pAUX1k+wwS72Mp0nA7keqkWguo5eRQwPUyucfw\nTcVkX7PK3MW/GGj9Gu9fHlfSghORWPNd0Lflo1atQZA/bHfQbANtxqC5AoGBAK9Z\nMFUDf2ybp+JA0s9cLHSAgT08YHT0KzF0DN4v22h3oKnZuV2ypMTdiyDqY2iYfT+6\nqUh3MiVda5ELc7MtL1sxBxRsVQmzpAgtxhYNhVsZK0yZyHQoJkpNAeC+QUzBnlrG\nMp4Y0aWDbeZS+SdXZ2b4z/HialCa5WpnqYWljAcxAoGBALVLl/v0oWr52oyG+gNj\njNc/Q8l5cdSH+d6xMdG2kN8UwdM4ii6ZsqAYyfnjfAd+WkK5sLwkJiMBGRiCP4OR\nv5qPyxTriE7kc/aUcBdJQfDU2vQ1lkxohQWSJ2qCmUVuIBKkdfYVq5zuXZT7gmj3\nTjht9ejhpZa0n9NcYeXVzaLz\n-----END PRIVATE KEY-----\n",
+  "client_email": "django@tamilpubliclib.iam.gserviceaccount.com",
+  "client_id": "104032237760193755223",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/django%40tamilpubliclib.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
