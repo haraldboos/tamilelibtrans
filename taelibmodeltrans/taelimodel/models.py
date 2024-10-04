@@ -1,22 +1,14 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
 from django.contrib.auth.models import User
-from google.oauth2 import service_account
-from google.oauth2.credentials import Credentials
-from googleapiclient.discovery import build
-from googleapiclient.http import MediaFileUpload
-from gdstorage.storage import GoogleDriveStorage, GoogleDrivePermissionType, GoogleDrivePermissionRole, GoogleDriveFilePermission
-
-# from django.utils.translation import gettext_lazy a
-# from modeltranslation.translator import TranslationOptions
-# from modeltranslation.decorators import register
-# from parler.models import TranslatableModel,TranslatedFields
+from .service import DriveFileUploadService
 
 import datetime
+
 import os
 import uuid
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Create your models here.
 # @register
@@ -27,6 +19,8 @@ import uuid
 # class CategoryTranslationOptions(TranslationOptions):
 #     fields = ('catagoryname',)
 
+
+Fileupload= DriveFileUploadService()
 
 def uploadcover(request,filename):
     curtime=datetime.datetime.now().strftime("%Y%m%d:%H%M%S")
@@ -130,7 +124,7 @@ class Language(models.Model):
     #             'canDownload': False
     #         }
     #     }
-    fiestorg= GoogleDriveStorage()
+    # fiestorg= GoogleDriveStorage()
 
     Language_choices=(
             ('Tamil','Tamil'),
@@ -145,63 +139,48 @@ class Language(models.Model):
     bookpdf = models.FileField(upload_to=uploadbook,null=False,blank=False,verbose_name="Book selected Language")
     gdbookid =models.CharField(max_length=255,blank=True,verbose_name="the id for every file from google drive")
     # paid=models.BooleanField(default=False,verbose_name="Paid Book or")
-    def uploadtogoogle(self):
-    #  try:
-        print(self.bookpdf)
-        tamilpucredintial=service_account.Credentials.from_service_account_file('taelimodel/tamilpubliclib.json',scopes=['https://www.googleapis.com/auth/drive.file'])
-    #  except Exception as e:
-    #     print(f"Error loading credentials: {e}")
-    #     return   
-    #  try:
-        sex = build('drive','v3',credentials=tamilpucredintial)
-    #  except Exception as e:
-    #     print(f"Error creating Google Drive service: {e}")
-    #     return
-    #  try:
-        bok = f"{self.bookno}_{self.booklang}"
-        print(bok)
-        fmesex={
-            'name':bok,
-            'parents':['1cxO2GsJWoQjMOPoPzc187CMoCQOOAFTC']
-        }
-        miyaboobs=MediaFileUpload(self.bookpdf.path,resumable=True)
-        room = sex.files().create(body=fmesex, media_body=miyaboobs).execute()
-        filepath = self.bookpdf
-        # print(filepath)
-        # fid = self.fiestorg._get_file_id(filepath)
+    # def uploadtogoogle(self):
+    
+    #     print(self.bookpdf)
+    #     tamilpucredintial=service_account.Credentials.from_service_account_file('taelimodel/tamilpubliclib.json',scopes=['https://www.googleapis.com/auth/drive.file'])
 
-        self.gdbookid=room.get('id')
-        # print(self.gdbookid)
-        permission = {
-            'type':'anyone',
-            'role':'reader',
-            'allowFileDiscovery':False,    
-            'copyContent': False,
-            'viewersCanCopyContent': False, 
-            'canShare': False
+    #     sex = build('drive','v3',credentials=tamilpucredintial)
+
+    #     bok = f"{self.bookno}_{self.booklang}"
+    #     print(bok)
+    #     fmesex={
+    #         'name':bok,
+    #         'parents':['1cxO2GsJWoQjMOPoPzc187CMoCQOOAFTC']
+    #     }
+    #     miyaboobs=MediaFileUpload(self.bookpdf.path,resumable=True)
+    #     room = sex.files().create(body=fmesex, media_body=miyaboobs).execute()
+    #     filepath = self.bookpdf
+
+    #     self.gdbookid=room.get('id')
+
+    #     permission = {
+    #         'type':'anyone',
+    #         'role':'reader',
+    #         'allowFileDiscovery':False,    
+    #         'copyContent': False,
+    #         'viewersCanCopyContent': False, 
+    #         'canShare': False
 
 
             
-        }
-        sex.permissions().create(fileId=self.gdbookid, body=permission).execute()
+    #     }
+    #     sex.permissions().create(fileId=self.gdbookid, body=permission).execute()
     #  except Exception as e:
     #     print(f"Error uploading file to Google Drive: {e}")
     #     return
     def save(self, *args, **kwargs):
-        #     self.uploadtogoogle()
-
-        #     print(self.gdbookid)
-        #     super().save(*args, **kwargs)
-        # # self.uploadtogoogle()
-        #     if self.gdbookid is None:
-        #         print("Google Drive file ID is None, cannot assign to gdbookid.")
-        if not self.pk: 
-            # print('11') # Check if the instance is being created
-            super().save(*args, **kwargs)  # Call save to generate the primary key
-
-        self.uploadtogoogle()  # Upload the file to Google Drive
-        # print('12')
-    # Now that the file has been uploaded, save the instance with the gdbookid
+        # if not self.pk: 
+        super().save(*args, **kwargs)
+        if self.bookpdf:
+                print(self.bookpdf)
+                gbid=Fileupload.upload(self.bookpdf.path,self.pk,self.booklang)
+                if gbid:
+                    self.gdbookid=gbid
         super().save(*args, **kwargs)
 
     class Meta:
@@ -244,7 +223,17 @@ class Projects(models.Model):
     date = models.DateField(verbose_name="Project Date")
     cover=models.ImageField(upload_to=uploadcover,null=False,blank=False,default=None,verbose_name="Project Cover")
     file=models.FileField(upload_to=uploadbook,null=False,blank=False,default=None,verbose_name="Project File")
+    gbid = models.CharField(max_length=255,blank=True,verbose_name="the id for every file from google drive")
     status=models.BooleanField(default=True)
+    def save(self, *args, **kwargs):
+        # if not self.pk: 
+        super().save(*args, **kwargs)
+        if self.file:
+                print(self.file)
+                gid=Fileupload.upload(self.file.path,self.pk,self.name)
+                if gid:
+                    self.gbid=gid
+        super().save(*args, **kwargs)
     class Meta:
         # unique_together = ('bookno', 'booklang')
         verbose_name = 'Our Projects'
@@ -257,6 +246,7 @@ class Banner(models.Model):
 
     # def __str__(self):
     #     return f"Banner {self.id} - {self.quote}"
+    
     class Meta:
         # unique_together = ('bookno', 'booklang')
         verbose_name = 'Home Banner'

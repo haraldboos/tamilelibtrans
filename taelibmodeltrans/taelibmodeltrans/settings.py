@@ -23,7 +23,11 @@ import django.conf.locale
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+BACKUP_FOLDER_PATH = '/home/hpro/backups/django_project/'  # Replace with your desired backup folder path
 
+# Create the backup folder if it doesn't exist
+if not os.path.exists(BACKUP_FOLDER_PATH):
+    os.makedirs(BACKUP_FOLDER_PATH)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -33,7 +37,7 @@ SECRET_KEY = 'django-insecure-vgxvk!bnbss$jv-tg&p15nryiedrp$*7_5or9%g=!+f2p2gid*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG =  True
 
-ALLOWED_HOSTS = ['46.231.206.192','tamilpubliclibrary.org','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['46.231.206.192','tamilpubliclibrary.org','127.0.0.1','localhost','www.tamilpubliclibrary.org']
 
 
 # Application definition
@@ -47,7 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-        'corsheaders',
+    'corsheaders',
     'gdstorage',
     'taelimodel',
     'rosetta',
@@ -223,10 +227,14 @@ MEDIA_ROOT = BASE_DIR/'static'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MODELTRANSLATION_DEFAULT_LANGUAGE = 'ta'
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
 MODELTRANSLATION_LANGUAGE = LANGUAGES
 
 GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'taelibmodeltrans/tamilpubliclib.json'
 CORS_ORIGIN_ALLOW_ALL = True  # Allow all origins for testing, adjust as needed for production
-
+GOOGLE_SERVICE_CREDINTIAL_JSON= 'taelimodel/tamilpubliclib.json'
+GOOGLE_DRIVE_FOLDER_ID= '1cxO2GsJWoQjMOPoPzc187CMoCQOOAFTC'
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = BACKUP_FOLDER_PATH
+DBBACKUP_MEDIA = True
