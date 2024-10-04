@@ -1,4 +1,8 @@
 staticfiles/*
 taelibmodeltrans/tamilpubliclib.json
+<<<<<<< HEAD
 taelimodel/tamilpubliclib.json
 taelibmodeltrans/taelimodel/*.json
+=======
+taelimodel/tamilpubliclib.json
+>>>>>>> 7fb036ce89f4f1b115c826d1c7bb53128541ab1c

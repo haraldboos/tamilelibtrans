@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "tamilpublilibrary",
+  "private_key_id": "10be7ece101b1dc8f4a0c471813da80575431838",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDg4SNUMegbDCrd\ndsUotaDlGV1JawbEnH3GNolPrpuCXyiz2NUicS9OIWa7vbHKUPh0+wvC8WslNiAH\n2GssSoeCe8tfxLBBf0nrlIPtAhtIpy9YY3+W1kaC4+h7fI0qybbXpgo342vDe/bM\n+7P0KRVCz8MStsc7v0EVeFG6hj4Rd2Di3LgHJCOUniTM9qKIrly/Gs8jWizuCX9Q\n4SH0DR13syRWd/pPJoFtRBtANMONo/kSoSVFKLBomE5AQwyWOviKys10JuUfGbjd\neXRpTYLlKCC2btZlkcGXVz+bg7fcFs9UIftfTl4STzo1wO8RpctyLGPl1m3BmbcK\nkVLUl/tVAgMBAAECggEATzXuWE9V9wUDqkuWKf9EI76Z9eztjt6ijOmT103lN/hl\n4Wect4uPwqEQS0wHroBz69yr6WhZOdvFT44jPhAoiEUrv1mMTh3Uf1cqWxcVXjOJ\ngURW4l4qqxs1Ph4CqZIwxegWDFaelFZ7efulCPlZpFWDXHmmVvzIo5PkkeOMRGET\ntEObnPCtM0siCwl+5Jocg+tMO2yYmkQRGlXabeIfCoDxznrnB1D4kzzz8vbJn0z7\nq0U5ou7WylskuEkFrjk8ARNFppBtXwjYT6JfC+6Gul2Qf41YjxErBFmpiaXMbwOL\n6XYHSwmWQra2glfNVGv2+zUSpjl4kKL9JoDpszrRdwKBgQD73Gl/WnK+W2SPVCR8\nxOji2zlwfcuCxvJr95M8vMw0GxfuAWpMBWEVBQzgVPmcxWxsOwkvozwNJiSlJHV2\n4c7xSqWnGkNiTydF2C/zJrgNnA4ajSokVMQczSRogp+R7SSCHKSGb3nLCM8q9Sbm\nMfGo57CfbGS8KZLlLs3LYbiwMwKBgQDkkzawjboxilTMvyPj8kJjnb14f/cS5Xh2\nDyz72Obi47e8rdzogx2xbVESlio6SEeTOh2XYSTqWnp1LSZz0Uc/MGfhKKe4vIEi\n9AvSccIxM5tJetn0v7laq/MQjKteOKBqia6WO5/LkxcgXmEucuNpTtNsB+Jjtx2x\n0ga90Hl+VwKBgQDLnZLwsbfoK0zuDxF8iVjZ5m/WgOyhqqNcJAg151CTo3/CHATK\ntuKYsr+JMUmns3gHO+ceSzKGUtr3Y7VPShkau8WWhcYKWYGflrqVMi1EW3CPiKaU\nPq9ZtYOEtm249OY6BlwAj2kAevu5d/5dxezgJ4eEK4Z5FIc8n40iqrs8PwKBgAJK\nm4S/lvtCKMF4tRJm7lVzUl/v4Hk3BbMhSdEohoAFymTA1XMbRWPu9Z4bFUdKTDVk\nosFOvwD+cTXVgwosMeunP5NZRf0rHpxMGAY/D7RQkSD2c1LpzSDkkmY7Esi6Bpmq\n0a494Mc4rUWszIqbqj33BVWS6qkXP9v1gA3NFjq3AoGBAOuh0otVOind9yZSaT4I\nIrTcV8pSZ0aJqrK1jBZmfmEc5rFpBGkBjd9NzrqL5vY+3V/mGqb2ihNNxa4IqqeP\n/FzpZxbZFi3c70XLL2mCHBHB9JgrlP8EfT6wZSceO8yI6yolQMYMLff71LsDF2i5\nAm5NgzL82n/yysap5XLqfCQk\n-----END PRIVATE KEY-----\n",
+  "client_email": "tamil-publiclibrary@tamilpublilibrary.iam.gserviceaccount.com",
+  "client_id": "110022314102842910065",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tamil-publiclibrary%40tamilpublilibrary.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
