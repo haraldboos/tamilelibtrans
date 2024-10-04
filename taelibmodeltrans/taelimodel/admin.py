@@ -30,13 +30,14 @@ class BookAdmin(TranslationAdmin):
     list_display = ('bookno', 'bookname', 'status', 'uploadedtime', 'bookpageno', 'bookprize', 'paid')
     search_fields = ('bookname',)
     list_filter = ('status', 'paid', 'uploadedtime')
-
+    readonly_fields = ('bookno', 'uploadedtime')
 # @admin.register(cart)
 @admin.register(cart)
 class CartAdmin(admin.ModelAdmin):
     list_display = ('orderid', 'user', 'bookno', 'ordertime', 'booklang', 'orderstatus')
     search_fields = ('orderid', 'user__username', 'bookno__bookname')
     list_filter = ('orderstatus', 'ordertime')
+    readonly_fields = ('orderid', 'ordertime')
 
 
 @admin.register(Language)
@@ -44,6 +45,7 @@ class LanguageAdmin(admin.ModelAdmin):
     list_display = ('get_bookno', 'get_booknamecatagory', 'get_bookname','booklang',)
     search_fields = ('bookno__bookname','bookno__bookno')
     list_filter = ('booklang',)
+    readonly_fields = ('gdbookid',) 
     def get_bookname(self, obj):
         return obj.bookno.bookname
     def get_bookno(self, obj):
@@ -65,6 +67,7 @@ class ProjectsAdmin(admin.ModelAdmin):
     list_display = ('prid', 'name', 'date')
     search_fields = ('name',)
     list_filter = ('date',)
+    readonly_fields = ('prid','gbid')
 
 @admin.register(Banner)
 class BannerAdmin(admin.ModelAdmin):
