@@ -3,3 +3,6 @@ taelibmodeltrans/taelibmodeltrans/*.json
 taelibmodeltrans/taelimodel/tamilpubliclib.json
 taelibmodeltrans/taelimodel/client_secret_88108238106-ghc6ppvtbk8gvalal1g30sbfmbu4c2v2.apps.googleusercontent.com.json
 taelibmodeltrans/taelimodel/*.json
+taelibmodeltrans/static/bookup/book/*.pdf
+
+taelibmodeltrans/taelimodel/tamilpubliclib.json
