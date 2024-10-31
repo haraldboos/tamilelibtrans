@@ -23,11 +23,11 @@ import django.conf.locale
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-BACKUP_FOLDER_PATH = '/home/hpro/backups/django_project/'  # Replace with your desired backup folder path
+#BACKUP_FOLDER_PATH = '/home/hpro/backups/django_project/'  # Replace with your desired backup folder path
 
 # Create the backup folder if it doesn't exist
-if not os.path.exists(BACKUP_FOLDER_PATH):
-    os.makedirs(BACKUP_FOLDER_PATH)
+#if not os.path.exists(BACKUP_FOLDER_PATH):
+ #   os.makedirs(BACKUP_FOLDER_PATH)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -235,6 +235,6 @@ GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'taelibmodeltrans/tamilpubliclib.json'
 CORS_ORIGIN_ALLOW_ALL = True  # Allow all origins for testing, adjust as needed for production
 GOOGLE_SERVICE_CREDINTIAL_JSON= 'taelimodel/tamilpubliclib.json'
 GOOGLE_DRIVE_FOLDER_ID= '1cxO2GsJWoQjMOPoPzc187CMoCQOOAFTC'
-DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
-DBBACKUP_STORAGE_OPTIONS = BACKUP_FOLDER_PATH
-DBBACKUP_MEDIA = True
+#DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+#DBBACKUP_STORAGE_OPTIONS = BACKUP_FOLDER_PATH
+#DBBACKUP_MEDIA = True

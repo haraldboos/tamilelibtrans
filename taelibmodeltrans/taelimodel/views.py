@@ -113,8 +113,8 @@ def inspectpro(request,name,prodect):
     if catagory.objects.filter(catagoryname=name,showstatus=0):
         bk=books.objects.get(catgryname__catagoryname=name,bookname=prodect,status=1)
         bkno=bk.bookno
-        bklang=Language.objects.filter(bookno=bkno)
-        
+        bklang=Language.objects.filter(bookno__bookno=bkno)
+       # print(bklang)
         return render(request,"elibt/prodins.html",{"book":bk,"booklang":bklang})
         
     else:
@@ -194,10 +194,12 @@ def mycart(request):
     # return HttpResponse("<h1>this is cart</h1>")
 
 def pdfviws(request,bookno,booklang):
+    #print(booklang)
     if request.user.is_authenticated:
-        if cart.objects.filter(user=request.user,bookno=bookno,booklang=booklang).filter(Q(orderstatus=True) | Q(bookno__paid=False)).exists():
+        if cart.objects.filter(user=request.user,bookno__bookno=bookno,booklang=booklang).filter(Q(orderstatus=True) | Q(bookno__paid=False)).exists():
+            
             # print('yes is there')
-            book=Language.objects.get(bookno=bookno,booklang=booklang)
+            book=Language.objects.get(bookno__bookno=bookno,booklang=booklang)
             # bk=Language.objects.get(bookno=2,booklang='Tamil')
             # print(book)
             # print(bk.bookpdf,bk)
@@ -279,7 +281,19 @@ def ourproject(request):
     # for l in project:
     #     print(l.cover.url,'ll')
     return render(request,'elibt/ourpoject.html',{'times':project,})
-
+    if request.user.is_authenticated:
+        pdff=Projects.objects.filter(prid=pid)
+        # print(pdff)
+        # for y in pdff:
+        #     print(y.name)
+            # for e in y:
+            #     print(e)
+        if not pdff:
+            return render(request, 'elibt/projectview.html', {'error_message': 'The project not uploaded yet.'})
+        return render(request,'elibt/projectview.html',{'pddf':pdff,})
+    else:
+       messages.warning(request,"You Must Have to login to view the Projects")
+       return redirect("/login")
 def projectv(request,pid):
     if request.user.is_authenticated:
         pdff=Projects.objects.filter(prid=pid)
