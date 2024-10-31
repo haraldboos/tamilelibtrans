@@ -1,4 +1,6 @@
 {% extends 'elibt/fk/layout/mai.html' %}
+{% load i18n %}
+{% load rosetta %}
 {% block content %}
 {% load static %}
 <div class="container">
@@ -12,6 +14,8 @@
 <h1>{{path}}</h1> -->
 <div class="container text-center text-white my-3 justify-content-center">
 <h1 class="my-4">{{book.bookno.bookname}}</h1>
+{% trans 'Please log in to your Google account in this browser to view your collection.' %}
+
     <iframe src="https://drive.google.com/file/d/{{ book.gdbookid }}/preview" type="application/pdf" width="100%" height="1000px"  sandbox="allow-same-origin allow-scripts"></iframe>
 
 </div>

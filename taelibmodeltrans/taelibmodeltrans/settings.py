@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'gdstorage',
     'taelimodel',
     'rosetta',
+    'django_cleanup.apps.CleanupConfig',
+
     
     
     
@@ -84,6 +86,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'taelimodel.context_process.getImpre',
                 'django.contrib.messages.context_processors.messages',
             ],
         },

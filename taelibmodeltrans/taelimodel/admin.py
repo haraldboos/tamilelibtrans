@@ -84,7 +84,9 @@ class OursponserAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     list_filter = ('status', 'date')
 
-
+@admin.register(Impresm)
+class ImpressumAdmin(admin.ModelAdmin):
+    pass
 # admin.site.register(books,bookAdmin)
 
 # @admin.register(books)

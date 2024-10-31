@@ -33,6 +33,11 @@ def uploadbook(request,filename):
     filenewname = getime+filename
     return os.path.join('bookup/','book/',filenewname)
 
+def uploadimprsm(request,filename):
+    getime = datetime.datetime.now().strftime("%Y%m%d:%H%M%S")
+    filenewname = getime+filename
+    return os.path.join('bookup/','impress/',filenewname)
+
 
 # @register
 class catagory(models.Model):
@@ -270,3 +275,10 @@ class BannerQuote(models.Model):
         verbose_name = 'Banner Quote'
         verbose_name_plural = 'Banner Quote'
 
+class Impresm(models.Model):
+    file= models.FileField(upload_to=uploadimprsm,verbose_name="upload daetail file")
+    update= models.DateTimeField(auto_now=True)
+    status = models.BooleanField(default=True)
+    
+    class Meta:
+        get_latest_by = 'update'  # Allows `latest()` to default to the `update` field

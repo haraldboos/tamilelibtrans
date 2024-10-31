@@ -3,6 +3,16 @@
 {% load rosetta %}
 {{ link_html|safe }}
 <style>
+  .btn-donate {
+    background-color: #409BE4; /* Tomato red */
+    color: white;
+    border: none;
+}
+
+.btn-donate:hover {
+    color: #105e9e; /* Dark orange */
+  background-color: blanchedalmond;
+  }
      div.en {
       font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
@@ -308,12 +318,13 @@
             <a class="nav-link btn btn-dark mx-1 text-wrap  d-flex align-items-center gap-2" href="{% url 'login' %}"><i class="bi bi-box-arrow-in-right"></i><span> {% translate "login" %}</span> </a>
           {% endif %}
           <a class="nav-link btn  btn-dark mx-1 text-wrap  d-flex align-items-center gap-2" href="{% url 'coll' %}"><i class="bi bi-collection "></i><span> {% translate "collections" %}</span></a>
+
           <a class="nav-link btn  btn-dark mx-1 text-wrap  d-flex align-items-center gap-2" href="{% url 'teams' %}"><i class="fa fa-users"></i><span> {% translate "Our Team" %}</span></a>
           <a class="nav-link btn  btn-dark mx-1 text-wrap  d-flex align-items-center gap-2" href="{% url 'project' %}"><i class="bi bi-kanban"></i><span> {% translate "Our Projects" %}</span></a>
 
         </div>
         {% if request.user.is_authenticated %}
-          <a href="{% url 'viewcart' %}">
+          <a class="text-decoration-none" href="{% url 'viewcart' %}">
             <button type="button" class="btn text-wrap  btn-dark mx-1 gap-2  d-flex align-items-center ">
               <i class="bi bi-cart-fill"></i> <span>{% trans 'my cart' %}</span>
             </button>
@@ -352,6 +363,11 @@
 
           </ul>
         </div>
+        <a class="text-decoration-none" href="https://tamilpubliclibrary.zahls.ch/de/pay?cid=a7ea5940">
+          <button type="button" class="btn text-wrap  btn-donate mx-1 gap-2  d-flex align-items-center ">
+            <i class="bi bi-heart-fill"></i> <span>{% trans 'Donate us' %}</span>
+          </button>
+        </a>
         
       </div>
     </div>
