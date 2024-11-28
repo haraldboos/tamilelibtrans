@@ -12,12 +12,23 @@ from .models import *
 from django.utils.translation import activate,get_language
 
 from django.contrib.auth import authenticate,login,logout
+import urllib.request
+import hmac
+import hashlib
+import base64
+import sys
+
 
 # Create your views here.
 none = "nothing"
 def home(request):
     # collection= catagory.objects.filter(showstatus=0)
     # ,{"list":collection}
+    messages.info(request, 'This is an info message.')
+    messages.success(request, 'Your account was successfully created!')
+    messages.warning(request, 'Your subscription is about to expire!')
+    messages.error(request, 'There was an error processing your payment.')
+
     abanner=Banner.objects.filter(status=True).order_by('-date')[0:5]
     bd = Language.objects.all()
     # print(request.LANGUAGE_CODE)
@@ -124,6 +135,7 @@ def inspectpro(request,name,prodect):
     
 
 def cartpage(request):
+   
     if request.user.is_authenticated:
         car= cart.objects.filter(user=request.user)
         return render(request,"elibt/cart.html",{'cart':car})
@@ -145,6 +157,7 @@ def rmcart(request,orderid):
     orid.delete()
     return redirect('viewcart')
 def mycart(request):
+
     x=0
     print(request.path)
     if request.method == 'POST':

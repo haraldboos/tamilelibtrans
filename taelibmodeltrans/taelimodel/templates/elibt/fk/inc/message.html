@@ -1,10 +1,100 @@
+<style>
+    /* Custom styling for alert messages */
+.alert {
+    border-radius: 12px; /* Rounded corners for a more modern look */
+    font-size: 1.1rem; /* Slightly larger font for better readability */
+    padding: 20px; /* Add padding for content */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow */
+    margin-bottom: 1rem; /* Ensure there's space between alerts */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth fade and slide effect */
+}
+
+/* Alert types with color customizations */
+.alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    color: #856404;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* For the close button */
+.btn-close {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: inherit;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+/* Hover effect for close button */
+.btn-close:hover {
+    opacity: 1;
+}
+
+/* Message text styling */
+.message-text {
+    font-weight: bold;
+    color: inherit; /* Inherit color from the alert type */
+    word-wrap: break-word; /* Ensure long messages break across lines */
+}
+
+/* Ensure the alert box is full width on smaller screens */
+@media screen and (max-width: 576px) {
+    .alert {
+        font-size: 1rem; /* Smaller font on mobile */
+        padding: 15px; /* Less padding for smaller screens */
+    }
+
+    .message-text {
+        font-size: 1rem; /* Smaller text for smaller devices */
+    }
+
+    .btn-close {
+        font-size: 1.3rem; /* Slightly smaller close button */
+    }
+}
+
+/* Additional responsiveness for medium screens */
+@media screen and (max-width: 768px) {
+    .alert {
+        font-size: 1.1rem;
+        padding: 18px;
+    }
+
+    .message-text {
+        font-size: 1.1rem;
+    }
+}
+
+</style>
+
 {% if messages %}
-{% for message in messages %}
-    {% if forloop.last %}
-    <div class="alert alert-info alert-dismissible my-3 fade show container" role="alert">
-        {{ message }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="container mx-auto">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                <div class="d-flex justify-content-between">
+                    <span class="message-text">{{ message }}</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-    {% endif %}
-{% endfor %}
 {% endif %}

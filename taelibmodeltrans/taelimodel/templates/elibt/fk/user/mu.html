@@ -2,45 +2,38 @@
 {% load i18n %}
 {% load rosetta %}
 {% block content %}
-<div class="container ">
-{% if request.user.is_authenticated %}
-<!-- <div class="text-right rounded">  -->
-    
-    <!-- <h3 class=" text-center text-dark">Welcome {{request.user}}</h3> -->
-<!-- </div> -->
-    {% if books %}
-<section class=" py-3 my-5">
-     <h1 class="mx-auto text-center my-3 text-white">{% trans 'My Collections'%}</h1>
-     <p class="text-center text-white text">
-        {% trans 'Please log in to your Google account in this browser to view your collection.' %}
-    </p>
-    <!-- put note pleause login in google account in your borwser to view your collectin  your  -->
-     <div class="container-fluid bg-dark rounded">
-    
-    <div class="row row-cols-5 row-md-cols-3 row-sm-cols-2 justify-content-center">
-        <!-- <div class="col-12"> -->
-     
-        <!-- <div class="col btn bg-primary p-1 m-1 col-sm-6 col-md-4 col-lg-2"> -->
-        {% for fk in books%}
-        <div class="card mx-1 my-3 border-secondary">
-            
-            <img src="{{ fk.bookno.bookcover.url }}" class=" border-secondary p-2  card-img-top">
-            <div class="card-body border-secondary" >
-        
-            <div class="card-title">{{ fk.bookno.bookname }}</div></div>
-            <a href="{% url 'vpdf' fk.bookno.bookno fk.booklang %}"><center class="p-2"><button type="button" class="btn btn-secondary mx-auto mb-1 ">click to view book</button></center></a>
+<div class="container">
+
+    {% if request.user.is_authenticated %}
+        {% if books %}
+        <section class="py-5 my-5">
+            <h1 class="text-center text-white mb-4">{% trans 'My Collections' %}</h1>
+            <p class="text-center text-white mb-4">{% trans 'Please log in to your Google account in this browser to view your collection.' %}</p>
+
+            <div class="container-fluid bg-dark rounded-lg p-4">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                    {% for fk in books %}
+                    <div class="col">
+                        <div class="card bg-secondary text-white border-light rounded shadow-sm">
+                            <img src="{{ fk.bookno.bookcover.url }}" class="card-img-top rounded-top" alt="{{ fk.bookno.bookname }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ fk.bookno.bookname }}</h5>
+                                <a href="{% url 'vpdf' fk.bookno.bookno fk.booklang %}" class="btn btn-light w-100 mt-2">{% trans 'Click to view book' %}</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        {% if eupms %}
+        <div class="alert alert-danger text-center mb-4" role="alert">
+            <h4 class="alert-heading"><i class="bi bi-exclamation-triangle"></i> {{ eupms }}</h4>
         </div>
-        {% endfor %}`                                                                                                                                                             
- 
-        </div>
-    </div>
-</section>
-{% endif %}
-{% if eupms %}
-<div class="justify-content-center m-3 alert alert-danger" role="alert"><h1><i class="bi bi-exclamation-triangle "></i>{{eupms}}</h1></div>
-{% endif %}
-{% endif %}
+        {% endif %}
+    {% endif %}
 
 </div>
-
 {% endblock content %}

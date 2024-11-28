@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     'taelimodel',
     'rosetta',
     'django_cleanup.apps.CleanupConfig',
+        'widget_tweaks',
+
 
     
     
@@ -233,6 +235,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
 MODELTRANSLATION_LANGUAGE = LANGUAGES
+# settings.py
+ZAHLS_API_KEY = "your_api_key_here"  # Replace with one of your API keys
+ZAHLS_BASE_URL = "https://api.zahls.ch/v1"
 
 GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'taelibmodeltrans/tamilpubliclib.json'
 CORS_ORIGIN_ALLOW_ALL = True  # Allow all origins for testing, adjust as needed for production

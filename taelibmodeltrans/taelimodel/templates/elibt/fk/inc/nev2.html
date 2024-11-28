@@ -1,0 +1,258 @@
+{% load static %}
+{% load i18n %}
+{% load rosetta %}
+{{ link_html|safe }}
+<style>
+  .btn-donate {
+    background-color: #409BE4; /* Light blue */
+    color: white;
+    border: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .btn-donate:hover {
+    color: #105e9e; /* Darker blue */
+    background-color: blanchedalmond;
+  }
+
+  /* Font styling for different languages */
+  div.en {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+  }
+  div.ta {
+    font-family: "Anek Tamil", sans-serif;
+    font-optical-sizing: auto;
+  }
+  div.it, div.fr, div.de {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+  }
+  div.si {
+    font-family: "Maname", serif;
+    font-optical-sizing: auto;
+  }
+
+  .paragraphhh {
+    text-align: start;
+  }
+
+  .ool {
+    font-size: 4rem;
+  }
+
+  .small-ool {
+    font-size: 2rem;
+  }
+
+  .sool {
+    font-size: 2rem;
+    margin-left: 20%;
+  }
+
+  .iig {
+    width: 11rem;
+  }
+
+  @media screen and (max-width: 994px) {
+    .ool {
+      font-size: 180%; /* Adjust for smaller screens */
+      margin-left: 0;
+    }
+    .small-ool {
+      font-size: 2rem;
+    }
+    .paragraphhh {
+      text-align: start;
+    }
+    .iig {
+      width: 8rem;
+    }
+    .sool {
+      font-size: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .ool {
+      font-size: 2.5rem;
+      margin-left: 0;
+    }
+    .small-ool {
+      font-size: 1.8rem;
+    }
+    .paragraphhh {
+      text-align: start;
+    }
+    .iig {
+      width: 8rem;
+    }
+    .sool {
+      font-size: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .ool {
+      font-size: 1.5rem;
+      margin-left: 0;
+    }
+    .small-ool {
+      font-size: 1.4rem;
+    }
+    .paragraphhh {
+      text-align: start;
+    }
+    .iig {
+      width: 6rem;
+    }
+    .sool {
+      font-size: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 490px) {
+    .ool {
+      font-size: 1rem;
+    }
+    .small-ool {
+      font-size: 1rem;
+    }
+    .iig {
+      width: 6rem;
+    }
+    .sool {
+      font-size: 0.5rem;
+    }
+  }
+
+  @media screen and (max-width: 375px) {
+    .ool {
+      font-size: 0.7rem;
+    }
+    .small-ool {
+      font-size: 0.8rem;
+    }
+    .iig {
+      width: 5rem;
+    }
+    .sool {
+      font-size: 0.5rem;
+    }
+  }
+
+  /* Adjustments for logo and banner for small devices */
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 1rem; /* Ensures links are readable on small screens */
+  }
+
+  .navbar-toggler-icon {
+    background-color: white;
+  }
+
+  /* Adjust background and text for mobile-first design */
+  .navbar {
+    background-color: #343a40;
+  }
+
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .navbar-collapse {
+    justify-content: space-between;
+  }
+
+  .container .text-white {
+    font-size: 1.5rem;
+  }
+</style>
+
+<!-- Header Section -->
+<div class="container-fluid position-relative">
+  <img src="{% static 'images/bann1.svg' %}" class="w-100 dfd rounded" style="z-index: -3;" alt="Background">
+  <div class="container position-absolute top-50 start-50 translate-middle text-center">
+    <div class="row w-100">
+      <div class="col-12 col-md-2 p-3 d-flex justify-content-center align-items-center">
+        <img src="{% static 'images/logo1.svg' %}" class="img-fluid" alt="Logo">
+      </div>
+      <div class="col-12 col-md-8">
+        <h1 class="text-white {% if LANGUAGE_CODE == 'de' or LANGUAGE_CODE == 'fr' %}small-ool{% else %}ool{% endif %}">{% translate 'Tamil public library' %}</h1>
+        <h3 class="sool text-white">{% translate 'A Gate Way of Knoledge' %}...</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar Section -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav mx-auto">
+        <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" aria-current="page" href="{% url 'home' %}">
+          <i class="bi bi-house-fill"></i> <span>{% trans "home" %}</span>
+        </a>
+        {% if request.user.is_authenticated %}
+          <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'acount' %}">
+            <i class="bi bi-person-badge"></i> <span>{{ request.user }}</span>
+          </a>
+          <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'logout' %}">
+            <i class="bi bi-box-arrow-left"></i> <span>{% trans "Logout" %}</span>
+          </a>
+        {% else %}
+          <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'register' %}">
+            <i class="fa fa-users"></i> <span>{% trans "register" %}</span>
+          </a>
+          <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'login' %}">
+            <i class="bi bi-box-arrow-in-right"></i> <span>{% trans "login" %}</span>
+          </a>
+        {% endif %}
+        <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'coll' %}">
+          <i class="bi bi-collection"></i> <span>{% trans "collections" %}</span>
+        </a>
+        <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'teams' %}">
+          <i class="fa fa-users"></i> <span>{% trans "Our Team" %}</span>
+        </a>
+        <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'project' %}">
+          <i class="bi bi-kanban"></i> <span>{% trans "Our Projects" %}</span>
+        </a>
+      </div>
+      {% if request.user.is_authenticated %}
+        <a href="{% url 'viewcart' %}">
+          <button type="button" class="btn btn-dark mx-1 d-flex align-items-center">
+            <i class="bi bi-cart-fill"></i> <span>{% trans 'my cart' %}</span>
+          </button>
+        </a>
+      {% endif %}
+      <div class="dropdown">
+        <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-translate"></i> {% trans "Click to Select Language" %}
+        </button>
+        <ul class="dropdown-menu">
+          {% get_current_language as LANGUAGE_CODE %}
+          {% get_available_languages as LANGUAGES %}
+          {% get_language_info_list for LANGUAGES as languages %}
+          {% for lang in languages %}
+            <li>
+              <a class="dropdown-item" href="/{{ lang.code }}/">
+                {{ lang.name_local }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

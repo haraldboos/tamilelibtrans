@@ -3,54 +3,63 @@
 {% load i18n %}
 {% load rosetta %}
 {% block content %}
-<!-- {% if request.user.is_authenticated %}
-    <a href="{% url 'viewcart' %}"><button type="button" class="btn btn-primary"> my card</button></a>
-{% endif %} -->
 {% if book %}
 {% include 'elibt/fk/inc/search.html' %}
 
 <section class="bg-light py-3 my-5">
-    <!-- <form method="post" action="{% url 'bsearch' %}">
-        {% csrf_token %}
-        <input type="text"name="searchq" class="container d-inline form-control mx-4"  placeholder="Search...books here">
-        <button type="submit" class="d-inline btn btn-primary">clickhere</button>
-    </form> -->
-
-    <div class="container-fluid">
-    
-    <div class="row row-cols-5 row-md-cols-3 row-sm-cols-2 justify-content-center">
-        <!-- <div class="col-12"> -->
-     
-        <!-- <div class="col btn bg-primary p-1 m-1 col-sm-6 col-md-4 col-lg-2"> -->
-        {% for fk in book%}
-        <div class="card mx-2 my-3 ">
-            <a href="{% url 'inspectpro' fk.catgryname fk.bookname %}" class="text-decoration-none">
-            <img src="{{ fk.bookcover.url }}" class="card-img-top img-thumbnail my-1">
-            <div class="card-body" >
-        
-            <div class="card-title">{{ fk.bookname }}</div>
-            <div class="card-title">{{ fk.booknameen}}</div>
-
-            <div class="card-text">
-
-               {% trans 'Page no' %}: {{fk.bookpageno}}<br>{% if  fk.paid %}{% trans 'Prize' %} :{{fk.bookprize}}{% else %}Free Book{% endif %}
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
+            {% for fk in book %}
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <a href="{% url 'inspectpro' fk.catgryname fk.bookname %}" class="text-decoration-none">
+                        <div class="position-relative">
+                            <img src="{{ fk.bookcover.url }}" class="card-img-top img-thumbnail rounded-3" 
+                                 data-bs-toggle="tooltip" data-bs-placement="top" 
+                                 title="<strong>{{ fk.bookname }}</strong><br>Pages: {{ fk.bookpageno }}"
+                                 alt="{{ fk.bookname }}">
+                            {% if fk.paid %}
+                                <span class="position-absolute top-0 end-0 badge bg-danger m-2">
+                                    Paid: {{ fk.bookprize }}
+                                </span>
+                            {% else %}
+                                <span class="position-absolute top-0 end-0 badge bg-success m-2">
+                                    Free
+                                </span>
+                            {% endif %}
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title text-truncate">{{ fk.bookname }}</h5>
+                            <p class="card-text small text-muted">{{ fk.booknameen }}</p>
+                            <p class="card-text text-muted small">
+                                {% trans 'Page no' %}: {{ fk.bookpageno }}
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white border-0">
+                            <small class="text-muted">
+                                {% trans 'Updated' %} {{ fk.uploadedtime|timesince }} {% trans 'ago' %}
+                            </small>
+                        </div>
+                    </a>
+                </div>
             </div>
-            
-            </div>
-            <div class="card-footer">
-            <small class="text-body-secondary">update in {{fk.uploadedtime}}</small>
-            </div>
-            </a>
-        </div>
-        
-        {% endfor %}
- 
+            {% endfor %}
         </div>
     </div>
 </section>
 {% else %}
-<div>
-    <p>{{ error }}</p>
+<div class="container text-center my-5">
+    <p class="text-muted">{{ error }}</p>
 </div>
 {% endif %}
+
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl, {
+            html: true, 
+            delay: { show: 500, hide: 100 }
+        });
+    });
+</script>
 {% endblock content %}

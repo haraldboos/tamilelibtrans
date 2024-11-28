@@ -1,0 +1,23 @@
+{% extends 'elibt/fk/layout/mai.html' %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-body text-center">
+                    <h1 class="display-4 text-success">
+                        <i class="bi bi-check-circle-fill"></i>
+                    </h1>
+                    <h3 class="mb-4">Payment Successful!</h3>
+                    <p class="lead">
+                        Thank you for your payment. Your transaction has been completed successfully.
+                    </p>
+                    <a href="/" class="btn btn-primary mt-3">
+                        <i class="bi bi-arrow-left-circle"></i> Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
