@@ -1,31 +1,37 @@
 {% extends 'elibt/fk/layout/mai.html' %}
 {% load i18n %}
 {% load rosetta %}
+{% block extra_styles %}
+<style>
+    .card:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    transition: transform 0.3s ease;
+}
+
+</style>
+{% endblock %}
+
 {% block content %}
 {% load static %}
 <div class="container">
-    <h2 class="h2 text-center text-white my-3">{%trans 'OUR PROJECTS' %}</h2>
+    <h2 class="h2 text-center text-white my-3">{% trans 'OUR PROJECTS' %}</h2>
 
-    <div class="row row-cols-lg-5 row-cols-md-3 p-3 row-cols-sm-2 row-cols-xm-2  justify-content-center">
-        <!-- <div class="row-cols-8"> -->
-            {% for x in times %}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 p-3 justify-content-center">
+        {% for x in times %}
+        <div class="col mb-4">
+            <div class="card shadow-sm border-light rounded">
+                <img src="{{ x.cover.url }}" class="card-img-top" alt="{{ x.name }}">
+                <a href="{% url 'ppview' x.prid %}">
+                    <div class="card-body text-center bg-dark rounded-bottom ">
+                        <div class="btn -dark">
+                            <p class="card-text text-white font-weight-bold">{{ x.name }}</p>
 
-        <div class="col-3  m-3 ">
-            <!-- <div>
-                <>
-            </div> -->
-            <div class="card">
-            <img src="{{ x.cover.url }}" class="card-img-top show h-100 w-100 " alt="">
-            <a href="{% url 'ppview' x.prid %}">
-            <div class="card-body text-center container btn">
-                <p class="card-text text-center text-bold m-0">{{ x.name}}</p>
-            </div></a>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
         {% endfor %}
-        
-        <!-- </div> -->
-        
     </div>
 </div>
 

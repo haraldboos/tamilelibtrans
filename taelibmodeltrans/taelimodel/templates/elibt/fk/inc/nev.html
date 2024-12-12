@@ -3,6 +3,7 @@
 {% load rosetta %}
 
 {{ link_html|safe }}
+{% block extra_styles %}
 
 <style>
     /* Basic button style for donation button */
@@ -151,6 +152,7 @@
         margin-right: 8px;
     }
 </style>
+{% endblock %}
 
 <div class="w-100 container position-relative h-fit mx-auto" style="position: relative; top: 0;">
     <img src="{% static 'images/bann1.svg' %}" class="w-100 rounded" style="z-index: -3;" alt="Background">
@@ -168,8 +170,8 @@
 
 <div class="container my-2 mx-auto rounded">
     <div class="container bg-dark rounded">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg container  navbar-dark bg-dark">
+            <div class=" mx-auto ">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -196,12 +198,23 @@
                         <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'coll' %}">
                             <i class="bi bi-collection"></i><span> {% trans "collections" %}</span>
                         </a>
-                        <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'teams' %}">
-                            <i class="fa fa-users"></i><span> {% trans "Our Team" %}</span>
-                        </a>
-                        <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'project' %}">
-                            <i class="bi bi-kanban"></i><span> {% trans "Our Projects" %}</span>
-                        </a>
+
+                        <div class="dropdown">
+                            <button class="btn btn-secondary  dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {% trans "About Us" %}
+                            </button>
+                            
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+                                <button class=" dropdown-item" type="button"><a class="dropdown-item" href="{% url 'teams' %}">
+                                     <span> {% trans "Our Team" %}</span>
+                                </a></button>
+                                <button class="dropdown-item" type="button">
+                                <a class="dropdown-item" href="{% url 'project' %}">
+                                     <span> {% trans "Our Projects" %}</span>
+                                </a></button>
+                            </div>
+                        </div>
                     </div>
 
                     {% if request.user.is_authenticated %}

@@ -21,7 +21,6 @@
                         <!-- {% if request.user.is_authenticated %}
                                 <a href="{% url 'viewcart' %}"><button type="button" class="btn btn-primary"> my card</button></a>
                         {% endif %} -->
-                                  {% include 'elibt/fk/inc/message.html' %}
 
                 <!-- <div> {{ book.catgryname }}/{{ book.bookname }}</div> -->
                 <div class="row">
@@ -48,7 +47,7 @@
                                                         {% endfor %}
                                                        
                                         </select>
-                                        <button class="btn btn-primary my-2" id="adcart"><i class="fa fa-cart"></i>{% if not book.paid %} book is totaly free add to {% else %}Add to cart {% endif %}</button>
+                                        <button class="btn btn-dark my-2" id="adcart"><i class="fa fa-cart"></i>{% if not book.paid %} book is totaly free add to {% else %}Add to cart {% endif %}</button>
                                         </div>
                                         </div>
                         <!-- </div> -->
@@ -77,8 +76,7 @@ document.addEventListener("DOMContentLoaded", function(event){
                         booklang:lang,
                         prize: prize
                 };
-        console.log(tkn);
-        console.log(postobject);
+    
         fetch("{% url 'cart' %}",{
                 method:'POST',
                 credentials:'same-origin',
@@ -102,13 +100,16 @@ document.addEventListener("DOMContentLoaded", function(event){
         }).then(data =>{
                 console.log(data);
                 alert(data['status']);
-                adc.textContent="card addd";
+                adc.textContent="card added";
+                window.location.reload()
+
 
         }).catch(error => {
                 console.error('ERROR:',error);
         });
 }else{
         alert('select the languge');
+        window.location.reload()
 }
         // alert("cart added");
 });

@@ -34,95 +34,81 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <title>{% trans 'Tamil public library' %}</title>
+    <title>{% trans '404 - Page Not Found' %}</title>
 
     <style>
-      /* Ensuring the dropdown button matches navbar button style */
-.dropdown-toggle {
-    background-color: #343a40; /* Same as navbar background */
-    color: white;
-    border: none;
-}
-
-.dropdown-toggle:hover {
-    background-color: #495057; /* Slightly lighter on hover */
-    color: white;
-}
-
-/* Ensuring the dropdown menu matches the navbar */
-.dropdown-menu {
-    background-color: #343a40; /* Same as navbar background */
-    border: none;
-    box-shadow: none; /* Remove default shadow */
-}
-
-.dropdown-menu .dropdown-item {
-    color: white; /* White text for items */
-}
-
-.dropdown-menu .dropdown-item:hover {
-    background-color: #495057; /* Hover effect for items */
-    color: white;
-}
-
         body.en {
             font-family: "Playfair Display", serif;
-            font-optical-sizing: auto;
         }
 
         body.ta {
             font-family: "Anek Tamil", sans-serif;
-            font-size: medium;
-            font-optical-sizing: auto;
         }
 
-        .category-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .card-footer button:hover {
+        .error-container {
+            text-align: center;
+            margin-top: 100px;
+            padding: 30px;
             background-color: #ffffff;
-            color: #000000;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
         }
 
-        .btn-outline-light:hover {
-            background-color: white;
-            color: black;
+        .error-container h1 {
+            font-size: 100px;
+            color: #e74c3c;
         }
 
-        body.it, body.fr, body.de {
-            font-family: "Playfair Display", serif;
+        .error-container h2 {
+            font-size: 36px;
+            color: #2c3e50;
         }
 
-        body.si {
-            font-family: "Maname", serif;
+        .error-container p {
+            font-size: 18px;
+            color: #7f8c8d;
+        }
+
+        .error-container a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #3498db;
+            color: #fff;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .error-container a:hover {
+            background-color: #2980b9;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
     </style>
-    {% block extra_styles %}{% endblock %}
-
 </head>
-<body class="top-0 {% get_current_language as LANGUAGE_CODE %} {{ LANGUAGE_CODE }}" style="background-color: #3e4551;">
-    <div class="top-0">
-        <!-- Main Content -->
-        <div>
-            {% include 'elibt/fk/inc/nev.html' %}
-            {% include 'elibt/fk/inc/message.html' %}
+<body class="top-0 {% get_current_language as LANGUAGE_CODE %} {{ LANGUAGE_CODE }}">
 
-            {% block content %}
-            {% endblock content %}
-
-            <!-- Footer -->
-            <div class="bottom-0">
-                {% include 'elibt/fk/inc/footer.html' %}
-            </div>
-        </div>
+    <div class="error-container">
+        <h1>404</h1>
+        <h2>{% trans 'Oops! Page Not Found' %}</h2>
+        <p>{% trans 'We couldn\'t find the page you\'re looking for. It may have been moved or deleted.' %}</p>
+        <a href="{% url 'home' %}">
+            {% trans 'Go to Homepage' %} <i class="fas fa-home"></i>
+        </a>
     </div>
+
+    <!-- Footer -->
+    <div class="bottom-0">
+        {% include 'elibt/fk/inc/footer.html' %}
+    </div>
+
     {% block extra_scripts %}{% endblock %}
 
 </body>

@@ -1,0 +1,25 @@
+{% extends 'elibt/fk/layout/mai.html' %}
+{% load i18n %}
+{% load allauth %}
+
+{% block head_title %}
+    {% translate "Account Inactive" %}
+{% endblock head_title %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-8">
+            <!-- Account Inactive Message Card -->
+            <div class="card border-light rounded p-4 shadow-sm">
+                <h1 class="text-center mb-4 text-dark">
+                    {% translate "Account Inactive" %}
+                </h1>
+                <p class="text-center text-muted">
+                    {% translate "This account is inactive." %}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

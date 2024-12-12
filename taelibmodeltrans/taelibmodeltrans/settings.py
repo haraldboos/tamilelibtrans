@@ -39,6 +39,12 @@ DEBUG =  True
 
 ALLOWED_HOSTS = ['46.231.206.192','tamilpubliclibrary.org','127.0.0.1','localhost','www.tamilpubliclibrary.org']
 
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  # Options: 'username', 'email', or 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'optional'  # Options: 'none', 'optional', 'mandatory'
+LOGIN_REDIRECT_URL = '/'  # Redirect after login
+LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
+
 
 # Application definition
 
@@ -55,6 +61,8 @@ INSTALLED_APPS = [
     'gdstorage',
     'taelimodel',
     'rosetta',
+        'allauth',
+    'allauth.account',
     'django_cleanup.apps.CleanupConfig',
         'widget_tweaks',
 
@@ -64,16 +72,26 @@ INSTALLED_APPS = [
     
 ]
 
+X_FRAME_OPTIONS = 'DENY'  # Prevents clickjacking
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+    'allauth.account.auth_backends.AuthenticationBackend',  # Django Allauth backend
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'allauth.account.middleware.AccountMiddleware',
+
 ]
 
 ROOT_URLCONF = 'taelibmodeltrans.urls'
@@ -107,6 +125,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# ACCOUNT_PASSWORD_RESET_CONFIRM_EMAIL = False  # Disable email for password reset confirmation
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',

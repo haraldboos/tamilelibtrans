@@ -19,9 +19,9 @@ urlpatterns=[
     path('vpdf/<int:bookno>/<str:booklang>/',views.pdfviws,name='vpdf'),
     path('ourteams/',views.ourteams,name='teams'),
     path('ourproject/',views.ourproject,name='project'),
-    path('ourproject/<str:pid>/',views.projectv,name='ppview')
+    path('ourproject/<str:pid>/',views.projectv,name='ppview'),
 
-
+path('paytest/',views.paymenttesting)
 
 ]
 # urlpatterns = [

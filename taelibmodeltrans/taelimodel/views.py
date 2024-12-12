@@ -17,17 +17,33 @@ import hmac
 import hashlib
 import base64
 import sys
+from urllib.parse import urlencode, quote, quote_plus
+from collections import OrderedDict
+import requests
 
 
 # Create your views here.
+from django.shortcuts import render
+def custom_400(request, exception):
+    current_year = datetime.now().year
+    return render(request, '400.html', {'current_year': current_year}, status=400)
+
+def custom_404(request, exception):
+    current_year = datetime.now().year
+    return render(request, '404.html', {'current_year': current_year}, status=404)
+
+def custom_500(request):
+    current_year = datetime.now().year
+    return render(request, '500.html', {'current_year': current_year}, status=500)
 none = "nothing"
 def home(request):
+
     # collection= catagory.objects.filter(showstatus=0)
     # ,{"list":collection}
-    messages.info(request, 'This is an info message.')
-    messages.success(request, 'Your account was successfully created!')
-    messages.warning(request, 'Your subscription is about to expire!')
-    messages.error(request, 'There was an error processing your payment.')
+    # messages.info(request, 'This is an info message.')
+    # messages.success(request, 'Your account was successfully created!')
+    # messages.warning(request, 'Your subscription is about to expire!')
+    # messages.error(request, 'There was an error processing your payment.')
 
     abanner=Banner.objects.filter(status=True).order_by('-date')[0:5]
     bd = Language.objects.all()
@@ -182,22 +198,21 @@ def mycart(request):
                 # print(username)
                 
                 book_status = books.objects.get(bookno=bookno)
+                print(cart.objects.filter(user=request.user.id,bookno__bookno=bookno,booklang=booklanguage,orderstatus=0).exists())
                 if book_status:
-                    if cart.objects.filter(user=request.user.id,bookno=bookno,booklang=booklanguage):
-                        print("books alredy in  cart")
+                    if cart.objects.filter(user=request.user.id,bookno__bookno=bookno,booklang=booklanguage,orderstatus=0).exists():
                         messages.warning(request,"books alredy in  cart")
-                        return JsonResponse({'status':'product alredy in cart'})
+                        return JsonResponse({'status':'books alredy in  cart'})
+                    elif cart.objects.filter(user=request.user.id, bookno__bookno=bookno, booklang=booklanguage, orderstatus=1).exists():            
+                        messages.warning(request, "You have already bought this book.")
+                        return JsonResponse({'status': 'you already bought the book'})
                     else:
-                        cart.objects.create(user=username,bookno=book_status,booklang=booklanguage,bookpr=prize)
-                        messages.warning(request,"books add cart sucess fully in  cart")
+                        cart.objects.create(user=username, bookno=book_status, booklang=booklanguage, bookpr=prize)
+                        messages.success(request, "Book added to cart successfully.")
                         return JsonResponse({'status':'proudct add cart sucess'},status=200)
                 else:
                     messages.warning(request,"books not avilable yet comming soon ")
-                    return JsonResponse({'status':'product alredy in cart'})
-
-
-                    
-
+                    return JsonResponse({'status':'product not avalable yet'})
 
             else:
                 messages.warning(request,"You Must Have to login to add cart")
@@ -322,3 +337,89 @@ def projectv(request,pid):
        messages.warning(request,"You Must Have to login to view the Projects")
        return redirect("/login")
 
+
+def paymenttesting(request):
+   
+    def generate_signature(query_string, api_secret):
+        signature = hmac.new(api_secret.encode('utf-8'), query_string.encode('utf-8'), hashlib.sha256)
+        return base64.b64encode(signature.digest()).decode('utf-8')
+
+    def flatten_dict(dictionary, parent_key=''):
+        flattened_data = {}
+        for key, value in dictionary.items():
+            new_key = f"{parent_key}[{key}]" if parent_key else key
+            if isinstance(value, dict):
+                flattened_data.update(flatten_dict(value, new_key))
+            elif isinstance(value, list):
+                for i, item in enumerate(value):
+                    if isinstance(item, dict):
+                        flattened_data.update(flatten_dict(item, f"{new_key}[{i}]"))
+                    else:
+                        flattened_data[f"{new_key}[{i}]"] = item
+            else:
+                flattened_data[new_key] = value
+        return flattened_data
+
+    def encode_query_string(data):
+        encoded_pairs = []
+        for key, value in data.items():
+            encoded_key = quote(key, safe='')
+            if isinstance(value, list):
+                for item in value:
+                    encoded_pairs.append(f"{encoded_key}={quote(str(item), safe='')}")
+            else:
+                encoded_pairs.append(f"{encoded_key}={quote(str(value), safe='')}")
+        return '&'.join(encoded_pairs)
+
+    # Define the API endpoint and instance name
+    api_endpoint = "https://api.zahls.ch/v1.0/Gateway/"
+    instance_name = "tamilpubliclibrary.org"
+
+    # Define the API secret
+    api_secret = "uclUsfM1OxlJX2cDTH6iiRcbZVm6Bv"
+
+    # Define the data payload using a normal dictionary
+    raw_data = {
+        'amount': 8925,
+        'currency': 'CHF',
+        'sku': 'P01122000',
+        'pm': [
+            'visa',
+            'mastercard',
+            'twint'
+        ],
+        'preAuthorization': 0,
+        'reservation': 0,
+        'referenceId': '975382',
+        'fields': {
+            'forename': {'value': 'Max'},
+            'surname': {'value': 'Mustermann'},
+            'email': {'value': 'max.mustermann@mysite.com'}
+        },
+        'successRedirectUrl': 'https://www.merchant-website.com/success',
+        'failedRedirectUrl': 'https://www.merchant-website.com/failed',
+        'basket': [
+            {'name': 'Product', 'amount': 8000, 'quantity': 1, 'vatRate': 7.7},
+            {'name': 'Shipping Costs', 'amount': 925, 'quantity': 1, 'vatRate': 0}
+        ]
+    }
+
+    # Flatten the rawData
+    data = flatten_dict(raw_data)
+
+    # Create Query String
+    query_string = urlencode(data, quote_via=quote_plus)
+
+    # Generate the API Signature
+    api_signature = generate_signature(query_string, api_secret)
+
+    # Add the API signature to the data payload
+    data['ApiSignature'] = api_signature
+
+    # Generate QueryString for the Request
+    request_query_string = encode_query_string(data)
+
+    # Make the POST request
+    response = requests.post(f"{api_endpoint}?instance={instance_name}", data=request_query_string)
+
+    return HttpResponse(response.content)

@@ -1,0 +1,69 @@
+{% extends 'elibt/fk/layout/mai.html' %}
+{% load i18n %}
+{% load allauth account %}
+
+{% block head_title %}
+    {% translate "Email Verification" %}
+{% endblock head_title %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-8">
+            <!-- Email Verification Card -->
+            <div class="card border-light rounded p-4 shadow-sm">
+                <h1 class="text-center mb-4 text-dark">
+                    {% translate "Enter Email Verification Code" %}
+                </h1>
+                {% setvar email_link %}
+                    <a href="mailto:{{ email }}">{{ email }}</a>
+                {% endsetvar %}
+                <p class="text-center text-muted">
+                    {% blocktranslate %}We’ve sent a code to {{ email_link }}. The code expires shortly, so please enter it soon.{% endblocktranslate %}
+                </p>
+
+                <!-- Email Verification Form -->
+                {% url 'account_email_verification_sent' as action_url %}
+                {% element form form=form method="post" action=action_url tags="entrance,email,verification" %}
+                    {% slot body %}
+                        {% csrf_token %}
+                        {% element fields form=form unlabeled=True %}
+                        {% endelement %}
+                        {{ redirect_field }}
+                    {% endslot %}
+                    {% slot actions %}
+                        <div class="d-grid">
+                            {% element button type="submit" tags="prominent,confirm" %}
+                                {% translate "Confirm" %}
+                            {% endelement %}
+                        </div>
+                        {% if cancel_url %}
+                            <div class="d-grid mt-3">
+                                {% element button href=cancel_url tags="link,cancel" %}
+                                    {% translate "Cancel" %}
+                                {% endelement %}
+                            </div>
+                        {% else %}
+                            <div class="d-grid mt-3">
+                                {% element button type="submit" form="logout-from-stage" tags="link,cancel" %}
+                                    {% translate "Cancel" %}
+                                {% endelement %}
+                            </div>
+                        {% endif %}
+                    {% endslot %}
+                {% endelement %}
+
+                <!-- Logout Form (if needed) -->
+                {% if not cancel_url %}
+                    <form id="logout-from-stage"
+                        method="post"
+                        action="{% url 'account_logout' %}">
+                        <input type="hidden" name="next" value="{% url 'account_login' %}">
+                        {% csrf_token %}
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

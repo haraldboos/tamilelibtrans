@@ -116,6 +116,9 @@ class cart(models.Model):
     class Meta:
         verbose_name = 'Book Order In Cart'
         verbose_name_plural = 'Book Order In Cart'
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'bookno', 'booklang'], name='unique_cart_item')
+        ]
 class Language(models.Model):
     # permission = GoogleDriveFilePermission(
     # GoogleDrivePermissionRole.READER,

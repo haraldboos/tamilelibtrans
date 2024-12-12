@@ -7,17 +7,15 @@
     .team-membertx {
         position: relative;
         overflow: hidden;
-        /* border-radius: 50%; */
-       
+        border-radius: 50%;
     }
 
     .iim {
         display: block;
-        width: 300px;
-        height: 300px;
-        justify-self: center;
-
+        width: 100%;
+        height: 100%;
         object-fit: cover; /* Ensure image covers the entire container */
+        transition: transform 0.3s ease;
     }
 
     .team-membertx .overlaytx {
@@ -25,119 +23,121 @@
         width: 100%;
         height: 100%;
         top: 0;
-        bottom: 0;
         left: 0;
-        justify-self: center;
-        right: 0;
-        /* translate; */
         background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-        /* color: rgb(32, 32, 32); */
         opacity: 0;
         transition: opacity 0.5s;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
+        color: white;
         border-radius: 50%;
-        object-fit: fill; /* Ensure image covers the entire container */
-
     }
+
     .team-membertx:hover .overlaytx {
         opacity: 1;
     }
-.overtxt{
-    object-fit: fill;
-    text-size-adjust: 5%;
-}
-.image-container {
-  position: relative;
-  width: 100%;
-  max-width: 300px; /* Adjust this as needed */
-}
 
-.image-container img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 50%;
-}
+    .image-container {
+        position: relative;
+        width: 100%;
+        max-width: 300px; /* Adjust this as needed */
+        margin: 0 auto;
+    }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.75);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  /* text-wrap: stable; */
-font-size: large;
-}
+    .image-container img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+    }
 
-.image-container:hover .overlay {
-  opacity: 1;
-}
+    .image-container:hover img {
+        transform: scale(1.1); /* Zoom effect on hover */
+    }
 
-.text {
-  color: white;
-  /* font-size: 100%; */
-  text-align: center;
-  text-wrap: wrap;
-}
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.75);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .image-container:hover .overlay {
+        opacity: 1;
+    }
+
+    .overlay p {
+        color: white;
+        font-size: 1.25rem;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .team-member-info {
+        text-align: center;
+        color: white;
+        margin-top: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        white-space: nowrap; /* Prevents the text from breaking and overflowing */
+        overflow: hidden; /* Hides overflow text */
+        text-overflow: ellipsis; /* Adds '...' if text overflows */
+    }
+
+    /* Responsiveness for text */
+    .team-member-info {
+        font-size: 1rem;
+        line-height: 1.2;
+    }
+
+    @media (max-width: 576px) {
+        .team-member-info {
+            font-size: 0.9rem; /* Smaller font size on mobile */
+        }
+    }
+
+    @media (min-width: 576px) and (max-width: 768px) {
+        .team-member-info {
+            font-size: 1rem; /* Slightly larger font size for tablets */
+        }
+    }
+
+    @media (min-width: 992px) {
+        .team-member-info {
+            font-size: 1.1rem; /* Larger font size for desktop */
+        }
+    }
 
 </style>
+
 <div class="container">
     <h2 class="h2 text-center text-white my-3">{% trans 'Our Team Members' %}</h2>
-    <div class="row row-cols-lg-5 row-cols-md-4  row-cols-sm-3 row-cols-xm-3  justify-content-center">
-        <!-- <div class="row-cols-8"> -->
-            {% for x in times %}
-
-        <div class="col-4  ">
-            <!-- <div>
-                <>
-            </div> -->
+    <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 justify-content-center">
+        {% for x in times %}
+        <div class="col-4 mb-4">
             <div class="image-container">
-                <img src="{{x.image.url}}" class="rounded-circle img-fluid" alt="">
-                <div class="overlay ">
-                    <p class="text-white text text-center h-4 ">{{x.name}}
-                </p>
-                
-    
+                <img src="{{x.image.url}}" alt="{{x.name}}" class="rounded-circle img-fluid">
+                <div class="overlay">
+                    <p>{{x.name}}</p>
                 </div>
             </div>
-            <div class="text-white text-center text-wrap text-break my-2 text-bold octionname h6" >{{x.ocation}}</div>
-
+            <div class="team-member-info">{{x.ocation}}</div>
         </div>
         {% endfor %}
-
-        <!-- </div> -->
-        
     </div>
     <hr class="hr bg-light">
-    <!-- {% if sponser %}
-    <div>
-    <h2 class="h2 text-center text-white my-3">{% trans 'Our Sponsors'%}</h2>
-
-    <div class="container mt-3 ">
-        <div class="row-cols-4 justify-content-center row">
-        {%for fhk in sponser %}
-        <div class=" col-md-4 col-lg-3 mb-4 text-center ">
-            <img class="img-fluid rounded"  src="{{ fhk.logo.url }}" alt="{{fhk.name}}">
-            <h1 class="text-white mt-3 h6 text-center">{{fhk.name}}</h1>
-        </div>
-        {%endfor%}
-    </div>
-    </div>
-
-
 </div>
-{% endif %} -->
-</div>
-
 
 {% endblock content %}

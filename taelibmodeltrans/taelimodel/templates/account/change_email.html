@@ -1,0 +1,55 @@
+{% extends 'elibt/fk/layout/mai.html' %}
+{% load i18n %}
+{% load rosetta %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-8">
+            <!-- Change Email Form Card -->
+            <div class="card border-light rounded p-4 shadow-sm">
+                <h3 class="text-center mb-4 text-dark">{% trans 'Change Email Address' %}</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    <!-- Display Errors -->
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    
+                    <!-- Current Email Display -->
+                    <div class="mb-4">
+                        <label for="id_email" class="form-label text-dark">{% trans 'Current Email Address' %}</label>
+                        <input type="email" name="email" id="id_email" class="form-control" value="{{ user.email }}" readonly>
+                    </div>
+
+                    <!-- New Email Field -->
+                    <div class="mb-4">
+                        <label for="id_new_email" class="form-label text-dark">{% trans 'New Email Address' %}</label>
+                        {{ form.email }}
+                    </div>
+
+                    <!-- Confirm New Email Field -->
+                    <div class="mb-4">
+                        <label for="id_new_email_confirm" class="form-label text-dark">{% trans 'Confirm New Email Address' %}</label>
+                        {{ form.email_confirm }}
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-dark text-white">{% trans 'Update Email Address' %}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

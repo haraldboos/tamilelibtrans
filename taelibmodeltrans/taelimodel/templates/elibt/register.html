@@ -67,14 +67,14 @@
 
                     <!-- Submit Button -->
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary text-white">{% trans 'Register' %}</button>
+                        <button type="submit" class="btn btn-dark text-white">{% trans 'Register' %}</button>
                     </div>
                 </form>
 
                 <!-- Login Link for existing users -->
                 <p class="my-3 text-center text-muted">
                     {% trans 'Already a user?' %}
-                    <a href="{% url 'login' %}" class="text-primary">{% trans 'Login' %}</a>
+                    <a href="{% url 'login' %}" class="text-dark">{% trans 'Login' %}</a>
                 </p>
             </div>
         </div>
@@ -82,61 +82,6 @@
 </div>
 
 <!-- Custom Styling -->
-<style>
-    /* Card Styling */
-    .card {
-        background-color: #fff;
-        border: 1px solid #ddd;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
 
-    /* Heading Styling */
-    h3 {
-        font-size: 1.75rem;
-        color: #333;
-    }
-
-    /* Form input styling */
-    .form-control {
-        border-radius: 5px;
-        font-size: 1rem;
-        padding: 12px;
-        background-color: #f9f9f9;
-        border: 1px solid #ccc;
-    }
-
-    .form-control:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    }
-
-    /* Error Styling */
-    .text-danger {
-        font-size: 0.9rem;
-        margin-top: 5px;
-    }
-
-    /* Button Styling */
-    .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
-        padding: 12px;
-        font-weight: bold;
-        font-size: 1rem;
-        border-radius: 5px;
-    }
-
-    .btn-primary:hover {
-        background-color: #0056b3;
-        border-color: #0056b3;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 576px) {
-        .col-md-6 {
-            width: 100%;
-        }
-    }
-</style>
 
 {% endblock content %}
