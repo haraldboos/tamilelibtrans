@@ -1,0 +1,28 @@
+{% extends 'elibt/fk/layout/mai.html' %}
+{% load i18n %}
+{% load allauth %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <!-- Card for Sign Out Confirmation -->
+            <div class="card border-light shadow-sm rounded p-4">
+                <h1 class="text-center mb-4 text-dark">{% trans "Sign Out" %}</h1>
+                <p class="text-center text-muted mb-4">
+                    {% trans "Are you sure you want to sign out?" %}
+                </p>
+                <form method="post" action="{% url 'account_logout' %}">
+                    {% csrf_token %}
+                    {{ redirect_field }}
+                    <div class="d-flex justify-content-center mt-4">
+                        <button type="submit" class="btn btn-danger">
+                            {% trans "Sign Out" %}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

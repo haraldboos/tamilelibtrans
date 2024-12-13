@@ -126,7 +126,7 @@ DATABASES = {
     }
 }
 # ACCOUNT_PASSWORD_RESET_CONFIRM_EMAIL = False  # Disable email for password reset confirmation
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # DATABASES = {
 #     'default': {
@@ -267,3 +267,12 @@ GOOGLE_DRIVE_FOLDER_ID= '1cxO2GsJWoQjMOPoPzc187CMoCQOOAFTC'
 #DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 #DBBACKUP_STORAGE_OPTIONS = BACKUP_FOLDER_PATH
 #DBBACKUP_MEDIA = True
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'tamilpubliclibrary@gmail.com'  # Replace with your Gmail address
+EMAIL_HOST_PASSWORD = 'ndzsrbzrrqlsnzns'    # Replace with your Gmail app password
+DEFAULT_FROM_EMAIL = 'tamilpubliclibrary@gmail.com'

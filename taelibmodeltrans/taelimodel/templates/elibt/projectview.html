@@ -1,38 +1,29 @@
 {% extends 'elibt/fk/layout/mai.html' %}
 {% block content %}
-{% load static %}
+{% load static %}{% load i18n %}
+
 <div class="container">
 {% if request.user.is_authenticated %}
-<!-- <div class="btn bg-primary  mx-5 text-right rounded"> 
-    
-    <h3 class=" text-center "><i class="bi bi-person-circle m-1"></i>{{request.user}}</h3>
-</div> -->
-<!--  
-<h1>{{book}}</h1>
-<h1>{{path}}</h1> -->
-{% for x in pddf %}
-<div class="container justify-content-center">
-<center><h1 class="my-2 text-white ">{{ x.name }}</h1>
-</center>
-    <!-- <iframe src="{% static x.file %}" type="application/pdf" width="100%" height="1000px"></iframe> -->
-    <iframe src="https://drive.google.com/file/d/{{ x.gbid }}/preview" type="application/pdf" width="100%" height="1000px"  sandbox="allow-same-origin allow-scripts"></iframe>
+    {% for x in pddf %}
+    <div class="container justify-content-center">
+        <center><h1 class="my-2 text-white ">{{ x.name }}</h1></center>
+        <!-- Add a message about logging in to Google Drive -->
+        <div class="alert alert-info text-center">
+            <h4>{% trans "Please ensure you are logged into Google Drive to view the PDF." %}</h4>
+        </div>
 
-    <!-- <iframe src="{{ x.file.url }}" type="application/pdf" width="100%" height="1000px"></iframe> -->
-
-    <!-- <embed src="{{x.file.path}}" width="800px" height="2100px"  type="application/pdf"
-    frameBorder="0"
-    scrolling="auto"
-    height="100%"
-    width="100%"></embed> -->
-
-</div>
-{% endfor %}
+        <iframe src="https://drive.google.com/file/d/{{ x.gbid }}/preview" type="application/pdf" width="100%" height="1000px" sandbox="allow-same-origin allow-scripts"></iframe>
+    </div>
+    {% endfor %}
     {% if eupms %}
-<div class="justify-content-center m-3 alert alert-danger" role="alert"><h1><i class="bi bi-exclamation-triangle "></i>{{eupms}}</h1></div>
+    <div class="justify-content-center m-3 alert alert-danger" role="alert">
+        <h1><i class="bi bi-exclamation-triangle"></i>{{ eupms }}</h1>
+    </div>
+    {% endif %}
+{% else %}
+    <div class="alert alert-warning text-center">
+        <h4>{% trans "Please log in to view the PDF content." %}</h4>
+    </div>
 {% endif %}
-{% endif %}
-
 </div>
-
-
 {% endblock content %}

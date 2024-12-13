@@ -4,7 +4,7 @@
 
 {{ link_html|safe }}
 {% block extra_styles %}
-
+<!-- 1111 -->
 <style>
     /* Basic button style for donation button */
     .btn-donate {
@@ -168,82 +168,124 @@
     </div>
 </div>
 
+
+
+
+
 <div class="container my-2 mx-auto rounded">
     <div class="container bg-dark rounded">
-        <nav class="navbar navbar-expand-lg container  navbar-dark bg-dark">
-            <div class=" mx-auto ">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <!-- Navbar Toggler for Mobile View -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav mx-start">
-                        <a class="nav-link btn btn-dark mx-1 gap-2 d-flex align-items-center" href="{% url 'home' %}">
-                            <i class="bi bi-house-fill"></i><span> {% trans "home" %}</span>
-                        </a>
-                        {% if request.user.is_authenticated %}
-                            <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'acount' %}">
-                                <i class="bi bi-person-badge"></i><span> {{request.user}}</span>
-                            </a>
-                            <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'logout' %}">
-                                <i class="bi bi-box-arrow-left"></i><span> {% trans "Logout" %}</span>
-                            </a>
-                        {% else %}
-                            <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'register' %}">
-                                <i class="fa fa-users"></i><span> {% trans "register" %}</span>
-                            </a>
-                            <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'login' %}">
-                                <i class="bi bi-box-arrow-in-right"></i><span> {% trans "login" %}</span>
-                            </a>
-                        {% endif %}
-                        <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'coll' %}">
-                            <i class="bi bi-collection"></i><span> {% trans "collections" %}</span>
-                        </a>
 
-                        <div class="dropdown">
-                            <button class="btn btn-secondary  dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {% trans "About Us" %}
-                            </button>
-                            
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <!-- Collapsible Navbar -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto ">
+                        <!-- Home Link -->
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'home' %}">
+                                <i class="bi bi-house-fill"></i><span class="ms-1">{% trans "Home" %}</span>
+                            </a>
+                        </li>
 
-                                <button class=" dropdown-item" type="button"><a class="dropdown-item" href="{% url 'teams' %}">
-                                     <span> {% trans "Our Team" %}</span>
-                                </a></button>
-                                <button class="dropdown-item" type="button">
-                                <a class="dropdown-item" href="{% url 'project' %}">
-                                     <span> {% trans "Our Projects" %}</span>
-                                </a></button>
-                            </div>
-                        </div>
-                    </div>
+                        <!-- Accounts Dropdown (Django Allauth) -->
+ 
 
-                    {% if request.user.is_authenticated %}
-                        <a class="text-decoration-none" href="{% url 'viewcart' %}">
-                            <button type="button" class="btn text-wrap btn-dark mx-1 gap-2 d-flex align-items-center">
-                                <i class="bi bi-cart-fill"></i> <span>{% trans 'my cart' %}</span>
-                            </button>
-                        </a>
-                    {% endif %}
-
-                    <div class="dropdown mx-end">
-                        <div class="btn mx-end text-white btn-dark dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-translate"></i> {% trans "Click to Select Language" %}
-                        </div>
-                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                            {% get_current_language as LANGUAGE_CODE %}
-                            {% get_available_languages as LANGUAGES %}
-                            {% get_language_info_list for LANGUAGES as languages %}
-                            {% for lang in languages %}
+                        <!-- Collections Link -->
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'coll' %}">
+                                <i class="bi bi-collection"></i><span class="ms-1">{% trans "Collections" %}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle btn btn-dark mx-1" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-info-circle"></i> {% trans "About Us" %}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
                                 <li>
-                                    <a class="dropdown-item" href="/{{ lang.code }}/">
-                                        {{ lang.name_local }}
+                                    <a class="dropdown-item" href="{% url 'teams' %}">
+                                        {% trans "Our Team" %}
                                     </a>
                                 </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'project' %}">
+                                        {% trans "Our Projects" %}
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        {% if request.user.is_authenticated %}
 
-                   
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle btn btn-dark mx-1" href="#" id="accountsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle"></i> {{request.user}}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="accountsDropdown">
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center" href="{% url 'acount' %}">
+                                        <i class="bi bi-book"></i><span class="ms-1">{% trans "My Books" %}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center" href="{% url 'account_email' %}">
+                                        <i class="bi bi-gear"></i><span class="ms-1">{% trans "Settings" %}</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a class="dropdown-item d-flex align-items-center" href="{% url 'viewcart' %}">
+                                        <i class="bi bi-cart-fill"></i><span class="ms-1">{% trans "My Cart" %}</span>
+                                    </a>
+                                </li>
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center" href="{% url 'account_logout' %}">
+                                            <i class="bi bi-box-arrow-left"></i><span class="ms-1">{% trans "Logout" %}</span>
+                                        </a>
+                                    </li>
+                            
+
+                            </ul>
+                        </li>
+                        {% endif %}
+                        <!-- About Us Dropdown -->
+                       
+
+                        {% if request.user.is_authenticated %}
+                            <!-- My Cart Link -->
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-dark mx-1 d-flex align-items-center" href="{% url 'viewcart' %}">
+                                    <i class="bi bi-cart-fill"></i><span class="ms-1">{% trans "My Cart" %}</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if not request.user.is_authenticated %}
+                        <!-- Login Button -->
+                        <a class="btn btn-light mx-1" href="{% url 'account_login' %}">{% trans "Login" %}</a>
+                        
+                        <!-- Register Button -->
+                        <a class="btn btn-dark mx-1" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+                    {% endif %}
+                        <!-- Language Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle btn btn-dark mx-1 d-flex align-items-center" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-translate"></i> {% trans "Select Language" %}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for lang in languages %}
+                                    <li>
+                                        <a class="dropdown-item" href="/{{ lang.code }}/">
+                                            {{ lang.name_local }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
