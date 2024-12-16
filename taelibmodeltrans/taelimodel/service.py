@@ -53,6 +53,11 @@ class DriveFileUploadService:
              }
             self.drive_service.permissions().create(fileId=upload_file.get('id'), body=permission).execute()
             print(f"File uploaded: {upload_file.get('id')}")  # Print the ID of the uploaded file
+            try:
+                os.remove(filepath)
+                logger.info(f"File successfully deleted from disk: {filepath}")
+            except OSError as e:
+                logger.error(f"Error deleting file from disk: {e}")
             return upload_file.get('id')  # Return the Google Drive file ID
 
         except Exception as e:

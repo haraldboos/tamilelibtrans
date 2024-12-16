@@ -17,6 +17,7 @@ import os
 
 
 import django.conf.locale
+from decouple import config
 
 
 
@@ -32,12 +33,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-vgxvk!bnbss$jv-tg&p15nryiedrp$*7_5or9%g=!+f2p2gid*'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =  True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['46.231.206.192','tamilpubliclibrary.org','127.0.0.1','localhost','www.tamilpubliclibrary.org']
+
+# ALLOWED_HOSTS = ['46.231.206.192','tamilpubliclibrary.org','127.0.0.1','localhost','www.tamilpubliclibrary.org']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  # Options: 'username', 'email', or 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -58,10 +61,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    'gdstorage',
+    # 'gdstorage',
     'taelimodel',
     'rosetta',
-        'allauth',
+    'allauth',
     'allauth.account',
     'django_cleanup.apps.CleanupConfig',
         'widget_tweaks',
@@ -257,13 +260,13 @@ MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
 MODELTRANSLATION_LANGUAGE = LANGUAGES
 # settings.py
-ZAHLS_API_KEY = "your_api_key_here"  # Replace with one of your API keys
-ZAHLS_BASE_URL = "https://api.zahls.ch/v1"
+# ZAHLS_API_KEY = "your_api_key_here"  # Replace with one of your API keys
+# ZAHLS_BASE_URL = "https://api.zahls.ch/v1"
 
-GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'taelibmodeltrans/tamilpubliclib.json'
 CORS_ORIGIN_ALLOW_ALL = True  # Allow all origins for testing, adjust as needed for production
-GOOGLE_SERVICE_CREDINTIAL_JSON= 'taelimodel/tamilpubliclib.json'
-GOOGLE_DRIVE_FOLDER_ID= '1cxO2GsJWoQjMOPoPzc187CMoCQOOAFTC'
+GOOGLE_SERVICE_CREDINTIAL_JSON = config('GOOGLE_SERVICE_CREDINTIAL_JSON')
+GOOGLE_DRIVE_FOLDER_ID = config('GOOGLE_DRIVE_FOLDER_ID')
+
 #DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 #DBBACKUP_STORAGE_OPTIONS = BACKUP_FOLDER_PATH
 #DBBACKUP_MEDIA = True
@@ -273,6 +276,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'tamilpubliclibrary@gmail.com'  # Replace with your Gmail address
-EMAIL_HOST_PASSWORD = 'ndzsrbzrrqlsnzns'    # Replace with your Gmail app password
-DEFAULT_FROM_EMAIL = 'tamilpubliclibrary@gmail.com'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# Replace with your Gmail app password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+#Stripe django
+STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')

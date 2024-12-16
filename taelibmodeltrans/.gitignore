@@ -17,3 +17,5 @@ static/bookup/book/*.pdf
 
 taelibmodeltrans/taelimodel/tamilpubliclib.json
 >>>>>>> 5cb5b8b6931d63f63b9d5226a00bac2290e3cb2c
+.env
+confidential
