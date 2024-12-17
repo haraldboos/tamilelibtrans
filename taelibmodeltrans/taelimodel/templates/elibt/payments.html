@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Payment</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <h1>Pay $50</h1>
+    <form id="payment-form">
+        <div id="card-element"></div>
+        <button id="submit">Pay</button>
+        <div id="error-message"></div>
+    </form>
+    <script>
+        const stripe = Stripe("{{ publishable_key }}");
+        const elements = stripe.elements();
+        const card = elements.create("card");
+        card.mount("#card-element");
+
+        const form = document.getElementById("payment-form");
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const { paymentMethod, error } = await stripe.createPaymentMethod({
+                type: "card",
+                card: card,
+            });
+
+            if (error) {
+                document.getElementById("error-message").textContent = error.message;
+            } else {
+                const response = await fetch("{% url 'payment' %}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": "{{ csrf_token }}",
+                    },
+                    body: JSON.stringify({ payment_method_id: paymentMethod.id }),
+                });
+
+                const result = await response.json();
+                if (result.error) {
+                    document.getElementById("error-message").textContent = result.error;
+                } else {
+                    alert("Payment successful!");
+                }
+            }
+        });
+    </script>
+</body>
+</html>

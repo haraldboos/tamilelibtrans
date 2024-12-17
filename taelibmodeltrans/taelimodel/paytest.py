@@ -65,8 +65,8 @@ import base64
 # print(response.text)
 import requests
 
-api_key = "XxCskNVxWCSkUFPfJDNo57j9UdEXst"
-api_secret = "XxCskNVxWCSkUFPfJDNo57j9UdEXst"
+api_key = "#"
+api_secret = "#"
 url = "https://api.zahls.ch/v1/gateways"  # Replace with specific endpoint
 
 payload = {

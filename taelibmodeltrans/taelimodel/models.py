@@ -56,15 +56,8 @@ class books(models.Model):
    
     bookname = models.CharField(max_length=40,verbose_name="Enter Book Name")
     bookdiscrib = models.CharField(max_length=1000,null=False,blank = False,verbose_name="Discribe Book")
-
-
-
     catgryname = models.ForeignKey(catagory,on_delete=models.CASCADE,verbose_name="Select Catagory Name",related_name='category') 
-    # bokid = bookidget()
-    # bookname_fr=models.CharField()
-    # bookname = models.CharField(max_length=40,verbose_name="Enter Book Name")
     bookcover = models.ImageField(upload_to=uploadcover,null=False,blank=False,verbose_name="Uploadbook Cover")
-    # bookdiscrib = models.CharField(max_length=1000,null=False,blank = False,verbose_name="Discribe Book")
     status = models.BooleanField(default = 1,help_text="1-show,0-hide")
     uploadedtime = models.DateTimeField(auto_now_add=True)
     bookpageno =models.IntegerField(null=True,verbose_name="Enter book page")
@@ -104,7 +97,21 @@ class cart(models.Model):
     booklang=models.CharField(null=False,verbose_name="Selected book languageg ",default=None,max_length=10)
     bookpr=models.IntegerField(default=None)
     orderstatus=models.BooleanField(default=0,help_text="0-payment not done,1-payment done")
-    
+    payment_intent_id = models.CharField(
+        max_length=255, 
+        null=True, 
+        blank=True, 
+        verbose_name="Stripe Payment Intent ID", 
+        help_text="Used to track Stripe Payment Intents"
+    )
+    stripe_customer_id = models.CharField(
+        max_length=255, 
+        null=True, 
+        blank=True, 
+        verbose_name="Stripe Customer ID", 
+        help_text="Optional field for Stripe customer tracking"
+    )
+
     
     def save(self, *args, **kwargs):
         if not self.orderid:
@@ -146,41 +153,7 @@ class Language(models.Model):
     booklang = models.CharField(null=False,choices=Language_choices,blank=False,default=None,max_length=8,verbose_name="File Language")
     bookpdf = models.FileField(upload_to=uploadbook,null=False,blank=False,verbose_name="Book selected Language")
     gdbookid =models.CharField(max_length=255,blank=True,verbose_name="the id for every file from google drive")
-    # paid=models.BooleanField(default=False,verbose_name="Paid Book or")
-    # def uploadtogoogle(self):
-    
-    #     print(self.bookpdf)
-    #     tamilpucredintial=service_account.Credentials.from_service_account_file('taelimodel/tamilpubliclib.json',scopes=['https://www.googleapis.com/auth/drive.file'])
 
-    #     sex = build('drive','v3',credentials=tamilpucredintial)
-
-    #     bok = f"{self.bookno}_{self.booklang}"
-    #     print(bok)
-    #     fmesex={
-    #         'name':bok,
-    #         'parents':['1cxO2GsJWoQjMOPoPzc187CMoCQOOAFTC']
-    #     }
-    #     miyaboobs=MediaFileUpload(self.bookpdf.path,resumable=True)
-    #     room = sex.files().create(body=fmesex, media_body=miyaboobs).execute()
-    #     filepath = self.bookpdf
-
-    #     self.gdbookid=room.get('id')
-
-    #     permission = {
-    #         'type':'anyone',
-    #         'role':'reader',
-    #         'allowFileDiscovery':False,    
-    #         'copyContent': False,
-    #         'viewersCanCopyContent': False, 
-    #         'canShare': False
-
-
-            
-    #     }
-    #     sex.permissions().create(fileId=self.gdbookid, body=permission).execute()
-    #  except Exception as e:
-    #     print(f"Error uploading file to Google Drive: {e}")
-    #     return
     def save(self, *args, **kwargs):
         # if not self.pk: 
         super().save(*args, **kwargs)
@@ -285,3 +258,9 @@ class Impresm(models.Model):
     
     class Meta:
         get_latest_by = 'update'  # Allows `latest()` to default to the `update` field
+
+
+
+class StripPayment(models.Model):
+    # cart= models.ManyToManyField()
+    pass

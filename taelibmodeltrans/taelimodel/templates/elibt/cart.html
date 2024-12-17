@@ -1,5 +1,6 @@
 {% extends 'elibt/fk/layout/mai.html' %}
 {% block content %}
+{% load i18n %}
 <!-- <div class="row"> -->
 <div class="container">
     <div class="row">
@@ -27,9 +28,9 @@
                 <td>{{item.bookno.bookname}}</td>
                 <td>{{item.booklang}}</td>
                 <td>{{item.ordertime}}</td>
-                <td>{{item.orderstatus}}</td>
+                <td>{{item.orderstatus|yesno:"Paid,Unpaid"}}</td>
                 <td class="cost">{{item.bookpr}}</td>
-                <td><a href="{% url 'removecart' item.orderid %}" onclick="return confirm('Are you sure with remove this item')" ><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Remove</button></a></td>
+                <td><a href="{% url 'removecart' item.orderid %}" onclick="return confirm('Are you sure with remove this item?')" ><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Remove</button></a></td>
             <tr>
             
             <!-- {{item}} -->
@@ -47,7 +48,8 @@
         </table>
 
     </div>
-    <button class="btn btn-dark float-end ">Pay here</button>
+    
+        <a href="{% url 'cheackout' %}" class="btn btn-success float-end">{% trans "Proceed to Payment" %}</a>
 
   
 </div>

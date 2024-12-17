@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,re_path
 # from django.conf.urls.i18n import i18n_patterns
 from . import views
 urlpatterns=[
@@ -21,8 +21,13 @@ urlpatterns=[
     path('ourproject/',views.ourproject,name='project'),
     path('ourproject/<str:pid>/',views.projectv,name='ppview'),
 
-path('paytest/',views.paymenttesting)
+# path('paytest/',views.paymenttesting)
+    path('payment/', views.payment_view, name='payment'),
+    path('cheackout/',views.cheackout,name='cheackout'),
+    re_path('^sucess/$',views.payment_sucess_page,name='sucesspage'),
+    path('error/',views.payment_error_page,name='eror_payment_page'),
 
+    path('pay/',views.Stripepaymentgateway.as_view(),name='stripay'),
 ]
 # urlpatterns = [
 #     *i18n_patterns(*urlpatterns,prefix_default_language=False),

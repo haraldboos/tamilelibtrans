@@ -1,29 +1,29 @@
 from django.shortcuts import render
-
 # Create your views here.
 from django.db.models import Q
-
 import json
+from django.urls import reverse
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from .form import userform ,SearchForm
 from .models import *
 from django.utils.translation import activate,get_language
-
+from django.views import View
 from django.contrib.auth import authenticate,login,logout
-import urllib.request
-import hmac
-import hashlib
-import base64
-import sys
-from urllib.parse import urlencode, quote, quote_plus
-from collections import OrderedDict
-import requests
+from django.conf import settings
+import stripe
+from django.views.decorators.csrf import csrf_exempt
+
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 # Create your views here.
 from django.shortcuts import render
+
+
+
 def custom_400(request, exception):
     current_year = datetime.now().year
     return render(request, '400.html', {'current_year': current_year}, status=400)
@@ -148,8 +148,6 @@ def inspectpro(request,name,prodect):
         messages.warning(request,"not upload yet")
         non="No Uploads yet"
         return render(request,"elibt/prodins.html",{"error":non})
-    
-
 def cartpage(request):
    
     if request.user.is_authenticated:
@@ -175,10 +173,10 @@ def rmcart(request,orderid):
 def mycart(request):
 
     x=0
-    print(request.path)
+    # print(request.path)
     if request.method == 'POST':
         # print(x=x+1)
-        print(request)
+        # print(request)
         if request.headers.get('x-requested-with')=='XMLHttpRequest':
             # print(request.data)
             # print(x=x+1)
@@ -198,7 +196,7 @@ def mycart(request):
                 # print(username)
                 
                 book_status = books.objects.get(bookno=bookno)
-                print(cart.objects.filter(user=request.user.id,bookno__bookno=bookno,booklang=booklanguage,orderstatus=0).exists())
+                # print(cart.objects.filter(user=request.user.id,bookno__bookno=bookno,booklang=booklanguage,orderstatus=0).exists())
                 if book_status:
                     if cart.objects.filter(user=request.user.id,bookno__bookno=bookno,booklang=booklanguage,orderstatus=0).exists():
                         messages.warning(request,"books alredy in  cart")
@@ -300,28 +298,29 @@ def ourteams(request):
     fffk=range(9)
     ad=Adminstration.objects.filter(status=True)
     spon=Oursponser.objects.filter(status=True)
-    return render(request,'elibt/teams.html',{'times':ad,'sponser':spon})
-def webhook(request):
-    print(request)
+    return render(request,'elibt/teams.html',{'times':ad})
+
+
+
 def ourproject(request):
     project=Projects.objects.filter(status=True)
-    fffk=range(9)
+    # fffk=range(9)
     # for l in project:
     #     print(l.cover.url,'ll')
     return render(request,'elibt/ourpoject.html',{'times':project,})
-    if request.user.is_authenticated:
-        pdff=Projects.objects.filter(prid=pid)
-        # print(pdff)
-        # for y in pdff:
-        #     print(y.name)
-            # for e in y:
-            #     print(e)
-        if not pdff:
-            return render(request, 'elibt/projectview.html', {'error_message': 'The project not uploaded yet.'})
-        return render(request,'elibt/projectview.html',{'pddf':pdff,})
-    else:
-       messages.warning(request,"You Must Have to login to view the Projects")
-       return redirect("/login")
+    # if request.user.is_authenticated:
+    #     pdff=Projects.objects.filter(prid=pid)
+    #     # print(pdff)
+    #     # for y in pdff:
+    #     #     print(y.name)
+    #         # for e in y:
+    #         #     print(e)
+    #     if not pdff:
+    #         return render(request, 'elibt/projectview.html', {'error_message': 'The project not uploaded yet.'})
+    #     return render(request,'elibt/projectview.html',{'pddf':pdff,})
+    # else:
+    #    messages.warning(request,"You Must Have to login to view the Projects")
+    #    return redirect("/login")
 def projectv(request,pid):
     if request.user.is_authenticated:
         pdff=Projects.objects.filter(prid=pid)
@@ -338,88 +337,82 @@ def projectv(request,pid):
        return redirect("/login")
 
 
-def paymenttesting(request):
-   
-    def generate_signature(query_string, api_secret):
-        signature = hmac.new(api_secret.encode('utf-8'), query_string.encode('utf-8'), hashlib.sha256)
-        return base64.b64encode(signature.digest()).decode('utf-8')
 
-    def flatten_dict(dictionary, parent_key=''):
-        flattened_data = {}
-        for key, value in dictionary.items():
-            new_key = f"{parent_key}[{key}]" if parent_key else key
-            if isinstance(value, dict):
-                flattened_data.update(flatten_dict(value, new_key))
-            elif isinstance(value, list):
-                for i, item in enumerate(value):
-                    if isinstance(item, dict):
-                        flattened_data.update(flatten_dict(item, f"{new_key}[{i}]"))
-                    else:
-                        flattened_data[f"{new_key}[{i}]"] = item
-            else:
-                flattened_data[new_key] = value
-        return flattened_data
+# stripe.api_key = settings.STRIPE_SECRET_KEY
 
-    def encode_query_string(data):
-        encoded_pairs = []
-        for key, value in data.items():
-            encoded_key = quote(key, safe='')
-            if isinstance(value, list):
-                for item in value:
-                    encoded_pairs.append(f"{encoded_key}={quote(str(item), safe='')}")
-            else:
-                encoded_pairs.append(f"{encoded_key}={quote(str(value), safe='')}")
-        return '&'.join(encoded_pairs)
+def payment_view(request):
+    if request.method == "POST":
+        try:
+            # Create a payment intent
+            intent = stripe.PaymentIntent.create(
+                amount=5000,  # Amount in cents (e.g., $50)
+                currency='usd',
+                payment_method=request.POST['payment_method_id'],
+                confirmation_method='manual',
+                confirm=True,
+            )
+            return JsonResponse({'success': True, 'payment_intent': intent})
+        except stripe.error.CardError as e:
+            return JsonResponse({'error': str(e)}, status=400)
 
-    # Define the API endpoint and instance name
-    api_endpoint = "https://api.zahls.ch/v1.0/Gateway/"
-    instance_name = "tamilpubliclibrary.org"
+    return render(request, 'elibt/payments.html', {
+        'publishable_key': settings.STRIPE_PUBLIC_KEY
+    })
 
-    # Define the API secret
-    api_secret = "uclUsfM1OxlJX2cDTH6iiRcbZVm6Bv"
+def cheackout(request):
+    cartd=cart.objects.filter(user=request.user.id,orderstatus=False)
+    # print(vars(cartd))
+    return render(request,'elibt/cheackout.html',{'cart':cartd,'pub_key': settings.STRIPE_PUBLIC_KEY})
 
-    # Define the data payload using a normal dictionary
-    raw_data = {
-        'amount': 8925,
-        'currency': 'CHF',
-        'sku': 'P01122000',
-        'pm': [
-            'visa',
-            'mastercard',
-            'twint'
-        ],
-        'preAuthorization': 0,
-        'reservation': 0,
-        'referenceId': '975382',
-        'fields': {
-            'forename': {'value': 'Max'},
-            'surname': {'value': 'Mustermann'},
-            'email': {'value': 'max.mustermann@mysite.com'}
-        },
-        'successRedirectUrl': 'https://www.merchant-website.com/success',
-        'failedRedirectUrl': 'https://www.merchant-website.com/failed',
-        'basket': [
-            {'name': 'Product', 'amount': 8000, 'quantity': 1, 'vatRate': 7.7},
-            {'name': 'Shipping Costs', 'amount': 925, 'quantity': 1, 'vatRate': 0}
-        ]
-    }
+def payment_sucess_page(request):
+    return render(request,'elibt/suecss_payment.html')
+def payment_error_page(request):
+    return render(request,'elibt/payment_error.html')
+class Stripepaymentgateway(View):
+    """
+    stripe payment gatye way 
+    """
+    def post(self,request):
+       
+        cartbooks= cart.objects.filter(user=request.user.id,orderstatus=False)
+    #    data = request
+        line_items = []
 
-    # Flatten the rawData
-    data = flatten_dict(raw_data)
+        totalAmount=0
+        for product in cartbooks:
+            line_items.append({
+                    'price_data': {
+                        'currency': 'usd',  # Replace with your currency code
+                        'product_data': {
+                            'name': f"{product.bookno.bookname} ({product.booklang})",
+                        },
+                        'unit_amount': product.bookpr * 100,  # Stripe expects amounts in cents
+                    },
+                    'quantity': 1,
+                })
+        stripe.api_key=settings.STRIPE_SECRET_KEY
+        success_url = request.build_absolute_uri(reverse('sucesspage'))
+        cancel_url = request.build_absolute_uri(reverse('eror_payment_page'))
 
-    # Create Query String
-    query_string = urlencode(data, quote_via=quote_plus)
+        session=stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=line_items,
+            mode='payment',
+            success_url=success_url,
+            cancel_url=cancel_url,
+            
 
-    # Generate the API Signature
-    api_signature = generate_signature(query_string, api_secret)
 
-    # Add the API signature to the data payload
-    data['ApiSignature'] = api_signature
+        )
 
-    # Generate QueryString for the Request
-    request_query_string = encode_query_string(data)
+        for books in cartbooks:
+            books.payment_intent_id = session.payment_intent
+            books.save()
+        return JsonResponse({'sessionId': session.id})
 
-    # Make the POST request
-    response = requests.post(f"{api_endpoint}?instance={instance_name}", data=request_query_string)
-
-    return HttpResponse(response.content)
+        #    print(products.booklang)
+    #    print(data)
+    #    HttpResponse()
+@csrf_exempt
+def webhook(request):
+    print(request)

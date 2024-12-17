@@ -1,0 +1,68 @@
+{% extends 'elibt/fk/layout/mai.html' %}
+{% load i18n %}
+{% block content %}
+<div>
+    <div class="container">
+        <h4 class="mb-3 text-white text-center">{% trans "Checkout - Cart Items" %}</h4>
+    
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>{% trans "Image" %}</th>
+                    <th>{% trans "Product Name" %}</th> 
+                    <th>{% trans "Language" %}</th>
+                    <th>{% trans "Price" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in cart %}
+                <tr>
+                    <td>
+                        <img src="{{ item.bookno.bookcover.url }}" alt="{{ item.bookno.bookname }}" height="50" width="50">
+                    </td>
+                    <td>{{ item.bookno.bookname }}</td>
+                    <td>{{ item.booklang }}</td>
+                    <td class="cost">{{ item.bookpr }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3"><b>{% trans "Total Amount" %}</b></td>
+                    <td id="total">0</td>
+                </tr>
+            </tfoot>
+        </table>
+    
+        <!-- Stripe Payment Button -->
+        <button class="btn btn-dark float-end" id="payButton">{% trans "Proceed to Payment" %}</button>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extra_scripts %}
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+    // const csrfToken = {{csrf_token}};
+    const costs = document.querySelectorAll('.cost');
+    const totalcost = Array.from(costs).reduce((sum,costs)=>sum+parseInt(costs.textContent),0)
+    document.getElementById('total').innerText = "CHF " + totalcost;
+    const stripe = Stripe('{{pub_key}}');
+    document.getElementById('payButton').addEventListener('click',function(){
+        fetch("{% url 'stripay' %}",{
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}',
+ 
+            }
+        }).then((response)=>response.json()).then((SessionId)=> {
+            console.log(SessionId);
+            return stripe.redirectToCheckout({ sessionId: SessionId.sessionId })})
+            .catch((error) => console.error('Error:', error));
+
+    })
+
+</script>
+{% endblock %}
