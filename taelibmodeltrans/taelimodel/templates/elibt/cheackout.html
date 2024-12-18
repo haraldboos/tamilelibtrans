@@ -57,7 +57,9 @@
                 'X-CSRFToken': '{{ csrf_token }}',
  
             }
-        }).then((response)=>response.json()).then((SessionId)=> {
+        }).then((response)=>{
+                console.log(response)
+            return response.json()}).then((SessionId)=> {
             console.log(SessionId);
             return stripe.redirectToCheckout({ sessionId: SessionId.sessionId })})
             .catch((error) => console.error('Error:', error));

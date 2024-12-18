@@ -380,13 +380,17 @@ class Stripepaymentgateway(View):
 
         totalAmount=0
         for product in cartbooks:
+            print(product.bookno.bookcover)
             line_items.append({
                     'price_data': {
-                        'currency': 'usd',  # Replace with your currency code
+                        'currency': 'chf',  # Replace with your currency code
                         'product_data': {
                             'name': f"{product.bookno.bookname} ({product.booklang})",
+                            'description':product.bookno.bookdiscrib,
+                            'images':[request.build_absolute_uri(product.bookno.bookcover.url)]
+
                         },
-                        'unit_amount': product.bookpr * 100,  # Stripe expects amounts in cents
+                        'unit_amount': int(product.bookpr * 100),  # Stripe expects amounts in cents
                     },
                     'quantity': 1,
                 })
@@ -404,6 +408,7 @@ class Stripepaymentgateway(View):
 
 
         )
+        print(session)
 
         for books in cartbooks:
             books.payment_intent_id = session.payment_intent
@@ -415,4 +420,10 @@ class Stripepaymentgateway(View):
     #    HttpResponse()
 @csrf_exempt
 def webhook(request):
-    print(request)
+    try:
+        payload=request.body
+        print(payload)
+
+    except ValueError as e:
+        # Invalid payload
+        return HttpResponse(status=400)
