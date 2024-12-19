@@ -92,6 +92,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
         'allauth.account.middleware.AccountMiddleware',
 
 ]
@@ -166,6 +167,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
 # LANGUAGE_CODE = 'en-us'
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000', 'http://0.0.0.0:8000']
 
 TIME_ZONE = 'Asia/Colombo'
 
@@ -218,6 +220,8 @@ EXTRA_LANG_INFO = {
         'name_local': 'සිංහල',
     },
 }
+# SECURE_SSL_REDIRECT = False
+
 
 LANG_INFO = dict(EXTRA_LANG_INFO.items())
 django.conf.locale.LANG_INFO = LANG_INFO
@@ -262,7 +266,7 @@ MODELTRANSLATION_LANGUAGE = LANGUAGES
 # ZAHLS_API_KEY = "your_api_key_here"  # Replace with one of your API keys
 # ZAHLS_BASE_URL = "https://api.zahls.ch/v1"
 
-CORS_ORIGIN_ALLOW_ALL = True  # Allow all origins for testing, adjust as needed for production
+# CORS_ORIGIN_ALLOW_ALL = True  # Allow all origins for testing, adjust as needed for production
 GOOGLE_SERVICE_CREDINTIAL_JSON = config('GOOGLE_SERVICE_CREDINTIAL_JSON')
 GOOGLE_DRIVE_FOLDER_ID = config('GOOGLE_DRIVE_FOLDER_ID')
 
@@ -279,8 +283,13 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 # Replace with your Gmail app password
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# LOGIN_REQUIRED_IGNORE_VIEW_NAMES = [
+
+# ]
+APPEND_SLASH = True
 
 
 #Stripe django
 STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
+STRIPE_ENDPOINT_SECRET = config('STRIP_WEBHOOK_SECREAT')

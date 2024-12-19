@@ -2,10 +2,15 @@ from django.shortcuts import render
 # Create your views here.
 from django.db.models import Q
 import json
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
 from django.urls import reverse
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
+import stripe.error
+import stripe.webhook
 from .form import userform ,SearchForm
 from .models import *
 from django.utils.translation import activate,get_language
@@ -358,7 +363,7 @@ def payment_view(request):
     return render(request, 'elibt/payments.html', {
         'publishable_key': settings.STRIPE_PUBLIC_KEY
     })
-
+@csrf_exempt
 def cheackout(request):
     cartd=cart.objects.filter(user=request.user.id,orderstatus=False)
     # print(vars(cartd))
@@ -368,19 +373,24 @@ def payment_sucess_page(request):
     return render(request,'elibt/suecss_payment.html')
 def payment_error_page(request):
     return render(request,'elibt/payment_error.html')
+
 class Stripepaymentgateway(View):
     """
     stripe payment gatye way 
     """
+
     def post(self,request):
        
         cartbooks= cart.objects.filter(user=request.user.id,orderstatus=False)
     #    data = request
         line_items = []
-
+        cartids=[str(cart_id) for cart_id in cartbooks]
         totalAmount=0
         for product in cartbooks:
-            print(product.bookno.bookcover)
+            # print(p)
+            # print(product.orderid)
+            # cartids.append(product.orderid)
+
             line_items.append({
                     'price_data': {
                         'currency': 'chf',  # Replace with your currency code
@@ -404,11 +414,13 @@ class Stripepaymentgateway(View):
             mode='payment',
             success_url=success_url,
             cancel_url=cancel_url,
-            
+            metadata={
+                'cart_ids':json.dumps(cartids),
+            }
 
 
         )
-        print(session)
+        # print(session)
 
         for books in cartbooks:
             books.payment_intent_id = session.payment_intent
@@ -418,12 +430,50 @@ class Stripepaymentgateway(View):
         #    print(products.booklang)
     #    print(data)
     #    HttpResponse()
-@csrf_exempt
-def webhook(request):
-    try:
+# @csrf_exempt
+@method_decorator(csrf_exempt, name='dispatch')
+class StripeWeb_Hook(View):
+    """
+    stripe web hook
+"""
+    # @method_decorator(csrf_exempt, name='dispatch')
+  
+    # @csrf_exempt
+    def post(self,request, *args, **kwargs):
+        # print(request.body)
+        # payload=request.body    
         payload=request.body
-        print(payload)
-
-    except ValueError as e:
-        # Invalid payload
-        return HttpResponse(status=400)
+        event=None
+        sig_header=request.META['HTTP_STRIPE_SIGNATURE']
+        try:
+            event=stripe.Webhook.construct_event(
+                payload,sig_header,settings.STRIPE_ENDPOINT_SECRET
+            )
+        except ValueError as e:
+            return HttpResponse(status=400)
+        except stripe.error.SignatureVerificationError as e:
+            return HttpResponse(status=400)
+        # return JsonResponse({'messages':'wehook'},status=200)
+        if event['type']=='checkout.session.completed':
+            session=event['data']['object']
+            print(session)
+            # print(event['type'])
+            # print(event['type'])
+        return HttpResponse(status=200)
+    # print("webhook")
+        # sig_header = request.META
+        # print("webhook")
+        # event=None
+        # try:
+        #     print(sig_header)
+        #     event= stripe.Webhook.construct_event(
+        #         payload,sig_header,settings.STRIP_WEBHOOK_SECREAT
+        #     )
+        # except ValueError as e:
+        #     # Invalid payload
+        #     return HttpResponse(status=400)
+        # except stripe.error.SignatureVerificationError as e:
+        #     return HttpResponse(status=400)
+        # if event['type']=='checkout.session.completed':
+        #     print(event)
+        #     session = event['data']
